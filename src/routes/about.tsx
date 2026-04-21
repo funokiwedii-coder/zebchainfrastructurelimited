@@ -136,26 +136,34 @@ function AboutPage() {
               The people behind the programme.
             </h2>
             <p className="mt-5 text-muted-foreground">
-              A senior team with deep experience in commercial banking, sovereign wealth
-              management, infrastructure finance and policy advisory.
+              A compact senior team leading origination, structuring and execution across the AIP
+              pipeline.
             </p>
           </div>
           <div className="md:col-span-8">
-            <div className="divide-y divide-border border-y border-border">
+            <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-3">
               {team.map((m) => (
-                <article key={m.name} className="grid gap-4 py-8 md:grid-cols-12">
-                  <div className="md:col-span-4">
-                    <h3 className="font-display text-xl text-foreground">{m.name}</h3>
-                    <div className="mt-1 text-sm text-terracotta">{m.role}</div>
+                <article key={m.name} className="flex flex-col">
+                  <div className="aspect-square overflow-hidden rounded-sm border border-forest/20 bg-muted">
+                    <img
+                      src={m.photo}
+                      alt={m.name}
+                      className="h-full w-full object-cover"
+                      loading="lazy"
+                    />
                   </div>
-                  <div className="md:col-span-8">
-                    <p className="text-sm leading-relaxed text-muted-foreground">{m.bio}</p>
-                    {m.edu && (
-                      <p className="mt-3 text-xs uppercase tracking-[0.15em] text-foreground/60">
-                        {m.edu}
-                      </p>
-                    )}
+                  <h3 className="mt-5 font-display text-xl leading-tight text-foreground">
+                    {m.name}
+                  </h3>
+                  <div className="mt-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-terracotta">
+                    {m.role}
                   </div>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{m.bio}</p>
+                  {m.edu && (
+                    <p className="mt-3 text-[11px] uppercase tracking-[0.15em] text-foreground/60">
+                      {m.edu}
+                    </p>
+                  )}
                 </article>
               ))}
             </div>
