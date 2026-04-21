@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import zebchaLogo from "@/assets/zebcha-logo.png";
 
 const nav = [
   { to: "/", label: "Home" },
@@ -17,11 +18,8 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/85 backdrop-blur-md">
       <div className="container-editorial flex h-20 items-center justify-between">
         <Link to="/" className="group flex items-center gap-3" onClick={() => setOpen(false)}>
-          <span className="grid h-9 w-9 place-items-center rounded-sm bg-primary text-primary-foreground font-display text-lg font-semibold">
-            Z
-          </span>
+          <img src={zebchaLogo} alt="Zebcha Infrastructure" className="h-9 w-auto" />
           <div className="leading-tight">
-            <div className="font-display text-lg font-semibold text-foreground">Zebcha</div>
             <div className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
               Infrastructure
             </div>

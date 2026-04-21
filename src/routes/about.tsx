@@ -1,5 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import africaTopo from "@/assets/africa-topo.png";
+import teamTemitope from "@/assets/team-temitope.jpg";
+import teamDaniel from "@/assets/team-daniel.jpg";
+import teamGideon from "@/assets/team-gideon.jpg";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -23,30 +26,23 @@ export const Route = createFileRoute("/about")({
 
 const team = [
   {
-    name: "Founder & CEO",
-    role: "Lead Adviser",
+    name: "Temitope Akinyemi",
+    role: "MD / CEO",
+    photo: teamTemitope,
     bio: "Founder of Zebcha Infrastructure and Acting CEO of DDWCL, a multi-million dollar water utility. Former Portfolio Manager at the Nigerian Sovereign Investment Authority (2012–2015), with a background in commercial banking (FSB, GTB), infrastructure financing (HMS Host, USA), and mortgage-backed securities (GMRESCAP). Lead Investment & Project Adviser to DFID and the EIB since 2010, with over $1B in greenfield deals.",
     edu: "BSc Math (UNN) · MBA Finance & Strategy (Yale)",
   },
   {
-    name: "Victoire White",
-    role: "Executive Director, Business Development",
-    bio: "Leads partnership development and origination across the Zebcha pipeline.",
+    name: "Daniel Umoru",
+    role: "Team Lead",
+    photo: teamDaniel,
+    bio: "Team Lead supporting origination, structuring and execution across the Zebcha pipeline.",
   },
   {
-    name: "Emmanuella Akinyemi",
-    role: "Executive Director, Human Resources & Finance",
-    bio: "Oversees corporate finance, talent and operations for the firm.",
-  },
-  {
-    name: "Tubonemi Ilamina-Eremie",
-    role: "Director, Legal / Portfolio Manager",
-    bio: "Heads legal structuring and active portfolio management.",
-  },
-  {
-    name: "Ruth Byoma",
-    role: "Director, Environmental, Social & Governance (ESG)",
-    bio: "Ensures ESG integration across project origination and execution.",
+    name: "Gideon Dikedi",
+    role: "Team Lead",
+    photo: teamGideon,
+    bio: "Team Lead supporting origination, structuring and execution across the Zebcha pipeline.",
   },
 ];
 
@@ -140,26 +136,34 @@ function AboutPage() {
               The people behind the programme.
             </h2>
             <p className="mt-5 text-muted-foreground">
-              A senior team with deep experience in commercial banking, sovereign wealth
-              management, infrastructure finance and policy advisory.
+              A compact senior team leading origination, structuring and execution across the AIP
+              pipeline.
             </p>
           </div>
           <div className="md:col-span-8">
-            <div className="divide-y divide-border border-y border-border">
+            <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-3">
               {team.map((m) => (
-                <article key={m.name} className="grid gap-4 py-8 md:grid-cols-12">
-                  <div className="md:col-span-4">
-                    <h3 className="font-display text-xl text-foreground">{m.name}</h3>
-                    <div className="mt-1 text-sm text-terracotta">{m.role}</div>
+                <article key={m.name} className="flex flex-col">
+                  <div className="aspect-square overflow-hidden rounded-sm border border-forest/20 bg-muted">
+                    <img
+                      src={m.photo}
+                      alt={m.name}
+                      className="h-full w-full object-cover"
+                      loading="lazy"
+                    />
                   </div>
-                  <div className="md:col-span-8">
-                    <p className="text-sm leading-relaxed text-muted-foreground">{m.bio}</p>
-                    {m.edu && (
-                      <p className="mt-3 text-xs uppercase tracking-[0.15em] text-foreground/60">
-                        {m.edu}
-                      </p>
-                    )}
+                  <h3 className="mt-5 font-display text-xl leading-tight text-foreground">
+                    {m.name}
+                  </h3>
+                  <div className="mt-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-terracotta">
+                    {m.role}
                   </div>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{m.bio}</p>
+                  {m.edu && (
+                    <p className="mt-3 text-[11px] uppercase tracking-[0.15em] text-foreground/60">
+                      {m.edu}
+                    </p>
+                  )}
                 </article>
               ))}
             </div>
