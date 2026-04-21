@@ -1,14 +1,15 @@
 import { Link } from "@tanstack/react-router";
+import zebchaLogo from "@/assets/zebcha-logo.png";
 
 export function SiteFooter() {
   return (
     <footer className="mt-32 border-t border-border bg-forest-deep text-ivory">
       <div className="container-editorial grid gap-12 py-16 md:grid-cols-12">
         <div className="md:col-span-5">
-          <div className="flex items-center gap-3">
-            <span className="grid h-10 w-10 place-items-center rounded-sm bg-ochre text-forest-deep font-display text-xl font-semibold">
-              Z
-            </span>
+          <div className="flex items-center gap-4">
+            <div className="rounded-sm bg-ivory px-3 py-2">
+              <img src={zebchaLogo} alt="Zebcha Infrastructure" className="h-9 w-auto" />
+            </div>
             <div>
               <div className="font-display text-xl">Zebcha Infrastructure</div>
               <div className="text-[11px] uppercase tracking-[0.2em] text-ivory/60">
