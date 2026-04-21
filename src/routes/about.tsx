@@ -1,5 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import africaTopo from "@/assets/africa-topo.png";
+import teamTemitope from "@/assets/team-temitope.jpg";
+import teamDaniel from "@/assets/team-daniel.jpg";
+import teamGideon from "@/assets/team-gideon.jpg";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -23,30 +26,23 @@ export const Route = createFileRoute("/about")({
 
 const team = [
   {
-    name: "Founder & CEO",
-    role: "Lead Adviser",
+    name: "Temitope Akinyemi",
+    role: "MD / CEO",
+    photo: teamTemitope,
     bio: "Founder of Zebcha Infrastructure and Acting CEO of DDWCL, a multi-million dollar water utility. Former Portfolio Manager at the Nigerian Sovereign Investment Authority (2012–2015), with a background in commercial banking (FSB, GTB), infrastructure financing (HMS Host, USA), and mortgage-backed securities (GMRESCAP). Lead Investment & Project Adviser to DFID and the EIB since 2010, with over $1B in greenfield deals.",
     edu: "BSc Math (UNN) · MBA Finance & Strategy (Yale)",
   },
   {
-    name: "Victoire White",
-    role: "Executive Director, Business Development",
-    bio: "Leads partnership development and origination across the Zebcha pipeline.",
+    name: "Daniel Umoru",
+    role: "Team Lead",
+    photo: teamDaniel,
+    bio: "Team Lead supporting origination, structuring and execution across the Zebcha pipeline.",
   },
   {
-    name: "Emmanuella Akinyemi",
-    role: "Executive Director, Human Resources & Finance",
-    bio: "Oversees corporate finance, talent and operations for the firm.",
-  },
-  {
-    name: "Tubonemi Ilamina-Eremie",
-    role: "Director, Legal / Portfolio Manager",
-    bio: "Heads legal structuring and active portfolio management.",
-  },
-  {
-    name: "Ruth Byoma",
-    role: "Director, Environmental, Social & Governance (ESG)",
-    bio: "Ensures ESG integration across project origination and execution.",
+    name: "Gideon Dikedi",
+    role: "Team Lead",
+    photo: teamGideon,
+    bio: "Team Lead supporting origination, structuring and execution across the Zebcha pipeline.",
   },
 ];
 
