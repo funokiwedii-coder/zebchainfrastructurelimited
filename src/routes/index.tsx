@@ -149,7 +149,7 @@ function HomePage() {
       {/* THE GAP */}
       <section className="container-editorial mt-32">
         <div className="grid gap-16 md:grid-cols-12">
-          <div className="md:col-span-5">
+          <Reveal as="div" variant="left" className="md:col-span-5">
             <div className="eyebrow">The opportunity</div>
             <h2 className="mt-4 font-display text-4xl leading-tight text-foreground md:text-5xl">
               Africa's annual infrastructure gap is{" "}
@@ -160,7 +160,7 @@ function HomePage() {
               shortfall in the basic infrastructure required for economic activity. Zebcha was
               designed to help close that gap — at scale, at speed, and on bankable terms.
             </p>
-          </div>
+          </Reveal>
           <div className="md:col-span-7">
             <div className="grid grid-cols-2 gap-x-8 gap-y-10 border-l border-border pl-8">
               {[
@@ -168,11 +168,11 @@ function HomePage() {
                 { v: "12.4 GW", l: "Electricity supply gap, 2019" },
                 { v: "$94.2B", l: "Food supply gap, 2019" },
                 { v: "$207.6B", l: "ICT investment gap, 2019" },
-              ].map((s) => (
-                <div key={s.l}>
+              ].map((s, i) => (
+                <Reveal key={s.l} variant="up" delay={i * 110}>
                   <div className="font-display text-4xl text-forest md:text-5xl">{s.v}</div>
                   <div className="mt-2 text-sm text-muted-foreground">{s.l}</div>
-                </div>
+                </Reveal>
               ))}
             </div>
           </div>
@@ -188,7 +188,7 @@ function HomePage() {
           className="pointer-events-none absolute -right-32 top-1/2 h-[520px] w-[520px] -translate-y-1/2 opacity-[0.08]"
         />
         <div className="container-editorial relative">
-          <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+          <Reveal as="div" variant="up" className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
             <div>
               <div className="eyebrow">Nine sectors</div>
               <h2 className="mt-4 max-w-2xl font-display text-4xl leading-tight text-foreground md:text-5xl">
