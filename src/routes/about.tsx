@@ -7,6 +7,7 @@ import teamGideon from "@/assets/team-gideon.jpg";
 import teamFavour from "@/assets/team-favour.jpg";
 import teamSmart from "@/assets/team-smart.jpg";
 import teamChristiana from "@/assets/team-christiana.jpg";
+import { Reveal } from "@/components/Reveal";
 import {
   Dialog,
   DialogContent,
@@ -127,10 +128,10 @@ function AboutPage() {
       {/* Intro */}
       <section className="container-editorial pt-20 pb-12 md:pt-28 md:pb-16">
         <div className="grid gap-12 md:grid-cols-12">
-          <div className="md:col-span-3">
+          <Reveal as="div" variant="left" className="md:col-span-3">
             <div className="eyebrow">About</div>
-          </div>
-          <div className="md:col-span-9">
+          </Reveal>
+          <Reveal as="div" variant="up" delay={120} className="md:col-span-9">
             <h1 className="font-display text-5xl leading-[1.05] text-foreground md:text-7xl">
               A Nigerian project finance house with a continent-wide mandate.
             </h1>
@@ -140,7 +141,7 @@ function AboutPage() {
               financing of large-scale Public-Private Partnership infrastructure projects across
               Africa.
             </p>
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -153,11 +154,11 @@ function AboutPage() {
             { v: "$1.2B+", l: "Public-Private Partnerships approved by FEC in 2020 alone" },
             { v: "$1B+", l: "Greenfield deals at various levels of development" },
             { v: "EU", l: "Project finance partners funding the AIP" },
-          ].map((s) => (
-            <div key={s.l}>
+          ].map((s, i) => (
+            <Reveal key={s.l} variant="up" delay={i * 140}>
               <div className="font-display text-5xl text-forest">{s.v}</div>
               <div className="mt-3 text-sm leading-relaxed text-muted-foreground">{s.l}</div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </section>
@@ -171,32 +172,27 @@ function AboutPage() {
           className="pointer-events-none absolute -left-40 -bottom-40 h-[560px] w-[560px] opacity-10"
         />
         <div className="container-editorial relative grid gap-16 md:grid-cols-12">
-          <div className="md:col-span-4">
+          <Reveal as="div" variant="left" className="md:col-span-4">
             <div className="text-[11px] font-semibold uppercase tracking-[0.25em] text-ochre">
               What we do
             </div>
             <h2 className="mt-4 font-display text-4xl md:text-5xl">
               Project development. Transaction advisory. Fund arrangement.
             </h2>
-          </div>
+          </Reveal>
           <div className="md:col-span-8 md:pl-8">
             <ul className="space-y-6 text-lg leading-relaxed text-ivory/85">
-              <li className="flex gap-4">
-                <span className="font-display text-ochre">→</span>
-                Identify viable, government-backed infrastructure opportunities across Africa.
-              </li>
-              <li className="flex gap-4">
-                <span className="font-display text-ochre">→</span>
-                Structure bankable PPP transactions with EU project finance partners.
-              </li>
-              <li className="flex gap-4">
-                <span className="font-display text-ochre">→</span>
-                Deploy single-digit financing against sovereign and sub-sovereign guarantees.
-              </li>
-              <li className="flex gap-4">
-                <span className="font-display text-ochre">→</span>
-                Execute projects with international consortia and capable local teams.
-              </li>
+              {[
+                "Identify viable, government-backed infrastructure opportunities across Africa.",
+                "Structure bankable PPP transactions with EU project finance partners.",
+                "Deploy single-digit financing against sovereign and sub-sovereign guarantees.",
+                "Execute projects with international consortia and capable local teams.",
+              ].map((line, i) => (
+                <Reveal key={line} as="li" variant="up" delay={i * 140} className="flex gap-4">
+                  <span className="font-display text-ochre">→</span>
+                  {line}
+                </Reveal>
+              ))}
             </ul>
           </div>
         </div>
