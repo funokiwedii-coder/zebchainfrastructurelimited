@@ -76,7 +76,7 @@ function ProgrammePage() {
       {/* Hero */}
       <section className="container-editorial pt-20 pb-16 md:pt-28">
         <div className="grid gap-10 md:grid-cols-12 md:gap-16">
-          <div className="md:col-span-7">
+          <Reveal as="div" variant="up" className="md:col-span-7">
             <div className="eyebrow">Programme overview</div>
             <h1 className="mt-4 font-display text-5xl leading-[1.05] text-foreground md:text-7xl">
               The Africa Infrastructure Programme.
@@ -86,8 +86,8 @@ function ProgrammePage() {
               facilities required for African economies to thrive — from power and transport to
               affordable housing and ICT.
             </p>
-          </div>
-          <div className="md:col-span-5">
+          </Reveal>
+          <Reveal as="div" variant="right" delay={150} className="md:col-span-5">
             <div className="rounded-sm border border-border bg-card p-8">
               <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-terracotta">
                 Programme parameters
@@ -109,14 +109,14 @@ function ProgrammePage() {
                 ))}
               </dl>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       {/* Problem / Effects / Solution */}
       <section className="bg-bone py-24">
         <div className="container-editorial grid gap-16 md:grid-cols-3">
-          <div>
+          <Reveal variant="up" delay={0}>
             <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-terracotta">
               The problem
             </div>
@@ -128,8 +128,8 @@ function ProgrammePage() {
                 Weak project preparation and structuring
               </li>
             </ul>
-          </div>
-          <div>
+          </Reveal>
+          <Reveal variant="up" delay={150}>
             <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-clay">
               The effects
             </div>
@@ -141,8 +141,8 @@ function ProgrammePage() {
                 Stalled or under-delivered infrastructure outcomes
               </li>
             </ul>
-          </div>
-          <div>
+          </Reveal>
+          <Reveal variant="up" delay={300}>
             <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-forest">
               The solution
             </div>
@@ -157,7 +157,7 @@ function ProgrammePage() {
                 Execute with international and local delivery teams
               </li>
             </ul>
-          </div>
+          </Reveal>
         </div>
       </section>
 
