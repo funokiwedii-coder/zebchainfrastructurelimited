@@ -5,6 +5,8 @@ import infraBridge from "@/assets/infra-bridge.jpg";
 import infraSolar from "@/assets/infra-solar.jpg";
 import infraPort from "@/assets/infra-port.jpg";
 import africaTopo from "@/assets/africa-topo.png";
+import { Reveal } from "@/components/Reveal";
+import { useParallax } from "@/hooks/useParallax";
 
 export const Route = createFileRoute("/")({
   head: () => ({
