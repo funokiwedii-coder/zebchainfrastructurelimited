@@ -201,7 +201,7 @@ function AboutPage() {
       {/* Team */}
       <section className="container-editorial py-24">
         <div className="grid gap-12 md:grid-cols-12">
-          <div className="md:col-span-4">
+          <Reveal as="div" variant="left" className="md:col-span-4">
             <div className="eyebrow">Leadership & Team</div>
             <h2 className="mt-4 font-display text-4xl leading-tight text-foreground md:text-5xl">
               The people behind the programme.
@@ -213,46 +213,51 @@ function AboutPage() {
             <p className="mt-3 text-sm text-muted-foreground/80">
               Tap any profile to read more.
             </p>
-          </div>
+          </Reveal>
           <div className="md:col-span-8">
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {team.map((m, i) => (
-                <button
+                <Reveal
                   key={m.name}
-                  type="button"
-                  onClick={() => setOpenIndex(i)}
-                  className="group flex flex-col text-left outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-4 focus-visible:ring-offset-background"
+                  variant="up"
+                  delay={(i % 3) * 100 + Math.floor(i / 3) * 60}
                 >
-                  <div className="relative aspect-square overflow-hidden rounded-sm border border-forest/20 bg-muted">
-                    {m.photo ? (
-                      <img
-                        src={m.photo}
-                        alt={m.name}
-                        className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
-                        loading="lazy"
-                      />
-                    ) : (
-                      <div className="flex h-full w-full items-center justify-center bg-forest/10">
-                        <span className="font-display text-5xl text-forest/70">
-                          {initials(m.name)}
+                  <button
+                    type="button"
+                    onClick={() => setOpenIndex(i)}
+                    className="group flex w-full flex-col text-left outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-4 focus-visible:ring-offset-background"
+                  >
+                    <div className="relative aspect-square overflow-hidden rounded-sm border border-forest/20 bg-muted">
+                      {m.photo ? (
+                        <img
+                          src={m.photo}
+                          alt={m.name}
+                          className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+                          loading="lazy"
+                        />
+                      ) : (
+                        <div className="flex h-full w-full items-center justify-center bg-forest/10">
+                          <span className="font-display text-5xl text-forest/70">
+                            {initials(m.name)}
+                          </span>
+                        </div>
+                      )}
+                      <div className="absolute inset-0 bg-forest/0 transition-colors duration-300 group-hover:bg-forest/10" />
+                      <div className="absolute inset-x-0 bottom-0 translate-y-2 px-3 pb-3 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                        <span className="inline-flex items-center gap-1 rounded-sm bg-ivory/95 px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-forest">
+                          Read profile →
                         </span>
                       </div>
-                    )}
-                    <div className="absolute inset-0 bg-forest/0 transition-colors duration-300 group-hover:bg-forest/10" />
-                    <div className="absolute inset-x-0 bottom-0 translate-y-2 px-3 pb-3 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-                      <span className="inline-flex items-center gap-1 rounded-sm bg-ivory/95 px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-forest">
-                        Read profile →
-                      </span>
                     </div>
-                  </div>
-                  <h3 className="mt-5 font-display text-xl leading-tight text-foreground transition-colors group-hover:text-terracotta">
-                    {m.name}
-                  </h3>
-                  <div className="mt-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-terracotta">
-                    {m.role}
-                  </div>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{m.short}</p>
-                </button>
+                    <h3 className="mt-5 font-display text-xl leading-tight text-foreground transition-colors group-hover:text-terracotta">
+                      {m.name}
+                    </h3>
+                    <div className="mt-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-terracotta">
+                      {m.role}
+                    </div>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{m.short}</p>
+                  </button>
+                </Reveal>
               ))}
             </div>
           </div>
