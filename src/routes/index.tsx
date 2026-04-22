@@ -64,15 +64,18 @@ const featured = [
 ];
 
 function HomePage() {
+  const heroImgRef = useParallax<HTMLImageElement>(0.18);
+
   return (
     <>
       {/* HERO */}
       <section className="relative isolate overflow-hidden">
-        <div className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 -z-10 overflow-hidden">
           <img
+            ref={heroImgRef}
             src={heroAfrica}
             alt="Aerial view of the African continent at golden hour"
-            className="h-full w-full object-cover"
+            className="h-[120%] w-full -translate-y-[5%] object-cover will-change-transform"
             width={1920}
             height={1280}
           />
@@ -81,35 +84,43 @@ function HomePage() {
 
         <div className="container-editorial relative pt-24 pb-32 md:pt-36 md:pb-44">
           <div className="max-w-4xl">
-            <div className="text-[11px] font-semibold uppercase tracking-[0.25em] text-ochre">
-              The Africa Infrastructure Programme · 2023
-            </div>
-            <h1 className="mt-6 font-display text-[clamp(2.75rem,7vw,6.5rem)] font-medium leading-[0.95] text-ivory">
-              Building the
-              <span className="italic text-ochre"> continent</span>,
-              <br />
-              one project at a time.
-            </h1>
-            <p className="mt-8 max-w-2xl text-lg leading-relaxed text-ivory/85">
-              Zebcha Infrastructure delivers large-scale, government-backed projects across Africa —
-              roads, rail, power, ports and housing — funded through partnerships with leading
-              European Union project finance institutions.
-            </p>
-            <div className="mt-10 flex flex-wrap items-center gap-4">
-              <Link
-                to="/programme"
-                className="group inline-flex items-center gap-2 rounded-sm bg-ochre px-7 py-3.5 text-sm font-semibold text-forest-deep transition-colors hover:bg-ivory"
-              >
-                Explore the AIP
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-              <Link
-                to="/contact"
-                className="inline-flex items-center gap-2 rounded-sm border border-ivory/40 px-7 py-3.5 text-sm font-medium text-ivory transition-colors hover:bg-ivory/10"
-              >
-                Submit a project
-              </Link>
-            </div>
+            <Reveal variant="fade" delay={0}>
+              <div className="text-[11px] font-semibold uppercase tracking-[0.25em] text-ochre">
+                The Africa Infrastructure Programme · 2023
+              </div>
+            </Reveal>
+            <Reveal variant="up" delay={120}>
+              <h1 className="mt-6 font-display text-[clamp(2.75rem,7vw,6.5rem)] font-medium leading-[0.95] text-ivory">
+                Building the
+                <span className="italic text-ochre"> continent</span>,
+                <br />
+                one project at a time.
+              </h1>
+            </Reveal>
+            <Reveal variant="up" delay={260}>
+              <p className="mt-8 max-w-2xl text-lg leading-relaxed text-ivory/85">
+                Zebcha Infrastructure delivers large-scale, government-backed projects across Africa —
+                roads, rail, power, ports and housing — funded through partnerships with leading
+                European Union project finance institutions.
+              </p>
+            </Reveal>
+            <Reveal variant="up" delay={400}>
+              <div className="mt-10 flex flex-wrap items-center gap-4">
+                <Link
+                  to="/programme"
+                  className="group inline-flex items-center gap-2 rounded-sm bg-ochre px-7 py-3.5 text-sm font-semibold text-forest-deep transition-colors hover:bg-ivory"
+                >
+                  Explore the AIP
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Link>
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center gap-2 rounded-sm border border-ivory/40 px-7 py-3.5 text-sm font-medium text-ivory transition-colors hover:bg-ivory/10"
+                >
+                  Submit a project
+                </Link>
+              </div>
+            </Reveal>
           </div>
         </div>
 
@@ -121,13 +132,15 @@ function HomePage() {
               { v: "$50M", l: "Minimum project size" },
               { v: "90 days", l: "Target to financial close" },
               { v: "Single-digit", l: "Financing pricing" },
-            ].map((s) => (
-              <div key={s.l} className="bg-card p-6 md:p-8">
-                <div className="font-display text-3xl text-foreground md:text-4xl">{s.v}</div>
-                <div className="mt-2 text-xs uppercase tracking-[0.15em] text-muted-foreground">
-                  {s.l}
+            ].map((s, i) => (
+              <Reveal key={s.l} variant="up" delay={i * 120}>
+                <div className="bg-card p-6 md:p-8">
+                  <div className="font-display text-3xl text-foreground md:text-4xl">{s.v}</div>
+                  <div className="mt-2 text-xs uppercase tracking-[0.15em] text-muted-foreground">
+                    {s.l}
+                  </div>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
