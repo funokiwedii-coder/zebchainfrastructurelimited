@@ -201,17 +201,19 @@ function HomePage() {
             >
               Read the full programme <ArrowUpRight className="h-4 w-4" />
             </Link>
-          </div>
+          </Reveal>
 
           <div className="mt-12 grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-3">
-            {sectors.map((s) => (
-              <div
+            {sectors.map((s, i) => (
+              <Reveal
                 key={s.n}
+                variant="scale"
+                delay={i * 60}
                 className="group flex items-baseline gap-5 bg-bone p-7 transition-colors hover:bg-card"
               >
                 <span className="font-display text-2xl text-terracotta">{s.n}</span>
                 <span className="font-display text-xl text-foreground">{s.name}</span>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
