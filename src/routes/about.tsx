@@ -7,6 +7,7 @@ import teamGideon from "@/assets/team-gideon.jpg";
 import teamFavour from "@/assets/team-favour.jpg";
 import teamSmart from "@/assets/team-smart.jpg";
 import teamChristiana from "@/assets/team-christiana.jpg";
+import teamPraise from "@/assets/team-praise.jpg";
 import { Reveal } from "@/components/Reveal";
 import {
   Dialog,
@@ -55,57 +56,58 @@ const team: Member[] = [
     edu: "BSc Math (UNN) · MBA Finance & Strategy (Yale)",
   },
   {
-    name: "Daniel Umoru",
-    role: "Team Lead",
-    photo: teamDaniel,
-    short: "Team Lead — origination, structuring and execution.",
-    bio: "Daniel is a Chemical Engineering graduate from Covenant University with an interest in health, environment, and sustainable systems. He contributes to project research and implementation with a problem-solving mindset, helping translate complex technical challenges into deliverable, bankable infrastructure outcomes.",
-    edu: "BEng Chemical Engineering · Covenant University",
-  },
-  {
-    name: "Gideon Dikedi",
-    role: "Team Lead",
-    photo: teamGideon,
-    short: "Team Lead — engineering solutions for real-world infrastructure.",
-    bio: "Gideon studied Civil Engineering at Covenant University and is committed to using engineering solutions to address real-world challenges. He actively supports outreach programs and the technical aspects of Zebcha's pipeline, bridging field execution with the firm's wider development mandate.",
-    edu: "BEng Civil Engineering · Covenant University",
-  },
-  {
     name: "Favour Unokiwedi",
     role: "Assistant Team Lead (Admin)",
     photo: teamFavour,
-    short: "Coordinates team operations and outreach delivery.",
-    bio: "Favour is a Building Technology graduate from Covenant University with a strong focus on project coordination and sustainable development. He supports overall team operations and ensures outreach initiatives are well-structured, on schedule, and effectively delivered across the Zebcha portfolio.",
+    short: "Operations, structuring and seamless project execution.",
+    bio: "Favour is a Building Technology graduate from Covenant University with a strong background in project coordination and infrastructure delivery. He plays a key role in structuring operations, ensuring seamless execution across projects from planning to completion.",
     edu: "BSc Building Technology · Covenant University",
   },
   {
     name: "Smart Michael",
     role: "Assistant Team Lead",
     photo: teamSmart,
-    short: "Strategy, planning and impact-aligned decision-making.",
-    bio: "Smart studied Economics at Arthur Jarvis University and brings a strategic, analytical perspective to the team. He contributes to planning and decision-making, helping align Zebcha's projects with measurable, impact-driven goals across infrastructure and community development.",
+    short: "Financial systems, investment dynamics and strategy.",
+    bio: "Smart is an Economics graduate from Arthur Jarvis University with a solid understanding of financial systems and investment dynamics. He supports strategic planning and financial decision-making to ensure projects are commercially viable and impact-driven.",
     edu: "BSc Economics · Arthur Jarvis University",
   },
   {
     name: "Praise Ossy Nwoye",
     role: "Assistant Team Lead",
-    short: "Coordinates field activities and project execution.",
-    bio: "Praise is a Civil Engineering graduate from Covenant University with a passion for infrastructure and community development. He plays a key role in coordinating field activities and supporting project execution, ensuring engineering rigour is maintained across Zebcha's on-the-ground programmes.",
+    photo: teamPraise,
+    short: "Technical execution and on-site project coordination.",
+    bio: "Praise is a Civil Engineering graduate from Covenant University with experience in technical project execution and site coordination. He contributes to ensuring projects are delivered efficiently, meeting both quality and timeline expectations.",
     edu: "BEng Civil Engineering · Covenant University",
+  },
+  {
+    name: "Gideon Dikedi",
+    role: "Team Member",
+    photo: teamGideon,
+    short: "Practical infrastructure delivery and technical execution.",
+    bio: "Gideon is a Civil Engineering graduate from Covenant University focused on practical infrastructure delivery and technical execution. He supports project implementation by translating design intent into on-ground results.",
+    edu: "BEng Civil Engineering · Covenant University",
+  },
+  {
+    name: "Daniel Umoru",
+    role: "Team Member",
+    photo: teamDaniel,
+    short: "Project evaluation, operational efficiency and risk.",
+    bio: "Daniel is a Chemical Engineering graduate from Covenant University with a strong analytical and systems-oriented approach. He supports project evaluation, operational efficiency, and risk assessment across initiatives.",
+    edu: "BEng Chemical Engineering · Covenant University",
   },
   {
     name: "Success Ezea",
     role: "Team Member",
-    short: "Project planning and resource management.",
-    bio: "Success studied Accounting at the University of Nigeria, Nsukka, and brings strong organisational and financial management skills to the team. She supports project planning and ensures resources are effectively managed across the firm's advisory engagements and outreach initiatives.",
+    short: "Financial management, budgeting and accountability.",
+    bio: "Success is an Accounting graduate from the University of Nigeria, Nsukka with expertise in financial management and reporting. She ensures financial discipline across projects, supporting budgeting, tracking, and accountability.",
     edu: "BSc Accounting · University of Nigeria, Nsukka",
   },
   {
     name: "Christiana Olatunji",
     role: "Team Member",
     photo: teamChristiana,
-    short: "Sustainable infrastructure and community impact.",
-    bio: "Christiana is a Building Technology graduate from Covenant University with an interest in sustainable infrastructure and community impact. She contributes to project planning and supports the execution of outreach initiatives, helping translate Zebcha's mandate into tangible community outcomes.",
+    short: "Project planning and built-environment solutions.",
+    bio: "Christiana is a Building Technology graduate from Covenant University with a focus on project planning and built environment solutions. She contributes to the coordination and execution of development projects from concept to delivery.",
     edu: "BSc Building Technology · Covenant University",
   },
 ];
