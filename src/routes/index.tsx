@@ -221,7 +221,7 @@ function HomePage() {
 
       {/* FEATURED PROJECTS */}
       <section className="container-editorial mt-32">
-        <div className="flex items-end justify-between gap-6">
+        <Reveal as="div" variant="up" className="flex items-end justify-between gap-6">
           <div>
             <div className="eyebrow">Selected work</div>
             <h2 className="mt-4 font-display text-4xl text-foreground md:text-5xl">
@@ -234,11 +234,11 @@ function HomePage() {
           >
             View all projects <ArrowUpRight className="h-4 w-4" />
           </Link>
-        </div>
+        </Reveal>
 
         <div className="mt-12 grid gap-8 md:grid-cols-3">
-          {featured.map((p) => (
-            <article key={p.title} className="group">
+          {featured.map((p, i) => (
+            <Reveal key={p.title} as="article" variant="up" delay={i * 140} className="group">
               <div className="aspect-[4/3] overflow-hidden rounded-sm bg-muted">
                 <img
                   src={p.img}
@@ -256,39 +256,41 @@ function HomePage() {
                 {p.title}
               </h3>
               <p className="mt-2 text-sm text-muted-foreground">{p.detail}</p>
-            </article>
+            </Reveal>
           ))}
         </div>
       </section>
 
       {/* CTA */}
-      <section className="container-editorial mt-32">
-        <div className="relative overflow-hidden rounded-sm bg-forest px-8 py-20 text-ivory md:px-16 md:py-24">
-          <img
-            src={africaTopo}
-            alt=""
-            aria-hidden
-            className="pointer-events-none absolute -right-20 -top-20 h-[480px] w-[480px] opacity-15"
-          />
-          <div className="relative max-w-2xl">
-            <div className="text-[11px] font-semibold uppercase tracking-[0.25em] text-ochre">
-              Next steps
+      <section className="container-editorial mt-32 mb-24">
+        <Reveal variant="scale">
+          <div className="relative overflow-hidden rounded-sm bg-forest px-8 py-20 text-ivory md:px-16 md:py-24">
+            <img
+              src={africaTopo}
+              alt=""
+              aria-hidden
+              className="pointer-events-none absolute -right-20 -top-20 h-[480px] w-[480px] opacity-15"
+            />
+            <div className="relative max-w-2xl">
+              <div className="text-[11px] font-semibold uppercase tracking-[0.25em] text-ochre">
+                Next steps
+              </div>
+              <h2 className="mt-4 font-display text-4xl leading-tight md:text-5xl">
+                Have a project? Let's talk.
+              </h2>
+              <p className="mt-5 text-ivory/80">
+                From submission to financial close in ninety days. Send us your prospective project
+                and our team will arrange a clarification call.
+              </p>
+              <Link
+                to="/contact"
+                className="mt-8 inline-flex items-center gap-2 rounded-sm bg-ochre px-7 py-3.5 text-sm font-semibold text-forest-deep transition-colors hover:bg-ivory"
+              >
+                Submit your project <ArrowRight className="h-4 w-4" />
+              </Link>
             </div>
-            <h2 className="mt-4 font-display text-4xl leading-tight md:text-5xl">
-              Have a project? Let's talk.
-            </h2>
-            <p className="mt-5 text-ivory/80">
-              From submission to financial close in ninety days. Send us your prospective project
-              and our team will arrange a clarification call.
-            </p>
-            <Link
-              to="/contact"
-              className="mt-8 inline-flex items-center gap-2 rounded-sm bg-ochre px-7 py-3.5 text-sm font-semibold text-forest-deep transition-colors hover:bg-ivory"
-            >
-              Submit your project <ArrowRight className="h-4 w-4" />
-            </Link>
           </div>
-        </div>
+        </Reveal>
       </section>
     </>
   );
