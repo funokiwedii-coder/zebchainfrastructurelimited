@@ -81,7 +81,7 @@ const team: Member[] = [
   },
   {
     name: "Gideon Dikedi",
-    role: "Team Member",
+    role: "Team Lead",
     photo: teamGideon,
     short: "Practical infrastructure delivery and technical execution.",
     bio: "Gideon is a Civil Engineering graduate from Covenant University focused on practical infrastructure delivery and technical execution. He supports project implementation by translating design intent into on-ground results.",
@@ -89,7 +89,7 @@ const team: Member[] = [
   },
   {
     name: "Daniel Umoru",
-    role: "Team Member",
+    role: "Team Lead",
     photo: teamDaniel,
     short: "Project evaluation, operational efficiency and risk.",
     bio: "Daniel is a Chemical Engineering graduate from Covenant University with a strong analytical and systems-oriented approach. He supports project evaluation, operational efficiency, and risk assessment across initiatives.",
