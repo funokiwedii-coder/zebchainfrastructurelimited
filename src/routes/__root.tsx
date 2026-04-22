@@ -34,7 +34,7 @@ export const Route = createRootRoute({
           "Zebcha delivers large-scale, government-backed infrastructure across Africa with up to $15B in EU-partnered project finance.",
       },
       { name: "author", content: "Zebcha Infrastructure Limited" },
-      { property: "og:title", content: "Zebcha Infrastructure" },
+      { property: "og:title", content: "Zebcha Infrastructure — The Africa Infrastructure Programme" },
       {
         property: "og:description",
         content:
@@ -42,6 +42,12 @@ export const Route = createRootRoute({
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Zebcha Infrastructure — The Africa Infrastructure Programme" },
+      { name: "description", content: "Builds professional websites from company documents, showcasing your brand and team." },
+      { property: "og:description", content: "Builds professional websites from company documents, showcasing your brand and team." },
+      { name: "twitter:description", content: "Builds professional websites from company documents, showcasing your brand and team." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/5F6quKa6aLOCmDmcBVFWcpdPJjd2/social-images/social-1776872314049-Zebcha_logo.webp" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/5F6quKa6aLOCmDmcBVFWcpdPJjd2/social-images/social-1776872314049-Zebcha_logo.webp" },
     ],
     links: [{ rel: "stylesheet", href: appCss }],
   }),
