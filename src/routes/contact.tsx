@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Mail, Phone, MapPin, ArrowRight } from "lucide-react";
+import { Reveal } from "@/components/Reveal";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -29,7 +30,7 @@ function ContactPage() {
     <section className="container-editorial pt-20 pb-24 md:pt-28">
       <div className="grid gap-16 md:grid-cols-12">
         {/* Left: intro + details */}
-        <div className="md:col-span-5">
+        <Reveal as="div" variant="left" className="md:col-span-5">
           <div className="eyebrow">Get in touch</div>
           <h1 className="mt-4 font-display text-5xl leading-[1.05] text-foreground md:text-6xl">
             Let's build something enduring.
@@ -40,7 +41,7 @@ function ContactPage() {
           </p>
 
           <dl className="mt-12 space-y-7">
-            <div className="flex items-start gap-4">
+            <Reveal as="div" variant="up" delay={120} className="flex items-start gap-4">
               <div className="grid h-10 w-10 shrink-0 place-items-center rounded-sm bg-forest text-ivory">
                 <MapPin className="h-4 w-4" />
               </div>
@@ -54,9 +55,9 @@ function ContactPage() {
                   Abuja, Nigeria
                 </dd>
               </div>
-            </div>
+            </Reveal>
 
-            <div className="flex items-start gap-4">
+            <Reveal as="div" variant="up" delay={220} className="flex items-start gap-4">
               <div className="grid h-10 w-10 shrink-0 place-items-center rounded-sm bg-forest text-ivory">
                 <Phone className="h-4 w-4" />
               </div>
@@ -73,9 +74,9 @@ function ContactPage() {
                   </a>
                 </dd>
               </div>
-            </div>
+            </Reveal>
 
-            <div className="flex items-start gap-4">
+            <Reveal as="div" variant="up" delay={320} className="flex items-start gap-4">
               <div className="grid h-10 w-10 shrink-0 place-items-center rounded-sm bg-forest text-ivory">
                 <Mail className="h-4 w-4" />
               </div>
@@ -92,12 +93,12 @@ function ContactPage() {
                   </a>
                 </dd>
               </div>
-            </div>
+            </Reveal>
           </dl>
-        </div>
+        </Reveal>
 
         {/* Right: form */}
-        <div className="md:col-span-7">
+        <Reveal as="div" variant="right" delay={150} className="md:col-span-7">
           <div className="rounded-sm border border-border bg-card p-8 md:p-10">
             {submitted ? (
               <div className="py-12 text-center">
@@ -173,7 +174,7 @@ function ContactPage() {
               </form>
             )}
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

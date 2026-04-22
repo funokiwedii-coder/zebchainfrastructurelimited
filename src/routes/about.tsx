@@ -7,6 +7,7 @@ import teamGideon from "@/assets/team-gideon.jpg";
 import teamFavour from "@/assets/team-favour.jpg";
 import teamSmart from "@/assets/team-smart.jpg";
 import teamChristiana from "@/assets/team-christiana.jpg";
+import { Reveal } from "@/components/Reveal";
 import {
   Dialog,
   DialogContent,
@@ -127,10 +128,10 @@ function AboutPage() {
       {/* Intro */}
       <section className="container-editorial pt-20 pb-12 md:pt-28 md:pb-16">
         <div className="grid gap-12 md:grid-cols-12">
-          <div className="md:col-span-3">
+          <Reveal as="div" variant="left" className="md:col-span-3">
             <div className="eyebrow">About</div>
-          </div>
-          <div className="md:col-span-9">
+          </Reveal>
+          <Reveal as="div" variant="up" delay={120} className="md:col-span-9">
             <h1 className="font-display text-5xl leading-[1.05] text-foreground md:text-7xl">
               A Nigerian project finance house with a continent-wide mandate.
             </h1>
@@ -140,7 +141,7 @@ function AboutPage() {
               financing of large-scale Public-Private Partnership infrastructure projects across
               Africa.
             </p>
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -153,11 +154,11 @@ function AboutPage() {
             { v: "$1.2B+", l: "Public-Private Partnerships approved by FEC in 2020 alone" },
             { v: "$1B+", l: "Greenfield deals at various levels of development" },
             { v: "EU", l: "Project finance partners funding the AIP" },
-          ].map((s) => (
-            <div key={s.l}>
+          ].map((s, i) => (
+            <Reveal key={s.l} variant="up" delay={i * 140}>
               <div className="font-display text-5xl text-forest">{s.v}</div>
               <div className="mt-3 text-sm leading-relaxed text-muted-foreground">{s.l}</div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </section>
@@ -171,32 +172,27 @@ function AboutPage() {
           className="pointer-events-none absolute -left-40 -bottom-40 h-[560px] w-[560px] opacity-10"
         />
         <div className="container-editorial relative grid gap-16 md:grid-cols-12">
-          <div className="md:col-span-4">
+          <Reveal as="div" variant="left" className="md:col-span-4">
             <div className="text-[11px] font-semibold uppercase tracking-[0.25em] text-ochre">
               What we do
             </div>
             <h2 className="mt-4 font-display text-4xl md:text-5xl">
               Project development. Transaction advisory. Fund arrangement.
             </h2>
-          </div>
+          </Reveal>
           <div className="md:col-span-8 md:pl-8">
             <ul className="space-y-6 text-lg leading-relaxed text-ivory/85">
-              <li className="flex gap-4">
-                <span className="font-display text-ochre">→</span>
-                Identify viable, government-backed infrastructure opportunities across Africa.
-              </li>
-              <li className="flex gap-4">
-                <span className="font-display text-ochre">→</span>
-                Structure bankable PPP transactions with EU project finance partners.
-              </li>
-              <li className="flex gap-4">
-                <span className="font-display text-ochre">→</span>
-                Deploy single-digit financing against sovereign and sub-sovereign guarantees.
-              </li>
-              <li className="flex gap-4">
-                <span className="font-display text-ochre">→</span>
-                Execute projects with international consortia and capable local teams.
-              </li>
+              {[
+                "Identify viable, government-backed infrastructure opportunities across Africa.",
+                "Structure bankable PPP transactions with EU project finance partners.",
+                "Deploy single-digit financing against sovereign and sub-sovereign guarantees.",
+                "Execute projects with international consortia and capable local teams.",
+              ].map((line, i) => (
+                <Reveal key={line} as="li" variant="up" delay={i * 140} className="flex gap-4">
+                  <span className="font-display text-ochre">→</span>
+                  {line}
+                </Reveal>
+              ))}
             </ul>
           </div>
         </div>
@@ -205,7 +201,7 @@ function AboutPage() {
       {/* Team */}
       <section className="container-editorial py-24">
         <div className="grid gap-12 md:grid-cols-12">
-          <div className="md:col-span-4">
+          <Reveal as="div" variant="left" className="md:col-span-4">
             <div className="eyebrow">Leadership & Team</div>
             <h2 className="mt-4 font-display text-4xl leading-tight text-foreground md:text-5xl">
               The people behind the programme.
@@ -217,46 +213,51 @@ function AboutPage() {
             <p className="mt-3 text-sm text-muted-foreground/80">
               Tap any profile to read more.
             </p>
-          </div>
+          </Reveal>
           <div className="md:col-span-8">
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {team.map((m, i) => (
-                <button
+                <Reveal
                   key={m.name}
-                  type="button"
-                  onClick={() => setOpenIndex(i)}
-                  className="group flex flex-col text-left outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-4 focus-visible:ring-offset-background"
+                  variant="up"
+                  delay={(i % 3) * 100 + Math.floor(i / 3) * 60}
                 >
-                  <div className="relative aspect-square overflow-hidden rounded-sm border border-forest/20 bg-muted">
-                    {m.photo ? (
-                      <img
-                        src={m.photo}
-                        alt={m.name}
-                        className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
-                        loading="lazy"
-                      />
-                    ) : (
-                      <div className="flex h-full w-full items-center justify-center bg-forest/10">
-                        <span className="font-display text-5xl text-forest/70">
-                          {initials(m.name)}
+                  <button
+                    type="button"
+                    onClick={() => setOpenIndex(i)}
+                    className="group flex w-full flex-col text-left outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-4 focus-visible:ring-offset-background"
+                  >
+                    <div className="relative aspect-square overflow-hidden rounded-sm border border-forest/20 bg-muted">
+                      {m.photo ? (
+                        <img
+                          src={m.photo}
+                          alt={m.name}
+                          className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+                          loading="lazy"
+                        />
+                      ) : (
+                        <div className="flex h-full w-full items-center justify-center bg-forest/10">
+                          <span className="font-display text-5xl text-forest/70">
+                            {initials(m.name)}
+                          </span>
+                        </div>
+                      )}
+                      <div className="absolute inset-0 bg-forest/0 transition-colors duration-300 group-hover:bg-forest/10" />
+                      <div className="absolute inset-x-0 bottom-0 translate-y-2 px-3 pb-3 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                        <span className="inline-flex items-center gap-1 rounded-sm bg-ivory/95 px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-forest">
+                          Read profile →
                         </span>
                       </div>
-                    )}
-                    <div className="absolute inset-0 bg-forest/0 transition-colors duration-300 group-hover:bg-forest/10" />
-                    <div className="absolute inset-x-0 bottom-0 translate-y-2 px-3 pb-3 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-                      <span className="inline-flex items-center gap-1 rounded-sm bg-ivory/95 px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-forest">
-                        Read profile →
-                      </span>
                     </div>
-                  </div>
-                  <h3 className="mt-5 font-display text-xl leading-tight text-foreground transition-colors group-hover:text-terracotta">
-                    {m.name}
-                  </h3>
-                  <div className="mt-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-terracotta">
-                    {m.role}
-                  </div>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{m.short}</p>
-                </button>
+                    <h3 className="mt-5 font-display text-xl leading-tight text-foreground transition-colors group-hover:text-terracotta">
+                      {m.name}
+                    </h3>
+                    <div className="mt-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-terracotta">
+                      {m.role}
+                    </div>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{m.short}</p>
+                  </button>
+                </Reveal>
               ))}
             </div>
           </div>

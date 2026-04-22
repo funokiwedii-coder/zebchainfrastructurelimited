@@ -3,6 +3,7 @@ import infraBridge from "@/assets/infra-bridge.jpg";
 import infraSolar from "@/assets/infra-solar.jpg";
 import infraPort from "@/assets/infra-port.jpg";
 import infraHousing from "@/assets/infra-housing.jpg";
+import { Reveal } from "@/components/Reveal";
 
 export const Route = createFileRoute("/projects")({
   head: () => ({
@@ -158,60 +159,70 @@ function ProjectsPage() {
   return (
     <>
       <section className="container-editorial pt-20 pb-12 md:pt-28">
-        <div className="eyebrow">Selected works</div>
-        <h1 className="mt-4 max-w-4xl font-display text-5xl leading-[1.05] text-foreground md:text-7xl">
-          A multi-billion-dollar pipeline of African infrastructure.
-        </h1>
-        <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-          Zebcha and its partners specialise in developing and arranging financing for large-scale
-          infrastructure — over $1.2bn of PPPs approved by Nigeria's FEC in 2020 alone.
-        </p>
+        <Reveal variant="fade">
+          <div className="eyebrow">Selected works</div>
+        </Reveal>
+        <Reveal variant="up" delay={120}>
+          <h1 className="mt-4 max-w-4xl font-display text-5xl leading-[1.05] text-foreground md:text-7xl">
+            A multi-billion-dollar pipeline of African infrastructure.
+          </h1>
+        </Reveal>
+        <Reveal variant="up" delay={240}>
+          <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+            Zebcha and its partners specialise in developing and arranging financing for large-scale
+            infrastructure — over $1.2bn of PPPs approved by Nigeria's FEC in 2020 alone.
+          </p>
+        </Reveal>
       </section>
 
       {/* Hero strip of imagery */}
       <section className="container-editorial mt-8 grid grid-cols-2 gap-2 md:grid-cols-4">
         {[infraBridge, infraSolar, infraPort, infraHousing].map((src, i) => (
-          <div key={i} className="aspect-[4/5] overflow-hidden rounded-sm bg-muted">
+          <Reveal key={i} variant="scale" delay={i * 120} className="aspect-[4/5] overflow-hidden rounded-sm bg-muted">
             <img
               src={src}
               alt=""
               loading="lazy"
-              className="h-full w-full object-cover"
+              className="h-full w-full object-cover transition-transform duration-700 hover:scale-[1.06]"
               width={800}
               height={1000}
             />
-          </div>
+          </Reveal>
         ))}
       </section>
 
       {/* Nigeria portfolio */}
       <section className="container-editorial mt-24">
-        <div className="flex items-end justify-between gap-6 border-b border-border pb-6">
+        <Reveal as="div" variant="up" className="flex items-end justify-between gap-6 border-b border-border pb-6">
           <h2 className="font-display text-4xl text-foreground md:text-5xl">Nigeria portfolio</h2>
           <div className="hidden text-sm text-muted-foreground md:block">
             {nigeria.length} projects
           </div>
-        </div>
+        </Reveal>
         <div className="grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-3">
-          {nigeria.map((p) => (
-            <ProjectCard key={p.title} p={p} />
+          {nigeria.map((p, i) => (
+            <Reveal key={p.title} variant="up" delay={(i % 3) * 90}>
+              <ProjectCard p={p} />
+            </Reveal>
           ))}
         </div>
       </section>
 
       {/* Africa portfolio */}
-      <section className="container-editorial mt-24">
-        <div className="flex items-end justify-between gap-6 border-b border-border pb-6">
+      <section className="container-editorial mt-24 mb-16">
+        <Reveal as="div" variant="up" className="flex items-end justify-between gap-6 border-b border-border pb-6">
           <h2 className="font-display text-4xl text-foreground md:text-5xl">
             Africa engagements
           </h2>
           <div className="hidden text-sm text-muted-foreground md:block">
             via Zebcha-COPIP
           </div>
-        </div>
+        </Reveal>
         <div className="grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-3">
-          {africa.map((p) => (
-            <ProjectCard key={p.title} p={p} />
+          {africa.map((p, i) => (
+            <Reveal key={p.title} variant="up" delay={(i % 3) * 90}>
+              <ProjectCard p={p} />
+            </Reveal>
           ))}
         </div>
       </section>

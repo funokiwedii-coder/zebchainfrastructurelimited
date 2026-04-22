@@ -5,6 +5,8 @@ import infraBridge from "@/assets/infra-bridge.jpg";
 import infraSolar from "@/assets/infra-solar.jpg";
 import infraPort from "@/assets/infra-port.jpg";
 import africaTopo from "@/assets/africa-topo.png";
+import { Reveal } from "@/components/Reveal";
+import { useParallax } from "@/hooks/useParallax";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -62,15 +64,18 @@ const featured = [
 ];
 
 function HomePage() {
+  const heroImgRef = useParallax<HTMLImageElement>(0.18);
+
   return (
     <>
       {/* HERO */}
       <section className="relative isolate overflow-hidden">
-        <div className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 -z-10 overflow-hidden">
           <img
+            ref={heroImgRef}
             src={heroAfrica}
             alt="Aerial view of the African continent at golden hour"
-            className="h-full w-full object-cover"
+            className="h-[120%] w-full -translate-y-[5%] object-cover will-change-transform"
             width={1920}
             height={1280}
           />
@@ -79,35 +84,43 @@ function HomePage() {
 
         <div className="container-editorial relative pt-24 pb-32 md:pt-36 md:pb-44">
           <div className="max-w-4xl">
-            <div className="text-[11px] font-semibold uppercase tracking-[0.25em] text-ochre">
-              The Africa Infrastructure Programme · 2023
-            </div>
-            <h1 className="mt-6 font-display text-[clamp(2.75rem,7vw,6.5rem)] font-medium leading-[0.95] text-ivory">
-              Building the
-              <span className="italic text-ochre"> continent</span>,
-              <br />
-              one project at a time.
-            </h1>
-            <p className="mt-8 max-w-2xl text-lg leading-relaxed text-ivory/85">
-              Zebcha Infrastructure delivers large-scale, government-backed projects across Africa —
-              roads, rail, power, ports and housing — funded through partnerships with leading
-              European Union project finance institutions.
-            </p>
-            <div className="mt-10 flex flex-wrap items-center gap-4">
-              <Link
-                to="/programme"
-                className="group inline-flex items-center gap-2 rounded-sm bg-ochre px-7 py-3.5 text-sm font-semibold text-forest-deep transition-colors hover:bg-ivory"
-              >
-                Explore the AIP
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-              <Link
-                to="/contact"
-                className="inline-flex items-center gap-2 rounded-sm border border-ivory/40 px-7 py-3.5 text-sm font-medium text-ivory transition-colors hover:bg-ivory/10"
-              >
-                Submit a project
-              </Link>
-            </div>
+            <Reveal variant="fade" delay={0}>
+              <div className="text-[11px] font-semibold uppercase tracking-[0.25em] text-ochre">
+                The Africa Infrastructure Programme · 2023
+              </div>
+            </Reveal>
+            <Reveal variant="up" delay={120}>
+              <h1 className="mt-6 font-display text-[clamp(2.75rem,7vw,6.5rem)] font-medium leading-[0.95] text-ivory">
+                Building the
+                <span className="italic text-ochre"> continent</span>,
+                <br />
+                one project at a time.
+              </h1>
+            </Reveal>
+            <Reveal variant="up" delay={260}>
+              <p className="mt-8 max-w-2xl text-lg leading-relaxed text-ivory/85">
+                Zebcha Infrastructure delivers large-scale, government-backed projects across Africa —
+                roads, rail, power, ports and housing — funded through partnerships with leading
+                European Union project finance institutions.
+              </p>
+            </Reveal>
+            <Reveal variant="up" delay={400}>
+              <div className="mt-10 flex flex-wrap items-center gap-4">
+                <Link
+                  to="/programme"
+                  className="group inline-flex items-center gap-2 rounded-sm bg-ochre px-7 py-3.5 text-sm font-semibold text-forest-deep transition-colors hover:bg-ivory"
+                >
+                  Explore the AIP
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Link>
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center gap-2 rounded-sm border border-ivory/40 px-7 py-3.5 text-sm font-medium text-ivory transition-colors hover:bg-ivory/10"
+                >
+                  Submit a project
+                </Link>
+              </div>
+            </Reveal>
           </div>
         </div>
 
@@ -119,13 +132,15 @@ function HomePage() {
               { v: "$50M", l: "Minimum project size" },
               { v: "90 days", l: "Target to financial close" },
               { v: "Single-digit", l: "Financing pricing" },
-            ].map((s) => (
-              <div key={s.l} className="bg-card p-6 md:p-8">
-                <div className="font-display text-3xl text-foreground md:text-4xl">{s.v}</div>
-                <div className="mt-2 text-xs uppercase tracking-[0.15em] text-muted-foreground">
-                  {s.l}
+            ].map((s, i) => (
+              <Reveal key={s.l} variant="up" delay={i * 120}>
+                <div className="bg-card p-6 md:p-8">
+                  <div className="font-display text-3xl text-foreground md:text-4xl">{s.v}</div>
+                  <div className="mt-2 text-xs uppercase tracking-[0.15em] text-muted-foreground">
+                    {s.l}
+                  </div>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -134,7 +149,7 @@ function HomePage() {
       {/* THE GAP */}
       <section className="container-editorial mt-32">
         <div className="grid gap-16 md:grid-cols-12">
-          <div className="md:col-span-5">
+          <Reveal as="div" variant="left" className="md:col-span-5">
             <div className="eyebrow">The opportunity</div>
             <h2 className="mt-4 font-display text-4xl leading-tight text-foreground md:text-5xl">
               Africa's annual infrastructure gap is{" "}
@@ -145,7 +160,7 @@ function HomePage() {
               shortfall in the basic infrastructure required for economic activity. Zebcha was
               designed to help close that gap — at scale, at speed, and on bankable terms.
             </p>
-          </div>
+          </Reveal>
           <div className="md:col-span-7">
             <div className="grid grid-cols-2 gap-x-8 gap-y-10 border-l border-border pl-8">
               {[
@@ -153,11 +168,11 @@ function HomePage() {
                 { v: "12.4 GW", l: "Electricity supply gap, 2019" },
                 { v: "$94.2B", l: "Food supply gap, 2019" },
                 { v: "$207.6B", l: "ICT investment gap, 2019" },
-              ].map((s) => (
-                <div key={s.l}>
+              ].map((s, i) => (
+                <Reveal key={s.l} variant="up" delay={i * 110}>
                   <div className="font-display text-4xl text-forest md:text-5xl">{s.v}</div>
                   <div className="mt-2 text-sm text-muted-foreground">{s.l}</div>
-                </div>
+                </Reveal>
               ))}
             </div>
           </div>
@@ -173,7 +188,7 @@ function HomePage() {
           className="pointer-events-none absolute -right-32 top-1/2 h-[520px] w-[520px] -translate-y-1/2 opacity-[0.08]"
         />
         <div className="container-editorial relative">
-          <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+          <Reveal as="div" variant="up" className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
             <div>
               <div className="eyebrow">Nine sectors</div>
               <h2 className="mt-4 max-w-2xl font-display text-4xl leading-tight text-foreground md:text-5xl">
@@ -186,17 +201,19 @@ function HomePage() {
             >
               Read the full programme <ArrowUpRight className="h-4 w-4" />
             </Link>
-          </div>
+          </Reveal>
 
           <div className="mt-12 grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-3">
-            {sectors.map((s) => (
-              <div
+            {sectors.map((s, i) => (
+              <Reveal
                 key={s.n}
+                variant="scale"
+                delay={i * 60}
                 className="group flex items-baseline gap-5 bg-bone p-7 transition-colors hover:bg-card"
               >
                 <span className="font-display text-2xl text-terracotta">{s.n}</span>
                 <span className="font-display text-xl text-foreground">{s.name}</span>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -204,7 +221,7 @@ function HomePage() {
 
       {/* FEATURED PROJECTS */}
       <section className="container-editorial mt-32">
-        <div className="flex items-end justify-between gap-6">
+        <Reveal as="div" variant="up" className="flex items-end justify-between gap-6">
           <div>
             <div className="eyebrow">Selected work</div>
             <h2 className="mt-4 font-display text-4xl text-foreground md:text-5xl">
@@ -217,11 +234,11 @@ function HomePage() {
           >
             View all projects <ArrowUpRight className="h-4 w-4" />
           </Link>
-        </div>
+        </Reveal>
 
         <div className="mt-12 grid gap-8 md:grid-cols-3">
-          {featured.map((p) => (
-            <article key={p.title} className="group">
+          {featured.map((p, i) => (
+            <Reveal key={p.title} as="article" variant="up" delay={i * 140} className="group">
               <div className="aspect-[4/3] overflow-hidden rounded-sm bg-muted">
                 <img
                   src={p.img}
@@ -239,39 +256,41 @@ function HomePage() {
                 {p.title}
               </h3>
               <p className="mt-2 text-sm text-muted-foreground">{p.detail}</p>
-            </article>
+            </Reveal>
           ))}
         </div>
       </section>
 
       {/* CTA */}
-      <section className="container-editorial mt-32">
-        <div className="relative overflow-hidden rounded-sm bg-forest px-8 py-20 text-ivory md:px-16 md:py-24">
-          <img
-            src={africaTopo}
-            alt=""
-            aria-hidden
-            className="pointer-events-none absolute -right-20 -top-20 h-[480px] w-[480px] opacity-15"
-          />
-          <div className="relative max-w-2xl">
-            <div className="text-[11px] font-semibold uppercase tracking-[0.25em] text-ochre">
-              Next steps
+      <section className="container-editorial mt-32 mb-24">
+        <Reveal variant="scale">
+          <div className="relative overflow-hidden rounded-sm bg-forest px-8 py-20 text-ivory md:px-16 md:py-24">
+            <img
+              src={africaTopo}
+              alt=""
+              aria-hidden
+              className="pointer-events-none absolute -right-20 -top-20 h-[480px] w-[480px] opacity-15"
+            />
+            <div className="relative max-w-2xl">
+              <div className="text-[11px] font-semibold uppercase tracking-[0.25em] text-ochre">
+                Next steps
+              </div>
+              <h2 className="mt-4 font-display text-4xl leading-tight md:text-5xl">
+                Have a project? Let's talk.
+              </h2>
+              <p className="mt-5 text-ivory/80">
+                From submission to financial close in ninety days. Send us your prospective project
+                and our team will arrange a clarification call.
+              </p>
+              <Link
+                to="/contact"
+                className="mt-8 inline-flex items-center gap-2 rounded-sm bg-ochre px-7 py-3.5 text-sm font-semibold text-forest-deep transition-colors hover:bg-ivory"
+              >
+                Submit your project <ArrowRight className="h-4 w-4" />
+              </Link>
             </div>
-            <h2 className="mt-4 font-display text-4xl leading-tight md:text-5xl">
-              Have a project? Let's talk.
-            </h2>
-            <p className="mt-5 text-ivory/80">
-              From submission to financial close in ninety days. Send us your prospective project
-              and our team will arrange a clarification call.
-            </p>
-            <Link
-              to="/contact"
-              className="mt-8 inline-flex items-center gap-2 rounded-sm bg-ochre px-7 py-3.5 text-sm font-semibold text-forest-deep transition-colors hover:bg-ivory"
-            >
-              Submit your project <ArrowRight className="h-4 w-4" />
-            </Link>
           </div>
-        </div>
+        </Reveal>
       </section>
     </>
   );
