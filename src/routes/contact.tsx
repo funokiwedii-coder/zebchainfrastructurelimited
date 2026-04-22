@@ -174,7 +174,7 @@ function ContactPage() {
               </form>
             )}
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );
