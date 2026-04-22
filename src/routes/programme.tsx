@@ -164,7 +164,7 @@ function ProgrammePage() {
       {/* Sectors */}
       <section className="container-editorial py-24">
         <div className="grid gap-10 md:grid-cols-12">
-          <div className="md:col-span-4">
+          <Reveal as="div" variant="left" className="md:col-span-4">
             <div className="eyebrow">Nine sectors</div>
             <h2 className="mt-4 font-display text-4xl leading-tight text-foreground md:text-5xl">
               The infrastructure mix.
@@ -173,19 +173,21 @@ function ProgrammePage() {
               Government-supported projects across the full spectrum of economic and social
               infrastructure.
             </p>
-          </div>
+          </Reveal>
           <div className="md:col-span-8">
             <div className="grid grid-cols-1 sm:grid-cols-2">
               {sectors.map((s, i) => (
-                <div
+                <Reveal
                   key={s}
+                  variant="up"
+                  delay={(i % 2) * 80 + Math.floor(i / 2) * 60}
                   className="flex items-baseline gap-5 border-b border-border py-5"
                 >
                   <span className="font-display text-2xl text-terracotta">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <span className="font-display text-xl text-foreground">{s}</span>
-                </div>
+                </Reveal>
               ))}
             </div>
           </div>
@@ -195,7 +197,7 @@ function ProgrammePage() {
       {/* Process */}
       <section className="relative overflow-hidden bg-forest-deep py-24 text-ivory">
         <div className="container-editorial">
-          <div className="flex flex-wrap items-end justify-between gap-6">
+          <Reveal as="div" variant="up" className="flex flex-wrap items-end justify-between gap-6">
             <div>
               <div className="text-[11px] font-semibold uppercase tracking-[0.25em] text-ochre">
                 Six steps · 90 days
@@ -205,27 +207,35 @@ function ProgrammePage() {
             <div className="font-display text-2xl italic text-ivory/60">
               Steps 1–5 in 90 days or less.
             </div>
-          </div>
+          </Reveal>
 
           <ol className="mt-14 grid gap-px overflow-hidden rounded-sm bg-ivory/15 md:grid-cols-2 lg:grid-cols-3">
-            {steps.map((s) => (
-              <li key={s.n} className="bg-forest-deep p-8">
+            {steps.map((s, i) => (
+              <Reveal
+                key={s.n}
+                as="li"
+                variant="scale"
+                delay={i * 110}
+                className="bg-forest-deep p-8"
+              >
                 <div className="font-display text-3xl text-ochre">{s.n}</div>
                 <h3 className="mt-3 font-display text-2xl text-ivory">{s.t}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-ivory/75">{s.d}</p>
-              </li>
+              </Reveal>
             ))}
           </ol>
 
-          <div className="mt-12">
-            <Link
-              to="/contact"
-              className="group inline-flex items-center gap-2 rounded-sm bg-ochre px-7 py-3.5 text-sm font-semibold text-forest-deep transition-colors hover:bg-ivory"
-            >
-              Begin step one — submit a project
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Link>
-          </div>
+          <Reveal variant="up" delay={200}>
+            <div className="mt-12">
+              <Link
+                to="/contact"
+                className="group inline-flex items-center gap-2 rounded-sm bg-ochre px-7 py-3.5 text-sm font-semibold text-forest-deep transition-colors hover:bg-ivory"
+              >
+                Begin step one — submit a project
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </Link>
+            </div>
+          </Reveal>
         </div>
       </section>
     </>
