@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import infraBridge from "@/assets/infra-bridge.jpg";
+import { Reveal } from "@/components/Reveal";
 
 export const Route = createFileRoute("/programme")({
   head: () => ({
