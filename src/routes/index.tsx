@@ -11,17 +11,17 @@ import { useParallax } from "@/hooks/useParallax";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Zebcha Infrastructure — Building Africa's Future" },
+      { title: "Zebcha — Investment Facilitation & Project Management" },
       {
         name: "description",
         content:
-          "Up to $15 billion in EU-partnered project finance for roads, rail, ports, power and housing across Africa. Minimum project size $50M, financial close in 90 days.",
+          "Zebcha connects investors, government opportunities, and viable projects across Nigeria and beyond — structuring bankable deals and overseeing execution to delivery.",
       },
-      { property: "og:title", content: "Zebcha Infrastructure — Building Africa's Future" },
+      { property: "og:title", content: "Zebcha — Investment Facilitation & Project Management" },
       {
         property: "og:description",
         content:
-          "Up to $15B in EU-partnered project finance for African infrastructure, with single-digit pricing and 90-day financial close.",
+          "Bridging capital and opportunity. Zebcha facilitates investment and manages execution for government-backed and private-sector projects.",
       },
       { property: "og:image", content: heroAfrica },
       { property: "twitter:image", content: heroAfrica },
@@ -30,36 +30,84 @@ export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
-const sectors = [
-  { n: "01", name: "Power generation & transmission" },
-  { n: "02", name: "Roads, rail & bridges" },
-  { n: "03", name: "Seaports & airports" },
-  { n: "04", name: "Water & wastewater" },
-  { n: "05", name: "Telecommunications & ICT" },
-  { n: "06", name: "Oil, gas & refineries" },
-  { n: "07", name: "Agro-infrastructure" },
-  { n: "08", name: "Manufacturing infrastructure" },
-  { n: "09", name: "Affordable housing" },
+const services = [
+  {
+    n: "01",
+    name: "Investment Facilitation",
+    detail:
+      "We connect institutional and private capital to viable, well-structured opportunities — sourcing, screening and matching investors with projects positioned for measurable returns.",
+  },
+  {
+    n: "02",
+    name: "Project Management",
+    detail:
+      "End-to-end oversight from inception to completion. We protect capital and timelines through disciplined planning, procurement, monitoring and delivery.",
+  },
+  {
+    n: "03",
+    name: "Advisory & Structuring",
+    detail:
+      "We shape opportunities into bankable propositions — financial modelling, risk allocation, and transaction structuring built to withstand investor and lender scrutiny.",
+  },
+  {
+    n: "04",
+    name: "Stakeholder Coordination",
+    detail:
+      "We bridge government, sponsors, financiers and operators — aligning interests, navigating approvals, and keeping complex partnerships moving toward financial close.",
+  },
 ];
 
 const featured = [
   {
     img: infraBridge,
     tag: "Transport",
-    title: "Truck & Trailer Park Project",
-    detail: "16 locations nationwide for the Federal Ministry of Works (PPP), Nigeria.",
+    title: "Truck & Trailer Park Programme",
+    detail: "Multi-site PPP advisory across 16 federal locations, Nigeria.",
   },
   {
     img: infraSolar,
     tag: "Power",
-    title: "30MW Solar Solutions",
-    detail: "Ongoing transaction advisory and financing across Nigeria, 2021–.",
+    title: "30MW Solar Transactions",
+    detail: "Ongoing transaction advisory and financing structuring across Nigeria.",
   },
   {
     img: infraPort,
     tag: "Maritime",
     title: "Integrated Shipbuilding Yard",
-    detail: "$613m development project, Lagos (Public-Private Partnership).",
+    detail: "$613m PPP development structuring, Lagos.",
+  },
+];
+
+const whyUs = [
+  {
+    n: "01",
+    title: "Strategic connections",
+    detail:
+      "A curated network across government, multilateral capital, EU project finance and private investors — built to move serious deals.",
+  },
+  {
+    n: "02",
+    title: "Execution, not introductions",
+    detail:
+      "We stay in the deal beyond the handshake — managing structuring, financial close and on-the-ground delivery.",
+  },
+  {
+    n: "03",
+    title: "Local depth, global standards",
+    detail:
+      "Fluent in Nigeria's regulatory, political and commercial terrain, with the discipline international investors expect.",
+  },
+  {
+    n: "04",
+    title: "Transparent and accountable",
+    detail:
+      "Clear governance, clean documentation, and audit-ready reporting at every stage of the transaction.",
+  },
+  {
+    n: "05",
+    title: "Opportunities to outcomes",
+    detail:
+      "We measure success by completed projects and capital deployed — not by deals discussed.",
   },
 ];
 
@@ -86,38 +134,38 @@ function HomePage() {
           <div className="max-w-4xl">
             <Reveal variant="fade" delay={0}>
               <div className="text-[11px] font-semibold uppercase tracking-[0.25em] text-ochre">
-                The Africa Infrastructure Programme · 2023
+                Investment Facilitation · Project Management
               </div>
             </Reveal>
             <Reveal variant="up" delay={120}>
               <h1 className="mt-6 font-display text-[clamp(2.75rem,7vw,6.5rem)] font-medium leading-[0.95] text-ivory">
-                Building the
-                <span className="italic text-ochre"> continent</span>,
+                Connecting capital to
+                <span className="italic text-ochre"> opportunity</span>.
                 <br />
-                one project at a time.
+                Delivering projects that endure.
               </h1>
             </Reveal>
             <Reveal variant="up" delay={260}>
               <p className="mt-8 max-w-2xl text-lg leading-relaxed text-ivory/85">
-                Zebcha Infrastructure delivers large-scale, government-backed projects across Africa —
-                roads, rail, power, ports and housing — funded through partnerships with leading
-                European Union project finance institutions.
+                Zebcha facilitates investment and manages execution for government-backed and
+                private-sector projects across Nigeria and beyond — built on trust, strategic
+                insight, and a relentless focus on results.
               </p>
             </Reveal>
             <Reveal variant="up" delay={400}>
               <div className="mt-10 flex flex-wrap items-center gap-4">
                 <Link
-                  to="/programme"
+                  to="/contact"
                   className="group inline-flex items-center gap-2 rounded-sm bg-ochre px-7 py-3.5 text-sm font-semibold text-forest-deep transition-colors hover:bg-ivory"
                 >
-                  Explore the AIP
+                  Start a project
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
                 <Link
-                  to="/contact"
+                  to="/programme"
                   className="inline-flex items-center gap-2 rounded-sm border border-ivory/40 px-7 py-3.5 text-sm font-medium text-ivory transition-colors hover:bg-ivory/10"
                 >
-                  Submit a project
+                  Explore opportunities
                 </Link>
               </div>
             </Reveal>
@@ -128,10 +176,10 @@ function HomePage() {
         <div className="container-editorial relative -mt-12 pb-0">
           <div className="grid grid-cols-2 gap-px overflow-hidden rounded-sm bg-border md:grid-cols-4">
             {[
-              { v: "$15B", l: "Funding ceiling, 2023" },
+              { v: "$15B", l: "Programme funding ceiling" },
               { v: "$50M", l: "Minimum project size" },
               { v: "90 days", l: "Target to financial close" },
-              { v: "Single-digit", l: "Financing pricing" },
+              { v: "Single-digit", l: "Indicative pricing" },
             ].map((s, i) => (
               <Reveal key={s.l} variant="up" delay={i * 120}>
                 <div className="bg-card p-6 md:p-8">
@@ -146,40 +194,36 @@ function HomePage() {
         </div>
       </section>
 
-      {/* THE GAP */}
+      {/* ABOUT */}
       <section className="container-editorial mt-32">
         <div className="grid gap-16 md:grid-cols-12">
           <Reveal as="div" variant="left" className="md:col-span-5">
-            <div className="eyebrow">The opportunity</div>
+            <div className="eyebrow">Who we are</div>
             <h2 className="mt-4 font-display text-4xl leading-tight text-foreground md:text-5xl">
-              Africa's annual infrastructure gap is{" "}
-              <span className="italic text-terracotta">$68 – $108 billion</span>.
+              A trusted bridge between{" "}
+              <span className="italic text-terracotta">capital, government and delivery</span>.
             </h2>
-            <p className="mt-6 text-base leading-relaxed text-muted-foreground">
-              According to the African Development Bank (2022), the continent faces a structural
-              shortfall in the basic infrastructure required for economic activity. Zebcha was
-              designed to help close that gap — at scale, at speed, and on bankable terms.
-            </p>
           </Reveal>
           <div className="md:col-span-7">
-            <div className="grid grid-cols-2 gap-x-8 gap-y-10 border-l border-border pl-8">
-              {[
-                { v: "51M", l: "Housing units gap, 2022" },
-                { v: "12.4 GW", l: "Electricity supply gap, 2019" },
-                { v: "$94.2B", l: "Food supply gap, 2019" },
-                { v: "$207.6B", l: "ICT investment gap, 2019" },
-              ].map((s, i) => (
-                <Reveal key={s.l} variant="up" delay={i * 110}>
-                  <div className="font-display text-4xl text-forest md:text-5xl">{s.v}</div>
-                  <div className="mt-2 text-sm text-muted-foreground">{s.l}</div>
-                </Reveal>
-              ))}
-            </div>
+            <Reveal variant="up">
+              <p className="text-lg leading-relaxed text-foreground/90">
+                Zebcha is an investment facilitation and project management firm. We sit at the
+                intersection of investors, government opportunities, and viable projects —
+                structuring deals, coordinating stakeholders and overseeing execution to delivery.
+              </p>
+              <p className="mt-6 text-base leading-relaxed text-muted-foreground">
+                Our work is grounded in professionalism, strategic insight and an execution-first
+                mindset. We do not simply make introductions — we build the structures, manage the
+                relationships, and stay in the room until projects are completed and capital has
+                performed. Clients engage Zebcha because they need a partner who can carry a
+                transaction from concept to commissioning.
+              </p>
+            </Reveal>
           </div>
         </div>
       </section>
 
-      {/* SECTORS */}
+      {/* SERVICES */}
       <section className="relative mt-32 overflow-hidden bg-bone py-24">
         <img
           src={africaTopo}
@@ -190,50 +234,94 @@ function HomePage() {
         <div className="container-editorial relative">
           <Reveal as="div" variant="up" className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
             <div>
-              <div className="eyebrow">Nine sectors</div>
+              <div className="eyebrow">What we do</div>
               <h2 className="mt-4 max-w-2xl font-display text-4xl leading-tight text-foreground md:text-5xl">
-                Where the AIP deploys capital.
+                Services built around outcomes.
               </h2>
             </div>
             <Link
               to="/programme"
               className="inline-flex items-center gap-2 text-sm font-medium text-forest hover:text-terracotta"
             >
-              Read the full programme <ArrowUpRight className="h-4 w-4" />
+              See how we work <ArrowUpRight className="h-4 w-4" />
             </Link>
           </Reveal>
 
-          <div className="mt-12 grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-3">
-            {sectors.map((s, i) => (
+          <div className="mt-12 grid gap-px bg-border md:grid-cols-2">
+            {services.map((s, i) => (
               <Reveal
                 key={s.n}
-                variant="scale"
-                delay={i * 60}
-                className="group flex items-baseline gap-5 bg-bone p-7 transition-colors hover:bg-card"
+                variant="up"
+                delay={i * 90}
+                className="group flex flex-col gap-4 bg-bone p-8 transition-colors hover:bg-card md:p-10"
               >
-                <span className="font-display text-2xl text-terracotta">{s.n}</span>
-                <span className="font-display text-xl text-foreground">{s.name}</span>
+                <div className="flex items-baseline gap-4">
+                  <span className="font-display text-2xl text-terracotta">{s.n}</span>
+                  <h3 className="font-display text-2xl text-foreground md:text-3xl">{s.name}</h3>
+                </div>
+                <p className="text-base leading-relaxed text-muted-foreground">{s.detail}</p>
               </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* FEATURED PROJECTS */}
+      {/* WHY CHOOSE US */}
+      <section className="container-editorial mt-32">
+        <div className="grid gap-16 md:grid-cols-12">
+          <Reveal as="div" variant="left" className="md:col-span-4">
+            <div className="eyebrow">Why Zebcha</div>
+            <h2 className="mt-4 font-display text-4xl leading-tight text-foreground md:text-5xl">
+              Built to move serious deals.
+            </h2>
+            <p className="mt-6 text-base leading-relaxed text-muted-foreground">
+              We bring the network, the discipline and the delivery capability that complex,
+              capital-intensive projects require.
+            </p>
+          </Reveal>
+          <div className="md:col-span-8">
+            <div className="grid gap-px bg-border sm:grid-cols-2">
+              {whyUs.map((w, i) => (
+                <Reveal
+                  key={w.n}
+                  variant="up"
+                  delay={i * 90}
+                  className="bg-card p-7 md:p-8"
+                >
+                  <div className="font-display text-2xl text-terracotta">{w.n}</div>
+                  <h3 className="mt-3 font-display text-xl text-foreground">{w.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{w.detail}</p>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* EXPERIENCE / CAPABILITY */}
       <section className="container-editorial mt-32">
         <Reveal as="div" variant="up" className="flex items-end justify-between gap-6">
           <div>
-            <div className="eyebrow">Selected work</div>
+            <div className="eyebrow">Capability in action</div>
             <h2 className="mt-4 font-display text-4xl text-foreground md:text-5xl">
-              Featured projects
+              Structuring complex deals.
             </h2>
           </div>
           <Link
             to="/projects"
             className="hidden items-center gap-2 text-sm font-medium text-forest hover:text-terracotta md:inline-flex"
           >
-            View all projects <ArrowUpRight className="h-4 w-4" />
+            View all engagements <ArrowUpRight className="h-4 w-4" />
           </Link>
+        </Reveal>
+
+        <Reveal variant="up" delay={100}>
+          <p className="mt-6 max-w-3xl text-base leading-relaxed text-muted-foreground">
+            Zebcha is positioned to facilitate transactions of national significance. Our team
+            combines deal structuring expertise with deep familiarity in navigating government and
+            private-sector environments — from regulatory pathways and PPP frameworks to
+            international project finance standards.
+          </p>
         </Reveal>
 
         <div className="mt-12 grid gap-8 md:grid-cols-3">
@@ -273,20 +361,20 @@ function HomePage() {
             />
             <div className="relative max-w-2xl">
               <div className="text-[11px] font-semibold uppercase tracking-[0.25em] text-ochre">
-                Next steps
+                Partner with Zebcha
               </div>
               <h2 className="mt-4 font-display text-4xl leading-tight md:text-5xl">
-                Have a project? Let's talk.
+                Let's unlock your next investment opportunity.
               </h2>
               <p className="mt-5 text-ivory/80">
-                From submission to financial close in ninety days. Send us your prospective project
-                and our team will arrange a clarification call.
+                Whether you bring capital, a project, or a mandate — Zebcha provides the structure,
+                stewardship and execution to turn it into a delivered outcome.
               </p>
               <Link
                 to="/contact"
                 className="mt-8 inline-flex items-center gap-2 rounded-sm bg-ochre px-7 py-3.5 text-sm font-semibold text-forest-deep transition-colors hover:bg-ivory"
               >
-                Submit your project <ArrowRight className="h-4 w-4" />
+                Partner with us <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
           </div>
