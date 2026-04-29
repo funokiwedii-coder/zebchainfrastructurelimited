@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Mail, Phone, MapPin, ArrowRight } from "lucide-react";
+import { Mail, Phone, MapPin, ArrowRight, Loader2 } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -25,6 +27,30 @@ export const Route = createFileRoute("/contact")({
 
 function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setLoading(true);
+    const fd = new FormData(e.currentTarget);
+    const payload = {
+      name: String(fd.get("name") || "").trim(),
+      organisation: String(fd.get("org") || "").trim(),
+      email: String(fd.get("email") || "").trim(),
+      phone: String(fd.get("phone") || "").trim() || null,
+      country: String(fd.get("country") || "").trim(),
+      sector: String(fd.get("sector") || "").trim(),
+      project_size: String(fd.get("size") || "").trim(),
+      summary: String(fd.get("summary") || "").trim(),
+    };
+    const { error } = await supabase.from("project_submissions").insert(payload);
+    setLoading(false);
+    if (error) {
+      toast.error("Could not submit. Please try again or email us directly.");
+      return;
+    }
+    setSubmitted(true);
+  }
 
   return (
     <section className="container-editorial pt-20 pb-24 md:pt-28">
@@ -109,13 +135,8 @@ function ContactPage() {
                 </p>
               </div>
             ) : (
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  setSubmitted(true);
-                }}
-                className="space-y-6"
-              >
+              <form onSubmit={handleSubmit} className="space-y-6">
+
                 <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-terracotta">
                   Project submission · Step 01
                 </div>
@@ -163,10 +184,19 @@ function ContactPage() {
 
                 <button
                   type="submit"
-                  className="group inline-flex items-center gap-2 rounded-sm bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-forest-deep"
+                  disabled={loading}
+                  className="group inline-flex items-center gap-2 rounded-sm bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-forest-deep disabled:opacity-60"
                 >
-                  Submit project
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  {loading ? (
+                    <>
+                      <Loader2 className="h-4 w-4 animate-spin" /> Submitting…
+                    </>
+                  ) : (
+                    <>
+                      Submit project
+                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </>
+                  )}
                 </button>
                 <p className="text-xs text-muted-foreground">
                   By submitting, you agree to be contacted by Zebcha regarding your project.
