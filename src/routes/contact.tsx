@@ -184,10 +184,19 @@ function ContactPage() {
 
                 <button
                   type="submit"
-                  className="group inline-flex items-center gap-2 rounded-sm bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-forest-deep"
+                  disabled={loading}
+                  className="group inline-flex items-center gap-2 rounded-sm bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-forest-deep disabled:opacity-60"
                 >
-                  Submit project
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  {loading ? (
+                    <>
+                      <Loader2 className="h-4 w-4 animate-spin" /> Submitting…
+                    </>
+                  ) : (
+                    <>
+                      Submit project
+                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </>
+                  )}
                 </button>
                 <p className="text-xs text-muted-foreground">
                   By submitting, you agree to be contacted by Zebcha regarding your project.
