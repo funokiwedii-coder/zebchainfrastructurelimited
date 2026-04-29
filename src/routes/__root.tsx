@@ -80,6 +80,20 @@ function RootComponent() {
         <Outlet />
       </main>
       <SiteFooter />
+      <CrispChat />
     </div>
+  );
+}
+
+const CRISP_WEBSITE_ID = "REPLACE_WITH_YOUR_CRISP_WEBSITE_ID";
+
+function CrispChat() {
+  if (!CRISP_WEBSITE_ID || CRISP_WEBSITE_ID.startsWith("REPLACE_")) return null;
+  return (
+    <script
+      dangerouslySetInnerHTML={{
+        __html: `window.$crisp=[];window.CRISP_WEBSITE_ID="${CRISP_WEBSITE_ID}";(function(){var d=document;var s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();`,
+      }}
+    />
   );
 }
