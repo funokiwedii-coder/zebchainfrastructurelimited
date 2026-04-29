@@ -27,6 +27,30 @@ export const Route = createFileRoute("/contact")({
 
 function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setLoading(true);
+    const fd = new FormData(e.currentTarget);
+    const payload = {
+      name: String(fd.get("name") || "").trim(),
+      organisation: String(fd.get("org") || "").trim(),
+      email: String(fd.get("email") || "").trim(),
+      phone: String(fd.get("phone") || "").trim() || null,
+      country: String(fd.get("country") || "").trim(),
+      sector: String(fd.get("sector") || "").trim(),
+      project_size: String(fd.get("size") || "").trim(),
+      summary: String(fd.get("summary") || "").trim(),
+    };
+    const { error } = await supabase.from("project_submissions").insert(payload);
+    setLoading(false);
+    if (error) {
+      toast.error("Could not submit. Please try again or email us directly.");
+      return;
+    }
+    setSubmitted(true);
+  }
 
   return (
     <section className="container-editorial pt-20 pb-24 md:pt-28">
