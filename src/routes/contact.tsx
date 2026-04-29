@@ -135,13 +135,8 @@ function ContactPage() {
                 </p>
               </div>
             ) : (
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  setSubmitted(true);
-                }}
-                className="space-y-6"
-              >
+              <form onSubmit={handleSubmit} className="space-y-6">
+
                 <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-terracotta">
                   Project submission · Step 01
                 </div>
