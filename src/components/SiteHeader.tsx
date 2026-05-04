@@ -38,6 +38,14 @@ export function SiteHeader() {
               {item.label}
             </Link>
           ))}
+          <a
+            href="https://zebcha-test.lovable.app/login"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm font-medium text-foreground/70 transition-colors hover:text-foreground"
+          >
+            Careers
+          </a>
           <Link
             to="/contact"
             className="inline-flex items-center rounded-sm bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-forest-deep"
@@ -71,6 +79,15 @@ export function SiteHeader() {
                 {item.label}
               </Link>
             ))}
+            <a
+              href="https://zebcha-test.lovable.app/login"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setOpen(false)}
+              className="rounded-sm px-2 py-2.5 text-base font-medium text-foreground/80 hover:bg-muted"
+            >
+              Careers
+            </a>
             <Link
               to="/contact"
               onClick={() => setOpen(false)}
