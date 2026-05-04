@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import africaTopo from "@/assets/africa-topo.png";
-import teamTemitope from "@/assets/team-temitope.jpg";
+
 import teamDaniel from "@/assets/team-daniel.jpg";
 import teamGideon from "@/assets/team-gideon.jpg";
 import teamFavour from "@/assets/team-favour.jpg";
@@ -50,7 +50,6 @@ const team: Member[] = [
   {
     name: "Temitope Akinyemi",
     role: "MD / CEO",
-    photo: teamTemitope,
     short: "Founder & CEO. Project finance veteran with $1B+ in greenfield deals.",
     bio: "Founder of Zebcha Infrastructure and Acting CEO of DDWCL, a multi-million dollar water utility. Former Portfolio Manager at the Nigerian Sovereign Investment Authority (2012–2015), with a background in commercial banking (FSB, GTB), infrastructure financing (HMS Host, USA), and mortgage-backed securities (GMRESCAP). Lead Investment & Project Adviser to DFID and the EIB since 2010, with over $1B in greenfield deals.",
     edu: "BSc Math (UNN) · MBA Finance & Strategy (Yale)",
