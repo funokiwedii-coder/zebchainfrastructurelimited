@@ -349,6 +349,37 @@ function HomePage() {
         </div>
       </section>
 
+      {/* RECRUITMENT */}
+      <section className="container-editorial mt-32">
+        <Reveal variant="up">
+          <div className="grid gap-10 rounded-sm border border-border bg-bone p-8 md:grid-cols-12 md:p-14">
+            <div className="md:col-span-7">
+              <div className="eyebrow">Careers · Recruitment</div>
+              <h2 className="mt-4 font-display text-4xl leading-tight text-foreground md:text-5xl">
+                Join the team building Africa's next chapter.
+              </h2>
+              <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground">
+                We are growing a team of professionals — analysts, project managers, advisors and
+                operators — who want to work on transactions and projects of national significance.
+                Apply or sign in to the recruitment portal to view open roles and submit your
+                application.
+              </p>
+            </div>
+            <div className="flex items-end md:col-span-5 md:justify-end">
+              <a
+                href="https://zebcha-test.lovable.app/login"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-2 rounded-sm bg-forest px-7 py-3.5 text-sm font-semibold text-ivory transition-colors hover:bg-forest-deep"
+              >
+                Visit recruitment portal
+                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
+            </div>
+          </div>
+        </Reveal>
+      </section>
+
       {/* CTA */}
       <section className="container-editorial mt-32 mb-24">
         <Reveal variant="scale">
