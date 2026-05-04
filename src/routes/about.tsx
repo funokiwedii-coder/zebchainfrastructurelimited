@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import africaTopo from "@/assets/africa-topo.png";
-import teamTemitope from "@/assets/team-temitope.jpg";
+
 import teamDaniel from "@/assets/team-daniel.jpg";
 import teamGideon from "@/assets/team-gideon.jpg";
 import teamFavour from "@/assets/team-favour.jpg";
