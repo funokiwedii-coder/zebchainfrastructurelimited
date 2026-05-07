@@ -175,7 +175,76 @@ function NotAdmin() {
   );
 }
 
+type Application = {
+  id: string;
+  name: string;
+  email: string;
+  phone: string | null;
+  track: string;
+  years_experience: string | null;
+  cover_note: string;
+  status: string;
+  created_at: string;
+};
+
 function Dashboard() {
+  const [tab, setTab] = useState<"projects" | "applications">("projects");
+
+  return (
+    <section className="container-editorial pt-16 pb-24">
+      <div className="flex items-end justify-between">
+        <div>
+          <div className="eyebrow">Admin</div>
+          <h1 className="mt-3 font-display text-4xl text-foreground">Dashboard</h1>
+        </div>
+        <button
+          onClick={() => supabase.auth.signOut()}
+          className="inline-flex items-center gap-2 rounded-sm border border-border px-4 py-2 text-sm hover:bg-muted"
+        >
+          <LogOut className="h-4 w-4" /> Sign out
+        </button>
+      </div>
+
+      <div className="mt-8 flex gap-1 border-b border-border">
+        <TabButton active={tab === "projects"} onClick={() => setTab("projects")}>
+          Project submissions
+        </TabButton>
+        <TabButton active={tab === "applications"} onClick={() => setTab("applications")}>
+          Job applications
+        </TabButton>
+      </div>
+
+      <div className="mt-10">
+        {tab === "projects" ? <ProjectsList /> : <ApplicationsList />}
+      </div>
+    </section>
+  );
+}
+
+function TabButton({
+  active,
+  onClick,
+  children,
+}: {
+  active: boolean;
+  onClick: () => void;
+  children: React.ReactNode;
+}) {
+  return (
+    <button
+      onClick={onClick}
+      className={`px-4 py-2.5 text-sm font-medium transition-colors ${
+        active
+          ? "border-b-2 border-forest text-foreground"
+          : "border-b-2 border-transparent text-muted-foreground hover:text-foreground"
+      }`}
+    >
+      {children}
+    </button>
+  );
+}
+
+function ProjectsList() {
   const [items, setItems] = useState<Submission[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -203,24 +272,11 @@ function Dashboard() {
   }
 
   return (
-    <section className="container-editorial pt-16 pb-24">
-      <div className="flex items-end justify-between">
-        <div>
-          <div className="eyebrow">Admin · Submissions</div>
-          <h1 className="mt-3 font-display text-4xl text-foreground">Project submissions</h1>
-          <p className="mt-2 text-sm text-muted-foreground">
-            {loading ? "Loading…" : `${items.length} total`}
-          </p>
-        </div>
-        <button
-          onClick={() => supabase.auth.signOut()}
-          className="inline-flex items-center gap-2 rounded-sm border border-border px-4 py-2 text-sm hover:bg-muted"
-        >
-          <LogOut className="h-4 w-4" /> Sign out
-        </button>
-      </div>
-
-      <div className="mt-10 space-y-5">
+    <>
+      <p className="text-sm text-muted-foreground">
+        {loading ? "Loading…" : `${items.length} total`}
+      </p>
+      <div className="mt-6 space-y-5">
         {!loading && items.length === 0 && (
           <div className="rounded-sm border border-dashed border-border p-12 text-center text-muted-foreground">
             No submissions yet.
@@ -259,7 +315,81 @@ function Dashboard() {
           </article>
         ))}
       </div>
-    </section>
+    </>
+  );
+}
+
+function ApplicationsList() {
+  const [items, setItems] = useState<Application[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  async function load() {
+    setLoading(true);
+    const { data, error } = await supabase
+      .from("job_applications")
+      .select("*")
+      .order("created_at", { ascending: false });
+    if (error) toast.error(error.message);
+    setItems((data ?? []) as Application[]);
+    setLoading(false);
+  }
+
+  useEffect(() => {
+    void load();
+  }, []);
+
+  async function remove(id: string) {
+    if (!confirm("Delete this application?")) return;
+    const { error } = await supabase.from("job_applications").delete().eq("id", id);
+    if (error) return toast.error(error.message);
+    setItems((prev) => prev.filter((i) => i.id !== id));
+    toast.success("Deleted");
+  }
+
+  return (
+    <>
+      <p className="text-sm text-muted-foreground">
+        {loading ? "Loading…" : `${items.length} total`}
+      </p>
+      <div className="mt-6 space-y-5">
+        {!loading && items.length === 0 && (
+          <div className="rounded-sm border border-dashed border-border p-12 text-center text-muted-foreground">
+            No applications yet.
+          </div>
+        )}
+        {items.map((a) => (
+          <article key={a.id} className="rounded-sm border border-border bg-card p-6">
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <div className="font-display text-xl text-foreground">{a.name}</div>
+                <div className="text-sm text-muted-foreground">{a.track}</div>
+              </div>
+              <div className="text-right text-xs text-muted-foreground">
+                {new Date(a.created_at).toLocaleString()}
+              </div>
+            </div>
+            <div className="mt-4 grid gap-3 text-sm sm:grid-cols-2">
+              <Item icon={Mail} label={a.email} href={`mailto:${a.email}`} />
+              {a.phone && <Item icon={Phone} label={a.phone} href={`tel:${a.phone}`} />}
+              <Item icon={GraduationCap} label={a.track} />
+              {a.years_experience && <Item icon={Clock} label={`${a.years_experience} experience`} />}
+              <Item icon={Building2} label={`Status: ${a.status}`} />
+            </div>
+            <p className="mt-5 whitespace-pre-wrap rounded-sm border-l-2 border-forest bg-muted/40 p-4 text-sm leading-relaxed text-foreground">
+              {a.cover_note}
+            </p>
+            <div className="mt-4 flex justify-end">
+              <button
+                onClick={() => remove(a.id)}
+                className="inline-flex items-center gap-1.5 rounded-sm px-3 py-1.5 text-xs text-destructive hover:bg-destructive/10"
+              >
+                <Trash2 className="h-3.5 w-3.5" /> Delete
+              </button>
+            </div>
+          </article>
+        ))}
+      </div>
+    </>
   );
 }
 
