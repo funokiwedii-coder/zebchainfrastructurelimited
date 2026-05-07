@@ -31,7 +31,7 @@ export function SiteFooter() {
             <li><Link to="/programme" className="hover:text-ochre">The AIP</Link></li>
             <li><Link to="/projects" className="hover:text-ochre">Projects</Link></li>
             <li><Link to="/contact" className="hover:text-ochre">Contact</Link></li>
-            <li><a href="https://zebcha-test.lovable.app/login" target="_blank" rel="noopener noreferrer" className="hover:text-ochre">Careers</a></li>
+            <li><Link to="/careers" className="hover:text-ochre">Careers</Link></li>
           </ul>
         </div>
 
