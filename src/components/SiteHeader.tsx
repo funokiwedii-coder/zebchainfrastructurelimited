@@ -72,15 +72,6 @@ export function SiteHeader() {
                 {item.label}
               </Link>
             ))}
-            <a
-              href="https://zebcha-test.lovable.app/login"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setOpen(false)}
-              className="rounded-sm px-2 py-2.5 text-base font-medium text-foreground/80 hover:bg-muted"
-            >
-              Careers
-            </a>
             <Link
               to="/contact"
               onClick={() => setOpen(false)}
