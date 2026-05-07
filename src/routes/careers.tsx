@@ -1,10 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowUpRight, Briefcase, Users, Globe2, TrendingUp } from "lucide-react";
+import { useState } from "react";
+import { ArrowUpRight, Briefcase, Users, Globe2, TrendingUp, Loader2 } from "lucide-react";
+import { z } from "zod";
+import { toast } from "sonner";
 import { Reveal } from "@/components/Reveal";
+import { supabase } from "@/integrations/supabase/client";
 import heroAfrica from "@/assets/hero-africa.jpg";
 import africaTopo from "@/assets/africa-topo.png";
-
-const RECRUITMENT_URL = "https://zebcha-test.lovable.app/login";
 
 export const Route = createFileRoute("/careers")({
   head: () => ({
@@ -81,18 +83,34 @@ const tracks = [
   },
 ];
 
+const TRACK_OPTIONS = [
+  "Investment & Transactions",
+  "Project Management & Delivery",
+  "Advisory & Research",
+  "Operations & Corporate",
+  "General interest",
+] as const;
+
+const applicationSchema = z.object({
+  name: z.string().trim().min(1, "Name is required").max(100),
+  email: z.string().trim().email("Enter a valid email").max(255),
+  phone: z.string().trim().max(40).optional().or(z.literal("")),
+  track: z.enum(TRACK_OPTIONS, { errorMap: () => ({ message: "Select a track" }) }),
+  years_experience: z.string().trim().max(40).optional().or(z.literal("")),
+  cover_note: z
+    .string()
+    .trim()
+    .min(20, "Tell us a little more (min 20 characters)")
+    .max(2000, "Please keep under 2000 characters"),
+});
+
 function CareersPage() {
   return (
     <>
       {/* HERO */}
       <section className="relative isolate overflow-hidden">
         <div className="absolute inset-0 -z-10">
-          <img
-            src={heroAfrica}
-            alt=""
-            aria-hidden
-            className="h-full w-full object-cover"
-          />
+          <img src={heroAfrica} alt="" aria-hidden className="h-full w-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-b from-forest-deep/90 via-forest-deep/70 to-background" />
         </div>
         <div className="container-editorial pt-24 pb-24 md:pt-32 md:pb-32">
@@ -117,12 +135,10 @@ function CareersPage() {
           <Reveal variant="up" delay={360}>
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <a
-                href={RECRUITMENT_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#apply"
                 className="group inline-flex items-center gap-2 rounded-sm bg-ochre px-7 py-3.5 text-sm font-semibold text-forest-deep transition-colors hover:bg-ivory"
               >
-                Visit recruitment portal
+                Apply now
                 <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </a>
               <a
@@ -217,12 +233,12 @@ function CareersPage() {
             {
               n: "01",
               t: "Apply",
-              d: "Register your interest through our recruitment portal and share your CV and a short note on what draws you to Zebcha.",
+              d: "Submit the application form below with your details and a short note on what draws you to Zebcha.",
             },
             {
               n: "02",
               t: "Assessment",
-              d: "Shortlisted candidates complete a role-relevant test designed to surface how you think and approach real problems.",
+              d: "Shortlisted candidates are invited to our recruitment portal to complete a role-relevant test.",
             },
             {
               n: "03",
@@ -244,39 +260,192 @@ function CareersPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="container-editorial mt-24 mb-24 md:mt-32">
+      {/* APPLICATION FORM */}
+      <section id="apply" className="container-editorial mt-24 mb-24 md:mt-32 scroll-mt-24">
         <Reveal variant="scale">
-          <div className="relative overflow-hidden rounded-sm bg-forest px-8 py-20 text-ivory md:px-16 md:py-24">
+          <div className="relative overflow-hidden rounded-sm bg-forest px-8 py-16 text-ivory md:px-16 md:py-20">
             <img
               src={africaTopo}
               alt=""
               aria-hidden
               className="pointer-events-none absolute -right-20 -top-20 h-[480px] w-[480px] opacity-15"
             />
-            <div className="relative max-w-2xl">
-              <div className="text-[11px] font-semibold uppercase tracking-[0.25em] text-ochre">
-                Ready to apply?
+            <div className="relative grid gap-12 md:grid-cols-12">
+              <div className="md:col-span-5">
+                <div className="text-[11px] font-semibold uppercase tracking-[0.25em] text-ochre">
+                  Apply to Zebcha
+                </div>
+                <h2 className="mt-4 font-display text-4xl leading-tight md:text-5xl">
+                  Register your interest.
+                </h2>
+                <p className="mt-5 text-ivory/80">
+                  Tell us a little about yourself and where you might fit. If your background looks
+                  like a match, we will reach out with next steps — including access to our
+                  assessment portal.
+                </p>
               </div>
-              <h2 className="mt-4 font-display text-4xl leading-tight md:text-5xl">
-                Register your interest with Zebcha.
-              </h2>
-              <p className="mt-5 text-ivory/80">
-                Open roles and general applications are managed through our recruitment portal.
-                Create an account to apply or stay informed about new opportunities.
-              </p>
-              <a
-                href={RECRUITMENT_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-8 inline-flex items-center gap-2 rounded-sm bg-ochre px-7 py-3.5 text-sm font-semibold text-forest-deep transition-colors hover:bg-ivory"
-              >
-                Visit recruitment portal <ArrowUpRight className="h-4 w-4" />
-              </a>
+              <div className="md:col-span-7">
+                <ApplicationForm />
+              </div>
             </div>
           </div>
         </Reveal>
       </section>
     </>
+  );
+}
+
+function ApplicationForm() {
+  const [submitting, setSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
+
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setErrors({});
+    const fd = new FormData(e.currentTarget);
+    const raw = {
+      name: String(fd.get("name") ?? ""),
+      email: String(fd.get("email") ?? ""),
+      phone: String(fd.get("phone") ?? ""),
+      track: String(fd.get("track") ?? ""),
+      years_experience: String(fd.get("years_experience") ?? ""),
+      cover_note: String(fd.get("cover_note") ?? ""),
+    };
+
+    const parsed = applicationSchema.safeParse(raw);
+    if (!parsed.success) {
+      const fieldErrors: Record<string, string> = {};
+      for (const issue of parsed.error.issues) {
+        const key = issue.path[0]?.toString() ?? "form";
+        if (!fieldErrors[key]) fieldErrors[key] = issue.message;
+      }
+      setErrors(fieldErrors);
+      return;
+    }
+
+    setSubmitting(true);
+    const { error } = await supabase.from("job_applications").insert({
+      name: parsed.data.name,
+      email: parsed.data.email,
+      phone: parsed.data.phone || null,
+      track: parsed.data.track,
+      years_experience: parsed.data.years_experience || null,
+      cover_note: parsed.data.cover_note,
+    });
+    setSubmitting(false);
+
+    if (error) {
+      toast.error("Could not submit your application. Please try again.");
+      return;
+    }
+    setSubmitted(true);
+    toast.success("Application received. Thank you.");
+  }
+
+  if (submitted) {
+    return (
+      <div className="rounded-sm border border-ivory/20 bg-ivory/5 p-8 text-ivory">
+        <div className="font-display text-2xl">Thank you.</div>
+        <p className="mt-3 text-ivory/80">
+          Your application has been received. If your background looks like a match, a member of
+          the team will be in touch with next steps.
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <form onSubmit={onSubmit} className="space-y-5">
+      <div className="grid gap-5 sm:grid-cols-2">
+        <Field label="Full name" name="name" required error={errors.name} />
+        <Field label="Email" name="email" type="email" required error={errors.email} />
+        <Field label="Phone (optional)" name="phone" type="tel" error={errors.phone} />
+        <Field label="Years of experience (optional)" name="years_experience" error={errors.years_experience} />
+      </div>
+
+      <div>
+        <Label>Track of interest</Label>
+        <select
+          name="track"
+          required
+          defaultValue=""
+          className="mt-2 w-full rounded-sm border border-ivory/25 bg-ivory/5 px-4 py-3 text-sm text-ivory focus:border-ochre focus:outline-none focus:ring-2 focus:ring-ochre/30"
+        >
+          <option value="" disabled className="text-foreground">
+            Select a track…
+          </option>
+          {TRACK_OPTIONS.map((t) => (
+            <option key={t} value={t} className="text-foreground">
+              {t}
+            </option>
+          ))}
+        </select>
+        {errors.track && <ErrorText>{errors.track}</ErrorText>}
+      </div>
+
+      <div>
+        <Label>What draws you to Zebcha?</Label>
+        <textarea
+          name="cover_note"
+          required
+          rows={5}
+          maxLength={2000}
+          placeholder="A short note on your background and what excites you about this work."
+          className="mt-2 w-full rounded-sm border border-ivory/25 bg-ivory/5 px-4 py-3 text-sm text-ivory placeholder:text-ivory/40 focus:border-ochre focus:outline-none focus:ring-2 focus:ring-ochre/30"
+        />
+        {errors.cover_note && <ErrorText>{errors.cover_note}</ErrorText>}
+      </div>
+
+      <button
+        type="submit"
+        disabled={submitting}
+        className="inline-flex items-center gap-2 rounded-sm bg-ochre px-7 py-3.5 text-sm font-semibold text-forest-deep transition-colors hover:bg-ivory disabled:opacity-60"
+      >
+        {submitting && <Loader2 className="h-4 w-4 animate-spin" />}
+        Submit application
+        <ArrowUpRight className="h-4 w-4" />
+      </button>
+    </form>
+  );
+}
+
+function Label({ children }: { children: React.ReactNode }) {
+  return (
+    <label className="text-[11px] font-semibold uppercase tracking-[0.15em] text-ivory/70">
+      {children}
+    </label>
+  );
+}
+
+function ErrorText({ children }: { children: React.ReactNode }) {
+  return <p className="mt-1.5 text-xs text-ochre">{children}</p>;
+}
+
+function Field({
+  label,
+  name,
+  type = "text",
+  required,
+  error,
+}: {
+  label: string;
+  name: string;
+  type?: string;
+  required?: boolean;
+  error?: string;
+}) {
+  return (
+    <div>
+      <Label>{label}</Label>
+      <input
+        type={type}
+        name={name}
+        required={required}
+        maxLength={255}
+        className="mt-2 w-full rounded-sm border border-ivory/25 bg-ivory/5 px-4 py-3 text-sm text-ivory placeholder:text-ivory/40 focus:border-ochre focus:outline-none focus:ring-2 focus:ring-ochre/30"
+      />
+      {error && <ErrorText>{error}</ErrorText>}
+    </div>
   );
 }
