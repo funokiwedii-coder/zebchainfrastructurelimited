@@ -39,21 +39,9 @@ const services = [
   },
   {
     n: "02",
-    name: "Project Management",
+    name: "Project Preparation",
     detail:
-      "End-to-end oversight from inception to completion. We protect capital and timelines through disciplined planning, procurement, monitoring and delivery.",
-  },
-  {
-    n: "03",
-    name: "Advisory & Structuring",
-    detail:
-      "We shape opportunities into bankable propositions — financial modelling, risk allocation, and transaction structuring built to withstand investor and lender scrutiny.",
-  },
-  {
-    n: "04",
-    name: "Stakeholder Coordination",
-    detail:
-      "We bridge government, sponsors, financiers and operators — aligning interests, navigating approvals, and keeping complex partnerships moving toward financial close.",
+      "We shape early-stage opportunities into bankable propositions — feasibility, financial modelling, risk allocation and transaction structuring built to withstand investor and lender scrutiny.",
   },
 ];
 
