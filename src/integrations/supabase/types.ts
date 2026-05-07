@@ -14,6 +14,42 @@ export type Database = {
   }
   public: {
     Tables: {
+      job_applications: {
+        Row: {
+          cover_note: string
+          created_at: string
+          email: string
+          id: string
+          name: string
+          phone: string | null
+          status: string
+          track: string
+          years_experience: string | null
+        }
+        Insert: {
+          cover_note: string
+          created_at?: string
+          email: string
+          id?: string
+          name: string
+          phone?: string | null
+          status?: string
+          track: string
+          years_experience?: string | null
+        }
+        Update: {
+          cover_note?: string
+          created_at?: string
+          email?: string
+          id?: string
+          name?: string
+          phone?: string | null
+          status?: string
+          track?: string
+          years_experience?: string | null
+        }
+        Relationships: []
+      }
       project_submissions: {
         Row: {
           country: string
