@@ -212,7 +212,7 @@ function CareersPage() {
             A clear, respectful process.
           </h2>
         </Reveal>
-        <div className="mt-12 grid gap-8 md:grid-cols-3">
+        <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {[
             {
               n: "01",
@@ -221,13 +221,18 @@ function CareersPage() {
             },
             {
               n: "02",
-              t: "Conversations",
-              d: "We meet to understand your experience and ambitions, and to give you an honest picture of the work and the team.",
+              t: "Assessment",
+              d: "Shortlisted candidates complete a role-relevant test designed to surface how you think and approach real problems.",
             },
             {
               n: "03",
-              t: "Decision",
-              d: "We make decisions quickly and provide candid feedback either way. Successful candidates receive a clear offer and onboarding plan.",
+              t: "Interview",
+              d: "Meet the team to discuss your experience and ambitions, and get an honest picture of the work and the people.",
+            },
+            {
+              n: "04",
+              t: "Offer & Onboarding",
+              d: "Successful candidates receive a formal offer letter and a structured onboarding plan to set you up for success.",
             },
           ].map((s, i) => (
             <Reveal key={s.n} variant="up" delay={i * 120}>
