@@ -91,17 +91,30 @@ const TRACK_OPTIONS = [
   "General interest",
 ] as const;
 
+const GENDER_OPTIONS = ["Male", "Female"] as const;
+const RELOCATE_OPTIONS = ["Yes", "No"] as const;
+
 const applicationSchema = z.object({
-  name: z.string().trim().min(1, "Name is required").max(100),
+  name: z.string().trim().min(1, "Full name is required").max(120),
+  course_of_study: z.string().trim().min(1, "Course of study is required").max(120),
+  date_of_birth: z.string().min(1, "Date of birth is required"),
+  cgpa: z.string().trim().min(1, "Grade/CGPA is required").max(20),
+  gender: z.enum(GENDER_OPTIONS, { errorMap: () => ({ message: "Select gender" }) }),
   email: z.string().trim().email("Enter a valid email").max(255),
-  phone: z.string().trim().max(40).optional().or(z.literal("")),
-  track: z.enum(TRACK_OPTIONS, { errorMap: () => ({ message: "Select a track" }) }),
-  years_experience: z.string().trim().max(40).optional().or(z.literal("")),
-  cover_note: z
+  phone: z.string().trim().min(1, "Phone number is required").max(40),
+  current_location: z.string().trim().min(1, "Current location is required").max(120),
+  willing_to_relocate: z.enum(RELOCATE_OPTIONS, { errorMap: () => ({ message: "Please select" }) }),
+  age: z
     .string()
-    .trim()
-    .min(20, "Tell us a little more (min 20 characters)")
-    .max(2000, "Please keep under 2000 characters"),
+    .min(1, "Age is required")
+    .refine((v) => /^\d+$/.test(v) && Number(v) >= 15 && Number(v) <= 100, "Enter a valid age"),
+  date_of_graduation: z.string().min(1, "Date of graduation is required"),
+  available_start_date: z.string().min(1, "Availability date is required"),
+  university: z.string().trim().min(1, "University is required").max(160),
+  track: z
+    .enum(TRACK_OPTIONS, { errorMap: () => ({ message: "Select a track" }) })
+    .optional()
+    .or(z.literal("")),
 });
 
 function CareersPage() {
