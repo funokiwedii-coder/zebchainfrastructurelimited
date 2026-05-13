@@ -465,6 +465,10 @@ function ApplicationForm() {
         {submitting && <Loader2 className="h-4 w-4 animate-spin" />}
         Submit application
         <ArrowUpRight className="h-4 w-4" />
+      </button>
+    </form>
+  );
+}
 
 function Label({ children }: { children: React.ReactNode }) {
   return (
@@ -484,24 +488,44 @@ function Field({
   type = "text",
   required,
   error,
+  as,
+  options,
 }: {
   label: string;
   name: string;
   type?: string;
   required?: boolean;
   error?: string;
+  as?: "select";
+  options?: string[];
 }) {
+  const baseClass =
+    "mt-2 w-full rounded-sm border border-ivory/25 bg-ivory/5 px-4 py-3 text-sm text-ivory placeholder:text-ivory/40 focus:border-ochre focus:outline-none focus:ring-2 focus:ring-ochre/30";
   return (
     <div>
       <Label>{label}</Label>
-      <input
-        type={type}
-        name={name}
-        required={required}
-        maxLength={255}
-        className="mt-2 w-full rounded-sm border border-ivory/25 bg-ivory/5 px-4 py-3 text-sm text-ivory placeholder:text-ivory/40 focus:border-ochre focus:outline-none focus:ring-2 focus:ring-ochre/30"
-      />
+      {as === "select" ? (
+        <select name={name} required={required} defaultValue="" className={baseClass}>
+          <option value="" disabled className="text-foreground">
+            Select…
+          </option>
+          {(options ?? []).map((o) => (
+            <option key={o} value={o} className="text-foreground">
+              {o}
+            </option>
+          ))}
+        </select>
+      ) : (
+        <input
+          type={type}
+          name={name}
+          required={required}
+          maxLength={type === "date" || type === "number" ? undefined : 255}
+          className={baseClass}
+        />
+      )}
       {error && <ErrorText>{error}</ErrorText>}
     </div>
   );
 }
+
