@@ -16,36 +16,69 @@ export type Database = {
     Tables: {
       job_applications: {
         Row: {
-          cover_note: string
+          age: number | null
+          available_start_date: string | null
+          cgpa: string | null
+          course_of_study: string | null
+          cover_note: string | null
           created_at: string
+          current_location: string | null
+          cv_url: string | null
+          date_of_birth: string | null
+          date_of_graduation: string | null
           email: string
+          gender: string | null
           id: string
           name: string
           phone: string | null
           status: string
-          track: string
+          track: string | null
+          university: string | null
+          willing_to_relocate: boolean | null
           years_experience: string | null
         }
         Insert: {
-          cover_note: string
+          age?: number | null
+          available_start_date?: string | null
+          cgpa?: string | null
+          course_of_study?: string | null
+          cover_note?: string | null
           created_at?: string
+          current_location?: string | null
+          cv_url?: string | null
+          date_of_birth?: string | null
+          date_of_graduation?: string | null
           email: string
+          gender?: string | null
           id?: string
           name: string
           phone?: string | null
           status?: string
-          track: string
+          track?: string | null
+          university?: string | null
+          willing_to_relocate?: boolean | null
           years_experience?: string | null
         }
         Update: {
-          cover_note?: string
+          age?: number | null
+          available_start_date?: string | null
+          cgpa?: string | null
+          course_of_study?: string | null
+          cover_note?: string | null
           created_at?: string
+          current_location?: string | null
+          cv_url?: string | null
+          date_of_birth?: string | null
+          date_of_graduation?: string | null
           email?: string
+          gender?: string | null
           id?: string
           name?: string
           phone?: string | null
           status?: string
-          track?: string
+          track?: string | null
+          university?: string | null
+          willing_to_relocate?: boolean | null
           years_experience?: string | null
         }
         Relationships: []

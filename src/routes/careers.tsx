@@ -91,17 +91,30 @@ const TRACK_OPTIONS = [
   "General interest",
 ] as const;
 
+const GENDER_OPTIONS = ["Male", "Female"] as const;
+const RELOCATE_OPTIONS = ["Yes", "No"] as const;
+
 const applicationSchema = z.object({
-  name: z.string().trim().min(1, "Name is required").max(100),
+  name: z.string().trim().min(1, "Full name is required").max(120),
+  course_of_study: z.string().trim().min(1, "Course of study is required").max(120),
+  date_of_birth: z.string().min(1, "Date of birth is required"),
+  cgpa: z.string().trim().min(1, "Grade/CGPA is required").max(20),
+  gender: z.enum(GENDER_OPTIONS, { errorMap: () => ({ message: "Select gender" }) }),
   email: z.string().trim().email("Enter a valid email").max(255),
-  phone: z.string().trim().max(40).optional().or(z.literal("")),
-  track: z.enum(TRACK_OPTIONS, { errorMap: () => ({ message: "Select a track" }) }),
-  years_experience: z.string().trim().max(40).optional().or(z.literal("")),
-  cover_note: z
+  phone: z.string().trim().min(1, "Phone number is required").max(40),
+  current_location: z.string().trim().min(1, "Current location is required").max(120),
+  willing_to_relocate: z.enum(RELOCATE_OPTIONS, { errorMap: () => ({ message: "Please select" }) }),
+  age: z
     .string()
-    .trim()
-    .min(20, "Tell us a little more (min 20 characters)")
-    .max(2000, "Please keep under 2000 characters"),
+    .min(1, "Age is required")
+    .refine((v) => /^\d+$/.test(v) && Number(v) >= 15 && Number(v) <= 100, "Enter a valid age"),
+  date_of_graduation: z.string().min(1, "Date of graduation is required"),
+  available_start_date: z.string().min(1, "Availability date is required"),
+  university: z.string().trim().min(1, "University is required").max(160),
+  track: z
+    .enum(TRACK_OPTIONS, { errorMap: () => ({ message: "Select a track" }) })
+    .optional()
+    .or(z.literal("")),
 });
 
 function CareersPage() {
@@ -299,6 +312,7 @@ function ApplicationForm() {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [cvFile, setCvFile] = useState<File | null>(null);
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -306,11 +320,19 @@ function ApplicationForm() {
     const fd = new FormData(e.currentTarget);
     const raw = {
       name: String(fd.get("name") ?? ""),
+      course_of_study: String(fd.get("course_of_study") ?? ""),
+      date_of_birth: String(fd.get("date_of_birth") ?? ""),
+      cgpa: String(fd.get("cgpa") ?? ""),
+      gender: String(fd.get("gender") ?? ""),
       email: String(fd.get("email") ?? ""),
       phone: String(fd.get("phone") ?? ""),
+      current_location: String(fd.get("current_location") ?? ""),
+      willing_to_relocate: String(fd.get("willing_to_relocate") ?? ""),
+      age: String(fd.get("age") ?? ""),
+      date_of_graduation: String(fd.get("date_of_graduation") ?? ""),
+      available_start_date: String(fd.get("available_start_date") ?? ""),
+      university: String(fd.get("university") ?? ""),
       track: String(fd.get("track") ?? ""),
-      years_experience: String(fd.get("years_experience") ?? ""),
-      cover_note: String(fd.get("cover_note") ?? ""),
     };
 
     const parsed = applicationSchema.safeParse(raw);
@@ -324,14 +346,49 @@ function ApplicationForm() {
       return;
     }
 
+    if (!cvFile) {
+      setErrors({ cv: "Please attach your CV/resume" });
+      return;
+    }
+    if (cvFile.size > 10 * 1024 * 1024) {
+      setErrors({ cv: "File must be under 10MB" });
+      return;
+    }
+
     setSubmitting(true);
+
+    // Upload CV
+    const ext = cvFile.name.split(".").pop() || "pdf";
+    const filePath = `${crypto.randomUUID()}.${ext}`;
+    const { error: uploadError } = await supabase.storage
+      .from("cvs")
+      .upload(filePath, cvFile, { contentType: cvFile.type, upsert: false });
+
+    if (uploadError) {
+      setSubmitting(false);
+      toast.error("Could not upload your CV. Please try again.");
+      return;
+    }
+
+    const { data: pub } = supabase.storage.from("cvs").getPublicUrl(filePath);
+
     const { error } = await supabase.from("job_applications").insert({
       name: parsed.data.name,
       email: parsed.data.email,
-      phone: parsed.data.phone || null,
-      track: parsed.data.track,
-      years_experience: parsed.data.years_experience || null,
-      cover_note: parsed.data.cover_note,
+      phone: parsed.data.phone,
+      course_of_study: parsed.data.course_of_study,
+      date_of_birth: parsed.data.date_of_birth,
+      cgpa: parsed.data.cgpa,
+      gender: parsed.data.gender,
+      current_location: parsed.data.current_location,
+      willing_to_relocate: parsed.data.willing_to_relocate === "Yes",
+      age: Number(parsed.data.age),
+      date_of_graduation: parsed.data.date_of_graduation,
+      available_start_date: parsed.data.available_start_date,
+      university: parsed.data.university,
+      track: parsed.data.track || null,
+      cv_url: pub.publicUrl,
+      cover_note: "",
     });
     setSubmitting(false);
 
@@ -349,7 +406,7 @@ function ApplicationForm() {
         <div className="font-display text-2xl">Thank you.</div>
         <p className="mt-3 text-ivory/80">
           Your application has been received. If your background looks like a match, a member of
-          the team will be in touch with next steps.
+          the team will be in touch with next steps — including access to our assessment portal.
         </p>
       </div>
     );
@@ -358,43 +415,46 @@ function ApplicationForm() {
   return (
     <form onSubmit={onSubmit} className="space-y-5">
       <div className="grid gap-5 sm:grid-cols-2">
-        <Field label="Full name" name="name" required error={errors.name} />
-        <Field label="Email" name="email" type="email" required error={errors.email} />
-        <Field label="Phone (optional)" name="phone" type="tel" error={errors.phone} />
-        <Field label="Years of experience (optional)" name="years_experience" error={errors.years_experience} />
-      </div>
-
-      <div>
-        <Label>Track of interest</Label>
-        <select
-          name="track"
+        <Field label="Full name *" name="name" required error={errors.name} />
+        <Field label="Email address *" name="email" type="email" required error={errors.email} />
+        <Field label="Phone number *" name="phone" type="tel" required error={errors.phone} />
+        <Field label="Gender *" name="gender" as="select" options={[...GENDER_OPTIONS]} required error={errors.gender} />
+        <Field label="Date of birth *" name="date_of_birth" type="date" required error={errors.date_of_birth} />
+        <Field label="Age *" name="age" type="number" required error={errors.age} />
+        <Field label="University *" name="university" required error={errors.university} />
+        <Field label="Course of study *" name="course_of_study" required error={errors.course_of_study} />
+        <Field label="Grade / CGPA *" name="cgpa" required error={errors.cgpa} />
+        <Field label="Date of graduation *" name="date_of_graduation" type="date" required error={errors.date_of_graduation} />
+        <Field label="Current location *" name="current_location" required error={errors.current_location} />
+        <Field label="Available start date *" name="available_start_date" type="date" required error={errors.available_start_date} />
+        <Field
+          label="Willing to relocate to Abuja if shortlisted *"
+          name="willing_to_relocate"
+          as="select"
+          options={[...RELOCATE_OPTIONS]}
           required
-          defaultValue=""
-          className="mt-2 w-full rounded-sm border border-ivory/25 bg-ivory/5 px-4 py-3 text-sm text-ivory focus:border-ochre focus:outline-none focus:ring-2 focus:ring-ochre/30"
-        >
-          <option value="" disabled className="text-foreground">
-            Select a track…
-          </option>
-          {TRACK_OPTIONS.map((t) => (
-            <option key={t} value={t} className="text-foreground">
-              {t}
-            </option>
-          ))}
-        </select>
-        {errors.track && <ErrorText>{errors.track}</ErrorText>}
-      </div>
-
-      <div>
-        <Label>What draws you to Zebcha?</Label>
-        <textarea
-          name="cover_note"
-          required
-          rows={5}
-          maxLength={2000}
-          placeholder="A short note on your background and what excites you about this work."
-          className="mt-2 w-full rounded-sm border border-ivory/25 bg-ivory/5 px-4 py-3 text-sm text-ivory placeholder:text-ivory/40 focus:border-ochre focus:outline-none focus:ring-2 focus:ring-ochre/30"
+          error={errors.willing_to_relocate}
         />
-        {errors.cover_note && <ErrorText>{errors.cover_note}</ErrorText>}
+        <Field
+          label="Track of interest (optional)"
+          name="track"
+          as="select"
+          options={[...TRACK_OPTIONS]}
+          error={errors.track}
+        />
+      </div>
+
+      <div>
+        <Label>Attach your CV / resume *</Label>
+        <input
+          type="file"
+          accept=".pdf,.doc,.docx"
+          onChange={(e) => setCvFile(e.target.files?.[0] ?? null)}
+          required
+          className="mt-2 block w-full cursor-pointer rounded-sm border border-ivory/25 bg-ivory/5 px-4 py-3 text-sm text-ivory file:mr-4 file:rounded-sm file:border-0 file:bg-ochre file:px-3 file:py-1.5 file:text-xs file:font-semibold file:text-forest-deep hover:file:bg-ivory"
+        />
+        <p className="mt-1 text-xs text-ivory/50">PDF, DOC or DOCX. Max 10MB.</p>
+        {errors.cv && <ErrorText>{errors.cv}</ErrorText>}
       </div>
 
       <button
@@ -428,24 +488,44 @@ function Field({
   type = "text",
   required,
   error,
+  as,
+  options,
 }: {
   label: string;
   name: string;
   type?: string;
   required?: boolean;
   error?: string;
+  as?: "select";
+  options?: string[];
 }) {
+  const baseClass =
+    "mt-2 w-full rounded-sm border border-ivory/25 bg-ivory/5 px-4 py-3 text-sm text-ivory placeholder:text-ivory/40 focus:border-ochre focus:outline-none focus:ring-2 focus:ring-ochre/30";
   return (
     <div>
       <Label>{label}</Label>
-      <input
-        type={type}
-        name={name}
-        required={required}
-        maxLength={255}
-        className="mt-2 w-full rounded-sm border border-ivory/25 bg-ivory/5 px-4 py-3 text-sm text-ivory placeholder:text-ivory/40 focus:border-ochre focus:outline-none focus:ring-2 focus:ring-ochre/30"
-      />
+      {as === "select" ? (
+        <select name={name} required={required} defaultValue="" className={baseClass}>
+          <option value="" disabled className="text-foreground">
+            Select…
+          </option>
+          {(options ?? []).map((o) => (
+            <option key={o} value={o} className="text-foreground">
+              {o}
+            </option>
+          ))}
+        </select>
+      ) : (
+        <input
+          type={type}
+          name={name}
+          required={required}
+          maxLength={type === "date" || type === "number" ? undefined : 255}
+          className={baseClass}
+        />
+      )}
       {error && <ErrorText>{error}</ErrorText>}
     </div>
   );
 }
+
