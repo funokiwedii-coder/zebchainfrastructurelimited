@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-import { Loader2, LogOut, Mail, Phone, Building2, Globe, Briefcase, DollarSign, Trash2, GraduationCap, Clock } from "lucide-react";
+import { Loader2, LogOut, Mail, Phone, Building2, Globe, Briefcase, DollarSign, Trash2, GraduationCap, Clock, FileText, MapPin, Calendar, User, School, Award, CakeSlice, Plane } from "lucide-react";
 
 export const Route = createFileRoute("/admin")({
   head: () => ({
