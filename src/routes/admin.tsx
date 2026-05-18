@@ -373,7 +373,7 @@ function ApplicationsList() {
             <div className="flex items-start justify-between gap-4">
               <div>
                 <div className="font-display text-xl text-foreground">{a.name}</div>
-                <div className="text-sm text-muted-foreground">{a.track}</div>
+                {a.track && <div className="text-sm text-muted-foreground">{a.track}</div>}
               </div>
               <div className="text-right text-xs text-muted-foreground">
                 {new Date(a.created_at).toLocaleString()}
@@ -382,13 +382,29 @@ function ApplicationsList() {
             <div className="mt-4 grid gap-3 text-sm sm:grid-cols-2">
               <Item icon={Mail} label={a.email} href={`mailto:${a.email}`} />
               {a.phone && <Item icon={Phone} label={a.phone} href={`tel:${a.phone}`} />}
-              <Item icon={GraduationCap} label={a.track} />
+              {a.university && <Item icon={School} label={a.university} />}
+              {a.course_of_study && <Item icon={GraduationCap} label={a.course_of_study} />}
+              {a.cgpa && <Item icon={Award} label={`CGPA: ${a.cgpa}`} />}
+              {a.gender && <Item icon={User} label={a.gender} />}
+              {a.age != null && <Item icon={CakeSlice} label={`Age: ${a.age}`} />}
+              {a.date_of_birth && <Item icon={Calendar} label={`DOB: ${a.date_of_birth}`} />}
+              {a.date_of_graduation && <Item icon={Calendar} label={`Graduated: ${a.date_of_graduation}`} />}
+              {a.available_start_date && <Item icon={Calendar} label={`Available: ${a.available_start_date}`} />}
+              {a.current_location && <Item icon={MapPin} label={a.current_location} />}
+              {a.willing_to_relocate != null && (
+                <Item icon={Plane} label={`Relocate to Abuja: ${a.willing_to_relocate ? "Yes" : "No"}`} />
+              )}
               {a.years_experience && <Item icon={Clock} label={`${a.years_experience} experience`} />}
               <Item icon={Building2} label={`Status: ${a.status}`} />
+              {a.cv_url && (
+                <Item icon={FileText} label="Download CV / Resume" href={a.cv_url} />
+              )}
             </div>
-            <p className="mt-5 whitespace-pre-wrap rounded-sm border-l-2 border-forest bg-muted/40 p-4 text-sm leading-relaxed text-foreground">
-              {a.cover_note}
-            </p>
+            {a.cover_note && (
+              <p className="mt-5 whitespace-pre-wrap rounded-sm border-l-2 border-forest bg-muted/40 p-4 text-sm leading-relaxed text-foreground">
+                {a.cover_note}
+              </p>
+            )}
             <div className="mt-4 flex justify-end">
               <button
                 onClick={() => remove(a.id)}
