@@ -81,6 +81,7 @@ function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [resetLoading, setResetLoading] = useState(false);
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
@@ -98,6 +99,22 @@ function SignIn() {
       else toast.success("Account created. Check your email to confirm.");
     }
     setLoading(false);
+  }
+
+  async function sendPasswordReset() {
+    if (!email) {
+      toast.error("Enter your email address first.");
+      return;
+    }
+
+    setResetLoading(true);
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: `${window.location.origin}/reset-password`,
+    });
+    setResetLoading(false);
+
+    if (error) toast.error(error.message);
+    else toast.success("Password reset email sent. Check your inbox.");
   }
 
   return (
@@ -151,6 +168,16 @@ function SignIn() {
         >
           {mode === "signin" ? "Need an account? Sign up" : "Have an account? Sign in"}
         </button>
+        {mode === "signin" && (
+          <button
+            type="button"
+            onClick={sendPasswordReset}
+            disabled={resetLoading}
+            className="ml-4 mt-4 text-xs text-muted-foreground underline-offset-4 hover:underline disabled:opacity-60"
+          >
+            {resetLoading ? "Sending reset email..." : "Forgot password?"}
+          </button>
+        )}
       </div>
     </section>
   );
