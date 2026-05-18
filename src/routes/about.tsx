@@ -51,7 +51,6 @@ const team: Member[] = [
   {
     name: "Gideon Dikedi",
     role: "Team Lead",
-    photo: teamGideon,
     short: "Practical infrastructure delivery and technical execution.",
     bio: "Gideon is a Civil Engineering graduate from Covenant University focused on practical infrastructure delivery and technical execution. He supports project implementation by translating design intent into on-ground results.",
     edu: "BEng Civil Engineering · Covenant University",
@@ -59,7 +58,6 @@ const team: Member[] = [
   {
     name: "Daniel Umoru",
     role: "Team Lead",
-    photo: teamDaniel,
     short: "Project evaluation, operational efficiency and risk.",
     bio: "Daniel is a Chemical Engineering graduate from Covenant University with a strong analytical and systems-oriented approach. He supports project evaluation, operational efficiency, and risk assessment across initiatives.",
     edu: "BEng Chemical Engineering · Covenant University",
@@ -67,7 +65,6 @@ const team: Member[] = [
   {
     name: "Favour Unokiwedi",
     role: "Assistant Team Lead (Admin)",
-    photo: teamFavour,
     short: "Operations, structuring and seamless project execution.",
     bio: "Favour is a Building Technology graduate from Covenant University with a strong background in project coordination and infrastructure delivery. He plays a key role in structuring operations, ensuring seamless execution across projects from planning to completion.",
     edu: "BSc Building Technology · Covenant University",
@@ -75,7 +72,6 @@ const team: Member[] = [
   {
     name: "Smart Michael",
     role: "Assistant Team Lead",
-    photo: teamSmart,
     short: "Financial systems, investment dynamics and strategy.",
     bio: "Smart is an Economics graduate from Arthur Jarvis University with a solid understanding of financial systems and investment dynamics. He supports strategic planning and financial decision-making to ensure projects are commercially viable and impact-driven.",
     edu: "BSc Economics · Arthur Jarvis University",
@@ -83,7 +79,6 @@ const team: Member[] = [
   {
     name: "Praise Ossy Nwoye",
     role: "Assistant Team Lead",
-    photo: teamPraise,
     short: "Technical execution and on-site project coordination.",
     bio: "Praise is a Civil Engineering graduate from Covenant University with experience in technical project execution and site coordination. He contributes to ensuring projects are delivered efficiently, meeting both quality and timeline expectations.",
     edu: "BEng Civil Engineering · Covenant University",
@@ -98,7 +93,6 @@ const team: Member[] = [
   {
     name: "Christiana Olatunji",
     role: "Team Member",
-    photo: teamChristiana,
     short: "Project planning and built-environment solutions.",
     bio: "Christiana is a Building Technology graduate from Covenant University with a focus on project planning and built environment solutions. She contributes to the coordination and execution of development projects from concept to delivery.",
     edu: "BSc Building Technology · Covenant University",
