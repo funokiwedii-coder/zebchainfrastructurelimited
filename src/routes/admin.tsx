@@ -180,11 +180,22 @@ type Application = {
   name: string;
   email: string;
   phone: string | null;
-  track: string;
+  track: string | null;
   years_experience: string | null;
-  cover_note: string;
+  cover_note: string | null;
   status: string;
   created_at: string;
+  course_of_study: string | null;
+  date_of_birth: string | null;
+  cgpa: string | null;
+  gender: string | null;
+  current_location: string | null;
+  willing_to_relocate: boolean | null;
+  age: number | null;
+  date_of_graduation: string | null;
+  available_start_date: string | null;
+  university: string | null;
+  cv_url: string | null;
 };
 
 function Dashboard() {
