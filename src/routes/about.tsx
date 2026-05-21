@@ -146,11 +146,7 @@ function AboutPage() {
                   variant="up"
                   delay={(i % 3) * 100 + Math.floor(i / 3) * 60}
                 >
-                  <button
-                    type="button"
-                    onClick={() => setOpenIndex(i)}
-                    className="group flex w-full flex-col text-left outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-4 focus-visible:ring-offset-background"
-                  >
+                  <div className="group flex w-full flex-col text-left">
                     <div className="relative aspect-square overflow-hidden rounded-sm border border-forest/20 bg-muted">
                       {m.photo ? (
                         <img
@@ -167,11 +163,6 @@ function AboutPage() {
                         </div>
                       )}
                       <div className="absolute inset-0 bg-forest/0 transition-colors duration-300 group-hover:bg-forest/10" />
-                      <div className="absolute inset-x-0 bottom-0 translate-y-2 px-3 pb-3 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-                        <span className="inline-flex items-center gap-1 rounded-sm bg-ivory/95 px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-forest">
-                          Read profile →
-                        </span>
-                      </div>
                     </div>
                     <h3 className="mt-5 font-display text-xl leading-tight text-foreground transition-colors group-hover:text-terracotta">
                       {m.name}
@@ -179,8 +170,7 @@ function AboutPage() {
                     <div className="mt-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-terracotta">
                       {m.role}
                     </div>
-                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{m.short}</p>
-                  </button>
+                  </div>
                 </Reveal>
               ))}
             </div>
