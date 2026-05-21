@@ -1,15 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
 import africaTopo from "@/assets/africa-topo.png";
 
 import { Reveal } from "@/components/Reveal";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-} from "@/components/ui/dialog";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
