@@ -1,15 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
 import africaTopo from "@/assets/africa-topo.png";
 
 import { Reveal } from "@/components/Reveal";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-} from "@/components/ui/dialog";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -35,68 +27,17 @@ type Member = {
   name: string;
   role: string;
   photo?: string;
-  short: string;
-  bio: string;
-  edu?: string;
 };
 
 const team: Member[] = [
-  {
-    name: "Temitope Akinyemi",
-    role: "MD / CEO",
-    short: "Founder & CEO. Project finance veteran with $1B+ in greenfield deals.",
-    bio: "Founder of Zebcha Infrastructure and Acting CEO of DDWCL, a multi-million dollar water utility. Former Portfolio Manager at the Nigerian Sovereign Investment Authority (2012–2015), with a background in commercial banking (FSB, GTB), infrastructure financing (HMS Host, USA), and mortgage-backed securities (GMRESCAP). Lead Investment & Project Adviser to DFID and the EIB since 2010, with over $1B in greenfield deals.",
-    edu: "BSc Math (UNN) · MBA Finance & Strategy (Yale)",
-  },
-  {
-    name: "Gideon Dikedi",
-    role: "Team Lead",
-    short: "Practical infrastructure delivery and technical execution.",
-    bio: "Gideon is a Civil Engineering graduate from Covenant University focused on practical infrastructure delivery and technical execution. He supports project implementation by translating design intent into on-ground results.",
-    edu: "BEng Civil Engineering · Covenant University",
-  },
-  {
-    name: "Daniel Umoru",
-    role: "Team Lead",
-    short: "Project evaluation, operational efficiency and risk.",
-    bio: "Daniel is a Chemical Engineering graduate from Covenant University with a strong analytical and systems-oriented approach. He supports project evaluation, operational efficiency, and risk assessment across initiatives.",
-    edu: "BEng Chemical Engineering · Covenant University",
-  },
-  {
-    name: "Favour Unokiwedi",
-    role: "Assistant Team Lead (Admin)",
-    short: "Operations, structuring and seamless project execution.",
-    bio: "Favour is a Building Technology graduate from Covenant University with a strong background in project coordination and infrastructure delivery. He plays a key role in structuring operations, ensuring seamless execution across projects from planning to completion.",
-    edu: "BSc Building Technology · Covenant University",
-  },
-  {
-    name: "Smart Michael",
-    role: "Assistant Team Lead",
-    short: "Financial systems, investment dynamics and strategy.",
-    bio: "Smart is an Economics graduate from Arthur Jarvis University with a solid understanding of financial systems and investment dynamics. He supports strategic planning and financial decision-making to ensure projects are commercially viable and impact-driven.",
-    edu: "BSc Economics · Arthur Jarvis University",
-  },
-  {
-    name: "Praise Ossy Nwoye",
-    role: "Assistant Team Lead",
-    short: "Technical execution and on-site project coordination.",
-    bio: "Praise is a Civil Engineering graduate from Covenant University with experience in technical project execution and site coordination. He contributes to ensuring projects are delivered efficiently, meeting both quality and timeline expectations.",
-    edu: "BEng Civil Engineering · Covenant University",
-  },
-  {
-    name: "Success Ezea",
-    role: "Team Member",
-    short: "Financial management, budgeting and accountability.",
-    bio: "Success is an Accounting graduate from the University of Nigeria, Nsukka with expertise in financial management and reporting. She ensures financial discipline across projects, supporting budgeting, tracking, and accountability.",
-    edu: "BSc Accounting · University of Nigeria, Nsukka",
-  },
-  {
-    name: "Christiana Olatunji",
-    role: "Team Member",
-    short: "Project planning and built-environment solutions.",
-    bio: "Christiana is a Building Technology graduate from Covenant University with a focus on project planning and built environment solutions. She contributes to the coordination and execution of development projects from concept to delivery.",
-    edu: "BSc Building Technology · Covenant University",
-  },
+  { name: "Temitope Akinyemi", role: "MD / CEO", photo: "/team-temitope.jpg" },
+  { name: "Gideon Dikedi", role: "Team Lead", photo: "/team-gideon.jpg" },
+  { name: "Daniel Umoru", role: "Team Lead", photo: "/team-daniel.jpg" },
+  { name: "Favour Unokiwedi", role: "Assistant Team Lead (Admin)" },
+  { name: "Smart Michael", role: "Assistant Team Lead" },
+  { name: "Praise Ossy Nwoye", role: "Assistant Team Lead" },
+  { name: "Success Ezea", role: "Team Member" },
+  { name: "Christiana Olatunji", role: "Team Member" },
 ];
 
 function initials(name: string) {
@@ -109,9 +50,6 @@ function initials(name: string) {
 }
 
 function AboutPage() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-  const active = openIndex !== null ? team[openIndex] : null;
-
   return (
     <>
       {/* Intro */}
@@ -199,9 +137,6 @@ function AboutPage() {
               A senior team leading origination, structuring and execution across the AIP
               pipeline — supported by a focused operations and field team.
             </p>
-            <p className="mt-3 text-sm text-muted-foreground/80">
-              Tap any profile to read more.
-            </p>
           </Reveal>
           <div className="md:col-span-8">
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -211,11 +146,7 @@ function AboutPage() {
                   variant="up"
                   delay={(i % 3) * 100 + Math.floor(i / 3) * 60}
                 >
-                  <button
-                    type="button"
-                    onClick={() => setOpenIndex(i)}
-                    className="group flex w-full flex-col text-left outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-4 focus-visible:ring-offset-background"
-                  >
+                  <div className="group flex w-full flex-col text-left">
                     <div className="relative aspect-square overflow-hidden rounded-sm border border-forest/20 bg-muted">
                       {m.photo ? (
                         <img
@@ -232,11 +163,6 @@ function AboutPage() {
                         </div>
                       )}
                       <div className="absolute inset-0 bg-forest/0 transition-colors duration-300 group-hover:bg-forest/10" />
-                      <div className="absolute inset-x-0 bottom-0 translate-y-2 px-3 pb-3 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-                        <span className="inline-flex items-center gap-1 rounded-sm bg-ivory/95 px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-forest">
-                          Read profile →
-                        </span>
-                      </div>
                     </div>
                     <h3 className="mt-5 font-display text-xl leading-tight text-foreground transition-colors group-hover:text-terracotta">
                       {m.name}
@@ -244,56 +170,13 @@ function AboutPage() {
                     <div className="mt-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-terracotta">
                       {m.role}
                     </div>
-                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{m.short}</p>
-                  </button>
+                  </div>
                 </Reveal>
               ))}
             </div>
           </div>
         </div>
       </section>
-
-      <Dialog open={openIndex !== null} onOpenChange={(o) => !o && setOpenIndex(null)}>
-        <DialogContent className="max-w-2xl overflow-hidden p-0">
-          {active && (
-            <div className="grid gap-0 sm:grid-cols-[200px_1fr]">
-              <div className="aspect-square h-full w-full overflow-hidden bg-forest/10 sm:aspect-auto">
-                {active.photo ? (
-                  <img
-                    src={active.photo}
-                    alt={active.name}
-                    className="h-full w-full object-cover"
-                  />
-                ) : (
-                  <div className="flex h-full w-full items-center justify-center">
-                    <span className="font-display text-6xl text-forest/70">
-                      {initials(active.name)}
-                    </span>
-                  </div>
-                )}
-              </div>
-              <div className="p-6 sm:p-8">
-                <DialogHeader className="space-y-2 text-left">
-                  <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-terracotta">
-                    {active.role}
-                  </div>
-                  <DialogTitle className="font-display text-2xl leading-tight text-foreground sm:text-3xl">
-                    {active.name}
-                  </DialogTitle>
-                  {active.edu && (
-                    <DialogDescription className="text-[11px] uppercase tracking-[0.15em] text-foreground/60">
-                      {active.edu}
-                    </DialogDescription>
-                  )}
-                </DialogHeader>
-                <p className="mt-5 text-[15px] leading-relaxed text-muted-foreground">
-                  {active.bio}
-                </p>
-              </div>
-            </div>
-          )}
-        </DialogContent>
-      </Dialog>
     </>
   );
 }
