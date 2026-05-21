@@ -35,68 +35,17 @@ type Member = {
   name: string;
   role: string;
   photo?: string;
-  short: string;
-  bio: string;
-  edu?: string;
 };
 
 const team: Member[] = [
-  {
-    name: "Temitope Akinyemi",
-    role: "MD / CEO",
-    short: "Founder & CEO. Project finance veteran with $1B+ in greenfield deals.",
-    bio: "Founder of Zebcha Infrastructure and Acting CEO of DDWCL, a multi-million dollar water utility. Former Portfolio Manager at the Nigerian Sovereign Investment Authority (2012–2015), with a background in commercial banking (FSB, GTB), infrastructure financing (HMS Host, USA), and mortgage-backed securities (GMRESCAP). Lead Investment & Project Adviser to DFID and the EIB since 2010, with over $1B in greenfield deals.",
-    edu: "BSc Math (UNN) · MBA Finance & Strategy (Yale)",
-  },
-  {
-    name: "Gideon Dikedi",
-    role: "Team Lead",
-    short: "Practical infrastructure delivery and technical execution.",
-    bio: "Gideon is a Civil Engineering graduate from Covenant University focused on practical infrastructure delivery and technical execution. He supports project implementation by translating design intent into on-ground results.",
-    edu: "BEng Civil Engineering · Covenant University",
-  },
-  {
-    name: "Daniel Umoru",
-    role: "Team Lead",
-    short: "Project evaluation, operational efficiency and risk.",
-    bio: "Daniel is a Chemical Engineering graduate from Covenant University with a strong analytical and systems-oriented approach. He supports project evaluation, operational efficiency, and risk assessment across initiatives.",
-    edu: "BEng Chemical Engineering · Covenant University",
-  },
-  {
-    name: "Favour Unokiwedi",
-    role: "Assistant Team Lead (Admin)",
-    short: "Operations, structuring and seamless project execution.",
-    bio: "Favour is a Building Technology graduate from Covenant University with a strong background in project coordination and infrastructure delivery. He plays a key role in structuring operations, ensuring seamless execution across projects from planning to completion.",
-    edu: "BSc Building Technology · Covenant University",
-  },
-  {
-    name: "Smart Michael",
-    role: "Assistant Team Lead",
-    short: "Financial systems, investment dynamics and strategy.",
-    bio: "Smart is an Economics graduate from Arthur Jarvis University with a solid understanding of financial systems and investment dynamics. He supports strategic planning and financial decision-making to ensure projects are commercially viable and impact-driven.",
-    edu: "BSc Economics · Arthur Jarvis University",
-  },
-  {
-    name: "Praise Ossy Nwoye",
-    role: "Assistant Team Lead",
-    short: "Technical execution and on-site project coordination.",
-    bio: "Praise is a Civil Engineering graduate from Covenant University with experience in technical project execution and site coordination. He contributes to ensuring projects are delivered efficiently, meeting both quality and timeline expectations.",
-    edu: "BEng Civil Engineering · Covenant University",
-  },
-  {
-    name: "Success Ezea",
-    role: "Team Member",
-    short: "Financial management, budgeting and accountability.",
-    bio: "Success is an Accounting graduate from the University of Nigeria, Nsukka with expertise in financial management and reporting. She ensures financial discipline across projects, supporting budgeting, tracking, and accountability.",
-    edu: "BSc Accounting · University of Nigeria, Nsukka",
-  },
-  {
-    name: "Christiana Olatunji",
-    role: "Team Member",
-    short: "Project planning and built-environment solutions.",
-    bio: "Christiana is a Building Technology graduate from Covenant University with a focus on project planning and built environment solutions. She contributes to the coordination and execution of development projects from concept to delivery.",
-    edu: "BSc Building Technology · Covenant University",
-  },
+  { name: "Temitope Akinyemi", role: "MD / CEO", photo: "/team-temitope.jpg" },
+  { name: "Gideon Dikedi", role: "Team Lead", photo: "/team-gideon.jpg" },
+  { name: "Daniel Umoru", role: "Team Lead", photo: "/team-daniel.jpg" },
+  { name: "Favour Unokiwedi", role: "Assistant Team Lead (Admin)" },
+  { name: "Smart Michael", role: "Assistant Team Lead" },
+  { name: "Praise Ossy Nwoye", role: "Assistant Team Lead" },
+  { name: "Success Ezea", role: "Team Member" },
+  { name: "Christiana Olatunji", role: "Team Member" },
 ];
 
 function initials(name: string) {
