@@ -177,48 +177,6 @@ function AboutPage() {
           </div>
         </div>
       </section>
-
-      <Dialog open={openIndex !== null} onOpenChange={(o) => !o && setOpenIndex(null)}>
-        <DialogContent className="max-w-2xl overflow-hidden p-0">
-          {active && (
-            <div className="grid gap-0 sm:grid-cols-[200px_1fr]">
-              <div className="aspect-square h-full w-full overflow-hidden bg-forest/10 sm:aspect-auto">
-                {active.photo ? (
-                  <img
-                    src={active.photo}
-                    alt={active.name}
-                    className="h-full w-full object-cover"
-                  />
-                ) : (
-                  <div className="flex h-full w-full items-center justify-center">
-                    <span className="font-display text-6xl text-forest/70">
-                      {initials(active.name)}
-                    </span>
-                  </div>
-                )}
-              </div>
-              <div className="p-6 sm:p-8">
-                <DialogHeader className="space-y-2 text-left">
-                  <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-terracotta">
-                    {active.role}
-                  </div>
-                  <DialogTitle className="font-display text-2xl leading-tight text-foreground sm:text-3xl">
-                    {active.name}
-                  </DialogTitle>
-                  {active.edu && (
-                    <DialogDescription className="text-[11px] uppercase tracking-[0.15em] text-foreground/60">
-                      {active.edu}
-                    </DialogDescription>
-                  )}
-                </DialogHeader>
-                <p className="mt-5 text-[15px] leading-relaxed text-muted-foreground">
-                  {active.bio}
-                </p>
-              </div>
-            </div>
-          )}
-        </DialogContent>
-      </Dialog>
     </>
   );
 }
