@@ -50,9 +50,6 @@ function initials(name: string) {
 }
 
 function AboutPage() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-  const active = openIndex !== null ? team[openIndex] : null;
-
   return (
     <>
       {/* Intro */}
@@ -139,9 +136,6 @@ function AboutPage() {
             <p className="mt-5 text-muted-foreground">
               A senior team leading origination, structuring and execution across the AIP
               pipeline — supported by a focused operations and field team.
-            </p>
-            <p className="mt-3 text-sm text-muted-foreground/80">
-              Tap any profile to read more.
             </p>
           </Reveal>
           <div className="md:col-span-8">
