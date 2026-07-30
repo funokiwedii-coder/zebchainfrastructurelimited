@@ -11,17 +11,17 @@ import { useParallax } from "@/hooks/useParallax";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Zebcha — Investment Facilitation & Project Management" },
+      { title: "Zebcha Infrastructure — Project Preparation & Investment Facilitation" },
       {
         name: "description",
         content:
-          "Zebcha connects investors, government opportunities, and viable projects across Nigeria and beyond — structuring bankable deals and overseeing execution to delivery.",
+          "Zebcha Infrastructure Limited is a leading Project Preparation and Investment Facilitation firm. Founded in 2011, we originate, structure and deliver large-scale infrastructure across Nigeria and Africa.",
       },
-      { property: "og:title", content: "Zebcha — Investment Facilitation & Project Management" },
+      { property: "og:title", content: "Zebcha Infrastructure — Project Preparation & Investment Facilitation" },
       {
         property: "og:description",
         content:
-          "Bridging capital and opportunity. Zebcha facilitates investment and manages execution for government-backed and private-sector projects.",
+          "Founded in 2011, Zebcha Infrastructure Limited originates, structures and delivers large-scale infrastructure across Nigeria and Africa — at the intersection of government policy, private capital and execution.",
       },
       { property: "og:image", content: heroAfrica },
       { property: "twitter:image", content: heroAfrica },
