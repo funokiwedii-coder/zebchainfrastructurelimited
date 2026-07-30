@@ -201,12 +201,6 @@ function HomePage() {
                 working at the intersection of government policy, private capital and on-the-ground
                 execution.
               </p>
-              <p className="mt-6 text-base leading-relaxed text-muted-foreground">
-                We do not simply make introductions — we build the structures, manage the
-                relationships, and stay in the room until projects are completed and capital has
-                performed. Clients engage Zebcha because they need a partner who can carry a
-                transaction from concept to commissioning.
-              </p>
             </Reveal>
           </div>
         </div>
