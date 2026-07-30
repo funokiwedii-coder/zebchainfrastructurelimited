@@ -33,15 +33,15 @@ export const Route = createFileRoute("/")({
 const services = [
   {
     n: "01",
-    name: "Investment Facilitation",
+    name: "Project Preparation",
     detail:
-      "We connect institutional and private capital to viable, well-structured opportunities — sourcing, screening and matching investors with projects positioned for measurable returns.",
+      "Our meticulous preparation phase lays the groundwork for seamless, end-to-end delivery across vital sectors such as power, transport, water, housing, and agro-processing. Z to A Infrastructure is our philosophy of starting with the end in mind and engineering every step backwards to the present, ensuring projects are bankable, de-risked, and execution-ready before implementation begins. We deploy comprehensive de-risking methods to mitigate regulatory, financial, and operational bottlenecks well before project execution. By embedding these protective measures early, we safeguard investments from day one — a proven approach our team has used to mobilize successful projects across more than 18 Nigerian states and 10 African countries, ultimately creating over 7,000 jobs.",
   },
   {
     n: "02",
-    name: "Project Preparation",
+    name: "Investment Facilitation",
     detail:
-      "We shape early-stage opportunities into bankable propositions — feasibility, financial modelling, risk allocation and transaction structuring built to withstand investor and lender scrutiny.",
+      "We act as the bridge between project sponsors and the capital they need, prioritizing rapid capital mobilization to transform infrastructure concepts into funded realities. Our investment facilitation process is explicitly engineered to fast-track fundraising: we structure bankable opportunities and negotiate competitive loan pricing and tailored term sheets through our extensive network of local and international funding partners. By running regulatory approvals, securing de-risking instruments, and investment promotion, we unlock institutional capital and advance projects from initial engagement to signed funding agreements in as little as 90 days.",
   },
 ];
 
@@ -200,12 +200,6 @@ function HomePage() {
                 structuring and delivering large-scale infrastructure across Nigeria and Africa —
                 working at the intersection of government policy, private capital and on-the-ground
                 execution.
-              </p>
-              <p className="mt-6 text-base leading-relaxed text-muted-foreground">
-                We do not simply make introductions — we build the structures, manage the
-                relationships, and stay in the room until projects are completed and capital has
-                performed. Clients engage Zebcha because they need a partner who can carry a
-                transaction from concept to commissioning.
               </p>
             </Reveal>
           </div>
