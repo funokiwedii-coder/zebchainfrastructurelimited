@@ -164,10 +164,10 @@ function HomePage() {
         <div className="container-editorial relative -mt-12 pb-0">
           <div className="grid grid-cols-2 gap-px overflow-hidden rounded-sm bg-border md:grid-cols-4">
             {[
-              { v: "$15B", l: "Programme funding ceiling" },
-              { v: "$50M", l: "Minimum project size" },
-              { v: "90 days", l: "Target to financial close" },
-              { v: "Single-digit", l: "Indicative pricing" },
+              { v: "85+", l: "Projects" },
+              { v: "$8B+", l: "Deal Value" },
+              { v: "7,000+", l: "Jobs Created" },
+              { v: "10", l: "African Countries" },
             ].map((s, i) => (
               <Reveal key={s.l} variant="up" delay={i * 120}>
                 <div className="bg-card p-6 md:p-8">
@@ -195,13 +195,14 @@ function HomePage() {
           <div className="md:col-span-7">
             <Reveal variant="up">
               <p className="text-lg leading-relaxed text-foreground/90">
-                Zebcha is an investment facilitation and project management firm. We sit at the
-                intersection of investors, government opportunities, and viable projects —
-                structuring deals, coordinating stakeholders and overseeing execution to delivery.
+                Zebcha Infrastructure Limited is a leading Project Preparation and Investment
+                Facilitation firm. Founded in 2011, we have spent over a decade originating,
+                structuring and delivering large-scale infrastructure across Nigeria and Africa —
+                working at the intersection of government policy, private capital and on-the-ground
+                execution.
               </p>
               <p className="mt-6 text-base leading-relaxed text-muted-foreground">
-                Our work is grounded in professionalism, strategic insight and an execution-first
-                mindset. We do not simply make introductions — we build the structures, manage the
+                We do not simply make introductions — we build the structures, manage the
                 relationships, and stay in the room until projects are completed and capital has
                 performed. Clients engage Zebcha because they need a partner who can carry a
                 transaction from concept to commissioning.
