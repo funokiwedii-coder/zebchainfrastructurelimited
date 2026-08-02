@@ -122,7 +122,7 @@ function HomePage() {
           <div className="max-w-4xl">
             <Reveal variant="fade" delay={0}>
               <div className="text-[11px] font-semibold uppercase tracking-[0.25em] text-ochre">
-                {"\u00a0"}PROJECT MANAGEMENT . INVESTMENT FACILITATION
+                {"\u00a0"}PROJECT PREPARATION. INVESTMENT FACILITATION
               </div>
             </Reveal>
             <Reveal variant="up" delay={120}>
