@@ -7,13 +7,13 @@ export function SiteFooter() {
       <div className="container-editorial grid gap-12 py-16 md:grid-cols-12">
         <div className="md:col-span-5">
           <div className="flex items-center gap-4">
-            <div className="rounded-sm bg-ivory px-3 py-2">
-              <img src={zebchaLogo} alt="Zebcha Infrastructure" className="h-9 w-auto" />
+            <div className="px-3 py-2">
+              <img src={zebchaLogo} alt="Zebcha Infrastructure Limited" className="h-9 w-auto" style={{ mixBlendMode: "multiply" }} />
             </div>
             <div>
-              <div className="font-display text-xl">Zebcha Infrastructure</div>
+              <div className="font-display text-xl">Zebcha Infrastructure Limited</div>
               <div className="text-[11px] uppercase tracking-[0.2em] text-ivory/60">
-                Building the continent
+                Z to A Infrastructure
               </div>
             </div>
           </div>
