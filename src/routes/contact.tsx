@@ -93,10 +93,10 @@ function ContactPage() {
                 </dt>
                 <dd className="mt-1">
                   <a
-                    href="tel:+2348172495115"
+                    href="tel:+2348120002444"
                     className="font-display text-lg text-foreground hover:text-terracotta"
                   >
-                    +234 817 249 5115
+                    +234 812 000 2444
                   </a>
                 </dd>
               </div>
@@ -112,10 +112,10 @@ function ContactPage() {
                 </dt>
                 <dd className="mt-1">
                   <a
-                    href="mailto:tope@potomakwealth.com"
+                    href="mailto:info@zebchaafrica.com"
                     className="font-display text-lg text-foreground hover:text-terracotta"
                   >
-                    tope@potomakwealth.com
+                    info@zebchaafrica.com
                   </a>
                 </dd>
               </div>

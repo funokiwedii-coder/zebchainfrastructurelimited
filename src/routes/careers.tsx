@@ -32,27 +32,27 @@ export const Route = createFileRoute("/careers")({
 const values = [
   {
     icon: Briefcase,
-    title: "Meaningful work",
+    title: "Transformative Work",
     detail:
-      "Contribute to transactions of national significance — power, transport, maritime and beyond.",
+      "Transactions of national significance — power, maritime, transport — not incremental projects.",
   },
   {
     icon: Users,
-    title: "Senior-led teams",
+    title: "Mentorship",
     detail:
-      "Learn alongside practitioners with deep experience in project finance, PPPs and execution.",
+      "Direct mentorship from PPP and project finance practitioners with deep track records.",
   },
   {
     icon: Globe2,
-    title: "Local depth, global standards",
+    title: "Global Vision – Local Action",
     detail:
-      "Work to international project finance standards while staying close to the ground in-market.",
+      "International finance discipline applied in-market, with access to EU financing networks.",
   },
   {
     icon: TrendingUp,
     title: "Real growth",
     detail:
-      "Clear paths for advancement, ownership of mandates, and exposure to senior counterparties.",
+      "Clear advancement paths, mandate ownership and exposure to C-suite decision-making.",
   },
 ];
 
