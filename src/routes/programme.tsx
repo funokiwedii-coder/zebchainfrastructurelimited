@@ -6,17 +6,17 @@ import { Reveal } from "@/components/Reveal";
 export const Route = createFileRoute("/programme")({
   head: () => ({
     meta: [
-      { title: "The Africa Infrastructure Programme — Zebcha" },
+      { title: "Programmes — Africa Infrastructure Programme & Zebcha Frontier Fund" },
       {
         name: "description",
         content:
-          "The AIP funds bankable African infrastructure up to $15B per year. Nine sectors, $50M minimum, 90-day financial close. Read the structure and process.",
+          "The AIP funds bankable African infrastructure up to $15B per year, while the Zebcha Frontier Fund is a $25M early-stage project preparation facility.",
       },
-      { property: "og:title", content: "The Africa Infrastructure Programme" },
+      { property: "og:title", content: "Zebcha Infrastructure Programmes" },
       {
         property: "og:description",
         content:
-          "Nine infrastructure sectors. $15B funding ceiling. 90-day path to financial close. The AIP explained.",
+          "Africa Infrastructure Programme and Zebcha Frontier Fund: capital, preparation and execution for large-scale infrastructure.",
       },
       { property: "og:image", content: infraBridge },
       { property: "twitter:image", content: infraBridge },
