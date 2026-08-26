@@ -94,7 +94,7 @@ function RootComponent() {
 }
 
 function WhatsAppFloat() {
-  const phone = "2347037351590"; // +234 703 735 1590, no leading 0, no symbols
+  const phone = "2348120002444"; // +234 812 000 2444, no leading 0, no symbols
   const message = encodeURIComponent(
     "Hello Zebcha, I'd like to enquire about your services."
   );
