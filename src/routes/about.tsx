@@ -30,17 +30,19 @@ type Member = {
 };
 
 const team: Member[] = [
-  { name: "Temitope Akinyemi", role: "MD / CEO", photo: "/team-temitope.jpg" },
-  { name: "Gideon Dikedi", role: "Team Lead", photo: "/team-gideon.jpg" },
-  { name: "Daniel Umoru", role: "Team Lead", photo: "/team-daniel.jpg" },
-  { name: "Favour Unokiwedi", role: "Assistant Team Lead (Admin)" },
-  { name: "Smart Michael", role: "Assistant Team Lead" },
-  { name: "Praise Ossy Nwoye", role: "Assistant Team Lead" },
-  { name: "Success Ezea", role: "Team Member" },
-  { name: "Christiana Olatunji", role: "Team Member" },
+  { name: "[MD/CEO name — to be confirmed]", role: "MD / CEO" },
+  { name: "Gideon Dikedi", role: "Senior Associate" },
+  { name: "Daniel Umoru", role: "Senior Associate" },
+  { name: "Bola Jimoh", role: "Senior Associate" },
+  { name: "Favour Unokiwedi", role: "Associate" },
+  { name: "Smart Michael", role: "Associate" },
+  { name: "Praise Ossy Nwoye", role: "Associate" },
+  { name: "Christiana Olatunji", role: "Analyst" },
+  { name: "Success Ezea", role: "Analyst" },
 ];
 
 function initials(name: string) {
+  if (name.startsWith("[")) return "TBC";
   return name
     .split(" ")
     .map((n) => n[0])
