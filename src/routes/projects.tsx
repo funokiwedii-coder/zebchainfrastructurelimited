@@ -130,7 +130,7 @@ function ProjectsPage() {
       </section>
 
       <section className="container-editorial mt-8 mb-24">
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {featuredProjects.map((p, i) => (
             <Reveal key={p.title} variant="up" delay={(i % 4) * 90}>
               <ProjectCard p={p} />
