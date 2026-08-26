@@ -1,25 +1,25 @@
 import { createFileRoute } from "@tanstack/react-router";
-import infraBridge from "@/assets/infra-bridge.jpg";
-import infraSolar from "@/assets/infra-solar.jpg";
+import { Building2, ImageIcon } from "lucide-react";
 import infraPort from "@/assets/infra-port.jpg";
-import infraHousing from "@/assets/infra-housing.jpg";
 import { Reveal } from "@/components/Reveal";
 
 export const Route = createFileRoute("/projects")({
   head: () => ({
     meta: [
-      { title: "Projects — Zebcha Infrastructure" },
+      { title: "Featured Projects — Zebcha Infrastructure" },
       {
         name: "description",
         content:
-          "A multi-billion-dollar portfolio of African infrastructure projects: ports, refineries, solar, housing, smart cities, water, and transport.",
+          "Eight flagship infrastructure projects across Nigeria and Africa: housing, energy, transport, water, maritime and advisory programmes.",
       },
-      { property: "og:title", content: "Zebcha Projects Portfolio" },
+      { property: "og:title", content: "Featured Projects — Zebcha Infrastructure" },
       {
         property: "og:description",
         content:
-          "Selected works across Nigeria and Africa — from $1.5B FLNG to 30MW solar and 90,000 bpd refinery.",
+          "From Green Energy City to the Integrated Shipbuilding Yard — explore Zebcha's project preparation and investment facilitation portfolio.",
       },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { property: "og:image", content: infraPort },
       { property: "twitter:image", content: infraPort },
     ],
@@ -29,129 +29,76 @@ export const Route = createFileRoute("/projects")({
 
 type Project = {
   title: string;
-  value?: string;
-  location: string;
   sector: string;
-  detail: string;
+  location: string;
+  value: string;
+  description: string;
 };
 
-const nigeria: Project[] = [
+const featuredProjects: Project[] = [
   {
-    title: "Truck & Trailer Park Project",
-    location: "16 locations, Nigeria",
+    title: "Green Energy City",
+    sector: "Housing · PPP",
+    location: "Nasarawa State",
+    value: "₦280B (~$175M)",
+    description:
+      "50,000 housing units delivered over 10 years. Backed by a Federal Ministry of Finance sovereign guarantee. Targets federal civil servants and private sector workers.",
+  },
+  {
+    title: "Tetracore (Urea & GTL Complex)",
+    sector: "Agro · Oil & Gas",
+    location: "Delta & Ogun States",
+    value: "$616M + $437M",
+    description:
+      "1,200 TPD ammonia-urea fertilizer complex in Koko, Delta State, and a 5,000 BPD Gas-to-Liquids facility in Atakobo, Ogun State. Zebcha is providing transactional advisory and fundraising support.",
+  },
+  {
+    title: "2nd Niger Bridge",
     sector: "Transport · PPP",
-    detail: "Nationwide PPP for the Federal Ministry of Works.",
+    location: "Asaba–Onitsha",
+    value: "Toll Concession",
+    description:
+      "12.4km PPP toll concession connecting Delta and Anambra States. Structured in partnership with the Nigerian Sovereign Investment Authority (NSIA). A flagship Nigerian infrastructure PPP.",
+  },
+  {
+    title: "Mission 300",
+    sector: "Energy · Advisory",
+    location: "Africa — All States",
+    value: "$32.8B Programme",
+    description:
+      "Zebcha provided advisory support to the Federal Ministry of Finance for Nigeria's Mission 300 continental energy access programme. Presented at the private sector roundtable, April 2025.",
+  },
+  {
+    title: "COPIP (Clean Oceans)",
+    sector: "Water · Environment",
+    location: "Sub-Saharan Africa",
+    value: "EIB Programme",
+    description:
+      "Zebcha serves as consultant for Sub-Saharan Africa under the EIB Clean Oceans Project Identification and Preparation (COPIP) programme. Active engagements in Kenya, Ghana, Benin, Senegal, Côte d'Ivoire and CAR.",
+  },
+  {
+    title: "Don Domingo Water Company Limited",
+    sector: "Water · PPP",
+    location: "Delta State",
+    value: "$1.4 Billion",
+    description:
+      "Don Domingo Water Company Limited is a Nigerian company engaged in the production and distribution of quality drinking water. Zebcha is providing project preparation and investment facilitation support.",
+  },
+  {
+    title: "Lagos–Ibadan Expressway Rehabilitation",
+    sector: "Transport · Advisory",
+    location: "Lagos / Ogun / Oyo States",
+    value: "127.6km Federal Highway",
+    description:
+      "Rehabilitation and upgrading of Nigeria's busiest interstate highway to improve road safety, traffic flow, and connectivity between Lagos and Ibadan. Zebcha's role: Transaction & Financial Advisory.",
   },
   {
     title: "Integrated Shipbuilding Yard",
-    value: "$613M",
-    location: "Lagos",
     sector: "Maritime · PPP",
-    detail: "Development of a major shipbuilding yard under PPP structure.",
-  },
-  {
-    title: "2,000-Hectare Rice Farm",
-    value: "$9.1M",
-    location: "Owerri",
-    sector: "Agro · Processing",
-    detail: "Integrated farm with a 12,000-tonne per annum processing plant.",
-  },
-  {
-    title: "30MW Solar Solutions",
-    location: "Across Nigeria",
-    sector: "Power · Renewables",
-    detail: "Ongoing transaction advisory and financing since 2021.",
-  },
-  {
-    title: "Kaduna–Jos Pipeline",
-    location: "167km, Nigeria",
-    sector: "Oil & Gas · PPP",
-    detail: "Rehabilitation, maintenance and security project under PPP.",
-  },
-  {
-    title: "Security & Telecoms Network PPP",
-    value: "$786M",
-    location: "Nigeria",
-    sector: "Telecoms · PPP",
-    detail: "Advisory under a 30-year concession.",
-  },
-  {
-    title: "Asokoro Hills Smart City",
-    value: "$700M",
-    location: "Abuja, 249 ha",
-    sector: "Housing · Smart City",
-    detail: "Delivering 7,000+ units in a flagship Abuja development.",
-  },
-  {
-    title: "Floating LNG Facility",
-    value: "$1.5B",
-    location: "Nigeria",
-    sector: "Oil & Gas · PPP",
-    detail: "Monetising flared and stranded gas. Feasibility & development.",
-  },
-  {
-    title: "Warri Water Reticulation",
-    value: "$35.4M",
-    location: "Delta State",
-    sector: "Water · PPP",
-    detail: "Transaction advisory under a PPP concession.",
-  },
-  {
-    title: "Smart Truck Park & Logistics Hub",
-    value: "$286M",
-    location: "Lagos port corridors",
-    sector: "Logistics",
-    detail: "Developed under Zedx Limited along Nigeria's port corridors.",
-  },
-  {
-    title: "ASSETS — Smart Energy & Transport",
-    value: "$700M",
-    location: "Abuja",
-    sector: "Smart Systems",
-    detail: "Abuja Sustainable Smart Energy & Transport System.",
-  },
-  {
-    title: "Refinery Project — 90,000 bpd",
-    value: "$1B",
-    location: "Nigeria",
-    sector: "Oil & Gas",
-    detail: "Ongoing project development and financing arrangement.",
-  },
-  {
-    title: "Silver Refinery Development",
-    value: "$200M",
-    location: "Ebonyi",
-    sector: "Mining",
-    detail: "Development of a silver refining facility.",
-  },
-  {
-    title: "Affordable Housing & Market Project",
-    location: "Sokoto State",
-    sector: "Housing · Public",
-    detail: "Multi-million-dollar partnership with the Sokoto State Government.",
-  },
-];
-
-const africa: Project[] = [
-  {
-    title: "Mineral Trading Platform",
-    value: "$1M / month",
-    location: "CAR ↔ New York",
-    sector: "Trading",
-    detail: "Development of a mineral trading platform between CAR and the USA.",
-  },
-  {
-    title: "Shimoni Integrated Development",
-    location: "Kwale County, Kenya",
-    sector: "Industrial · Port",
-    detail: "Due diligence advisory for a multi-billion-dollar industrial city and port.",
-  },
-  {
-    title: "Suncity Development Project",
-    value: "$80M",
-    location: "Ghana, 4,000 acres",
-    sector: "Housing",
-    detail: "Transaction advisory and fund arrangement for a major housing project.",
+    location: "Lagos",
+    value: "$613M",
+    description:
+      "Nigeria's first integrated shipbuilding yard developed under a PPP concession. Develops indigenous maritime industrial capacity and reduces Nigeria's dependence on foreign ship maintenance.",
   },
 ];
 
@@ -160,67 +107,24 @@ function ProjectsPage() {
     <>
       <section className="container-editorial pt-20 pb-12 md:pt-28">
         <Reveal variant="fade">
-          <div className="eyebrow">Selected works</div>
+          <div className="eyebrow">Featured projects</div>
         </Reveal>
         <Reveal variant="up" delay={120}>
           <h1 className="mt-4 max-w-4xl font-display text-5xl leading-[1.05] text-foreground md:text-7xl">
-            A multi-billion-dollar pipeline of African infrastructure.
+            A portfolio built from project preparation to financial close.
           </h1>
         </Reveal>
         <Reveal variant="up" delay={240}>
           <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            Zebcha and its partners specialise in developing and arranging financing for large-scale
-            infrastructure — over $1.2bn of PPPs approved by Nigeria's FEC in 2020 alone.
+            Zebcha's featured projects span housing, energy, transport, water and maritime infrastructure across Nigeria and Africa — each one structured for bankability and long-term impact.
           </p>
         </Reveal>
       </section>
 
-      {/* Hero strip of imagery */}
-      <section className="container-editorial mt-8 grid grid-cols-2 gap-2 md:grid-cols-4">
-        {[infraBridge, infraSolar, infraPort, infraHousing].map((src, i) => (
-          <Reveal key={i} variant="scale" delay={i * 120} className="aspect-[4/5] overflow-hidden rounded-sm bg-muted">
-            <img
-              src={src}
-              alt=""
-              loading="lazy"
-              className="h-full w-full object-cover transition-transform duration-700 hover:scale-[1.06]"
-              width={800}
-              height={1000}
-            />
-          </Reveal>
-        ))}
-      </section>
-
-      {/* Nigeria portfolio */}
-      <section className="container-editorial mt-24">
-        <Reveal as="div" variant="up" className="flex items-end justify-between gap-6 border-b border-border pb-6">
-          <h2 className="font-display text-4xl text-foreground md:text-5xl">Nigeria portfolio</h2>
-          <div className="hidden text-sm text-muted-foreground md:block">
-            {nigeria.length} projects
-          </div>
-        </Reveal>
-        <div className="grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-3">
-          {nigeria.map((p, i) => (
-            <Reveal key={p.title} variant="up" delay={(i % 3) * 90}>
-              <ProjectCard p={p} />
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
-      {/* Africa portfolio */}
-      <section className="container-editorial mt-24 mb-16">
-        <Reveal as="div" variant="up" className="flex items-end justify-between gap-6 border-b border-border pb-6">
-          <h2 className="font-display text-4xl text-foreground md:text-5xl">
-            Africa engagements
-          </h2>
-          <div className="hidden text-sm text-muted-foreground md:block">
-            via Zebcha-COPIP
-          </div>
-        </Reveal>
-        <div className="grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-3">
-          {africa.map((p, i) => (
-            <Reveal key={p.title} variant="up" delay={(i % 3) * 90}>
+      <section className="container-editorial mt-8 mb-24">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {featuredProjects.map((p, i) => (
+            <Reveal key={p.title} variant="up" delay={(i % 4) * 90}>
               <ProjectCard p={p} />
             </Reveal>
           ))}
@@ -232,18 +136,23 @@ function ProjectsPage() {
 
 function ProjectCard({ p }: { p: Project }) {
   return (
-    <article className="group flex h-full flex-col bg-card p-7 transition-colors hover:bg-bone">
-      <div className="flex items-start justify-between gap-4">
-        <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-terracotta">
+    <article className="group flex h-full flex-col overflow-hidden rounded-sm border border-border bg-card transition-shadow hover:shadow-lg">
+      <div className="relative aspect-[16/10] bg-muted">
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-muted-foreground/60">
+          <ImageIcon className="h-8 w-8" strokeWidth={1.5} />
+          <span className="text-xs font-medium uppercase tracking-wider">Photo placeholder</span>
+        </div>
+        <div className="absolute left-3 top-3 flex items-center gap-1.5 rounded-full bg-background/90 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-foreground backdrop-blur">
+          <Building2 className="h-3 w-3" />
           {p.sector}
         </div>
-        {p.value && (
-          <div className="font-display text-xl text-forest">{p.value}</div>
-        )}
       </div>
-      <h3 className="mt-4 font-display text-2xl leading-tight text-foreground">{p.title}</h3>
-      <p className="mt-2 text-sm text-muted-foreground">{p.location}</p>
-      <p className="mt-4 text-sm leading-relaxed text-foreground/80">{p.detail}</p>
+      <div className="flex flex-1 flex-col p-6">
+        <div className="font-display text-xl text-forest">{p.value}</div>
+        <h3 className="mt-3 font-display text-xl leading-tight text-foreground">{p.title}</h3>
+        <p className="mt-1 text-sm text-muted-foreground">{p.location}</p>
+        <p className="mt-4 flex-1 text-sm leading-relaxed text-foreground/80">{p.description}</p>
+      </div>
     </article>
   );
 }
