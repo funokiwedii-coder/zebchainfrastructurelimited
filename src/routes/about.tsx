@@ -42,6 +42,7 @@ const team: Member[] = [
 ];
 
 function initials(name: string) {
+  if (name.startsWith("[")) return "TBC";
   return name
     .split(" ")
     .map((n) => n[0])
