@@ -70,6 +70,76 @@ const steps = [
   },
 ];
 
+const zffStats = [
+  {
+    v: "$670M/year",
+    l: "Annual Project Preparation Funding Needed",
+    d: "Zebcha estimates Nigeria needs $670M every year for project preparation alone — feasibility, ESIA, permits and financial modelling — just to maintain healthy infrastructure growth.",
+  },
+  {
+    v: "$33.2B/year",
+    l: "Annual Infrastructure Investment Required",
+    d: "Nigeria's NIIMP target: infrastructure investment must triple from ~$10B to $33.2B per annum to meet the country's growth objectives.",
+  },
+  {
+    v: "2.6% – 9%",
+    l: "Project Preparation Cost Rate",
+    d: "In mature PPP markets (e.g. UK), advisory costs average 2.6% of project value. In frontier markets like Nigeria, this rises to 4–9% due to the volume of risks that must be hedged.",
+  },
+  {
+    v: "$25M",
+    l: "ZFF Fund Size",
+    d: "The $25M fund is designed to finance the preparation of $2.5B worth of projects — or projects generating $250M p.a. in revenues — across infrastructure, housing, agro and manufacturing.",
+  },
+];
+
+const zffSectors = [
+  "Infrastructure",
+  "Affordable Housing",
+  "Agro-Processing",
+  "Manufacturing",
+];
+
+const zffSteps = [
+  {
+    n: "01",
+    t: "Ideation",
+    d: "Idea generation, validation and sector alignment ($5,000 threshold).",
+  },
+  {
+    n: "02",
+    t: "Insemination",
+    d: "Concept refinement, demand studies, strategic partnerships ($15,000).",
+  },
+  {
+    n: "03",
+    t: "Insight",
+    d: "Business plan, ESIA, permits, market studies, investment memo ($2M).",
+  },
+  {
+    n: "04",
+    t: "Implementation",
+    d: "Financial close, construction, commercialisation ($10M–$1B).",
+  },
+  {
+    n: "05",
+    t: "Issue",
+    d: "Exit: trade sale, buyback, IPO or sale to PE investors (3–10x return).",
+  },
+];
+
+const zffParams = [
+  ["Target Sectors", "Infrastructure · Affordable Housing · Agro-Processing · Manufacturing"],
+  ["Fund Size", "$25M"],
+  ["Average Investment", "$1.5M per deal"],
+  ["Fund Life", "8+2 years"],
+  ["Target IRR", "32%+"],
+  [
+    "Manager",
+    "Zebcha Frontier Limited (50/50 JV — Zebcha Infrastructure Limited & New Frontier Development Limited)",
+  ],
+];
+
 function ProgrammePage() {
   return (
     <>
