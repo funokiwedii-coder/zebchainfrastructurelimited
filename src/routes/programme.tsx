@@ -6,17 +6,17 @@ import { Reveal } from "@/components/Reveal";
 export const Route = createFileRoute("/programme")({
   head: () => ({
     meta: [
-      { title: "The Africa Infrastructure Programme — Zebcha" },
+      { title: "Programmes — Africa Infrastructure Programme & Zebcha Frontier Fund" },
       {
         name: "description",
         content:
-          "The AIP funds bankable African infrastructure up to $15B per year. Nine sectors, $50M minimum, 90-day financial close. Read the structure and process.",
+          "The AIP funds bankable African infrastructure up to $15B per year, while the Zebcha Frontier Fund is a $25M early-stage project preparation facility.",
       },
-      { property: "og:title", content: "The Africa Infrastructure Programme" },
+      { property: "og:title", content: "Zebcha Infrastructure Programmes" },
       {
         property: "og:description",
         content:
-          "Nine infrastructure sectors. $15B funding ceiling. 90-day path to financial close. The AIP explained.",
+          "Africa Infrastructure Programme and Zebcha Frontier Fund: capital, preparation and execution for large-scale infrastructure.",
       },
       { property: "og:image", content: infraBridge },
       { property: "twitter:image", content: infraBridge },
@@ -68,6 +68,76 @@ const steps = [
     t: "Implementation",
     d: "Delivery by international consortium working alongside the local execution team.",
   },
+];
+
+const zffStats = [
+  {
+    v: "$670M/year",
+    l: "Annual Project Preparation Funding Needed",
+    d: "Zebcha estimates Nigeria needs $670M every year for project preparation alone — feasibility, ESIA, permits and financial modelling — just to maintain healthy infrastructure growth.",
+  },
+  {
+    v: "$33.2B/year",
+    l: "Annual Infrastructure Investment Required",
+    d: "Nigeria's NIIMP target: infrastructure investment must triple from ~$10B to $33.2B per annum to meet the country's growth objectives.",
+  },
+  {
+    v: "2.6% – 9%",
+    l: "Project Preparation Cost Rate",
+    d: "In mature PPP markets (e.g. UK), advisory costs average 2.6% of project value. In frontier markets like Nigeria, this rises to 4–9% due to the volume of risks that must be hedged.",
+  },
+  {
+    v: "$25M",
+    l: "ZFF Fund Size",
+    d: "The $25M fund is designed to finance the preparation of $2.5B worth of projects — or projects generating $250M p.a. in revenues — across infrastructure, housing, agro and manufacturing.",
+  },
+];
+
+const zffSectors = [
+  "Infrastructure",
+  "Affordable Housing",
+  "Agro-Processing",
+  "Manufacturing",
+];
+
+const zffSteps = [
+  {
+    n: "01",
+    t: "Ideation",
+    d: "Idea generation, validation and sector alignment ($5,000 threshold).",
+  },
+  {
+    n: "02",
+    t: "Insemination",
+    d: "Concept refinement, demand studies, strategic partnerships ($15,000).",
+  },
+  {
+    n: "03",
+    t: "Insight",
+    d: "Business plan, ESIA, permits, market studies, investment memo ($2M).",
+  },
+  {
+    n: "04",
+    t: "Implementation",
+    d: "Financial close, construction, commercialisation ($10M–$1B).",
+  },
+  {
+    n: "05",
+    t: "Issue",
+    d: "Exit: trade sale, buyback, IPO or sale to PE investors (3–10x return).",
+  },
+];
+
+const zffParams = [
+  ["Target Sectors", "Infrastructure · Affordable Housing · Agro-Processing · Manufacturing"],
+  ["Fund Size", "$25M"],
+  ["Average Investment", "$1.5M per deal"],
+  ["Fund Life", "8+2 years"],
+  ["Target IRR", "32%+"],
+  [
+    "Manager",
+    "Zebcha Frontier Limited (50/50 JV — Zebcha Infrastructure Limited & New Frontier Development Limited)",
+  ],
 ];
 
 function ProgrammePage() {
@@ -236,6 +306,171 @@ function ProgrammePage() {
               </Link>
             </div>
           </Reveal>
+        </div>
+      </section>
+
+      {/* ZFF Hero */}
+      <section className="container-editorial mt-24 pt-20 pb-16 md:pt-28">
+        <div className="grid gap-10 md:grid-cols-12 md:gap-16">
+          <Reveal as="div" variant="up" className="md:col-span-7">
+            <div className="eyebrow">Frontier fund</div>
+            <h2 className="mt-4 font-display text-5xl leading-[1.05] text-foreground md:text-7xl">
+              The Zebcha Frontier Fund (ZFF).
+            </h2>
+            <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+              A $25M early-stage project preparation fund that finances the studies, permits, and
+              advisory work needed to make infrastructure projects bankable — filling the gap between
+              concept and financial close.
+            </p>
+          </Reveal>
+          <Reveal as="div" variant="right" delay={150} className="md:col-span-5">
+            <div className="rounded-sm border border-border bg-card p-8">
+              <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-terracotta">
+                Fund parameters
+              </div>
+              <dl className="mt-6 space-y-5">
+                {[
+                  ["Fund Size", "$25M"],
+                  ["Average Investment", "$1.5M per deal"],
+                  ["Fund Life", "8+2 years"],
+                  ["Target IRR", "32%+"],
+                  ["Manager", "Zebcha Frontier Limited"],
+                ].map(([k, v]) => (
+                  <div
+                    key={k}
+                    className="flex items-baseline justify-between gap-4 border-b border-border pb-3 last:border-0"
+                  >
+                    <dt className="text-xs uppercase tracking-[0.12em] text-muted-foreground">
+                      {k}
+                    </dt>
+                    <dd className="font-display text-xl text-foreground">{v}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ZFF Problem / Stats */}
+      <section className="bg-bone py-24">
+        <div className="container-editorial">
+          <Reveal as="div" variant="up" className="max-w-2xl">
+            <div className="eyebrow">The gap</div>
+            <h2 className="mt-4 font-display text-4xl leading-tight text-foreground md:text-5xl">
+              Why project preparation needs its own capital.
+            </h2>
+          </Reveal>
+          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {zffStats.map((s, i) => (
+              <Reveal
+                key={s.l}
+                variant="up"
+                delay={i * 100}
+                className="rounded-sm border border-border bg-card p-6"
+              >
+                <div className="text-[11px] font-semibold uppercase tracking-[0.15em] text-terracotta">
+                  {s.l}
+                </div>
+                <div className="mt-3 font-display text-4xl text-foreground">{s.v}</div>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{s.d}</p>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ZFF Sectors */}
+      <section className="container-editorial py-24">
+        <div className="grid gap-10 md:grid-cols-12">
+          <Reveal as="div" variant="left" className="md:col-span-4">
+            <div className="eyebrow">Four target sectors</div>
+            <h2 className="mt-4 font-display text-4xl leading-tight text-foreground md:text-5xl">
+              Where the fund is deployed.
+            </h2>
+            <p className="mt-5 text-muted-foreground">
+              Early-stage preparation capital across infrastructure and adjacent productive sectors.
+            </p>
+          </Reveal>
+          <div className="md:col-span-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2">
+              {zffSectors.map((s, i) => (
+                <Reveal
+                  key={s}
+                  variant="up"
+                  delay={(i % 2) * 80 + Math.floor(i / 2) * 60}
+                  className="flex items-baseline gap-5 border-b border-border py-5"
+                >
+                  <span className="font-display text-2xl text-terracotta">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="font-display text-xl text-foreground">{s}</span>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ZFF Process */}
+      <section className="relative overflow-hidden bg-forest-deep py-24 text-ivory">
+        <div className="container-editorial">
+          <Reveal as="div" variant="up" className="flex flex-wrap items-end justify-between gap-6">
+            <div>
+              <div className="text-[11px] font-semibold uppercase tracking-[0.25em] text-ochre">
+                Five-stage incubation
+              </div>
+              <h2 className="mt-4 font-display text-4xl md:text-5xl">From idea to exit.</h2>
+            </div>
+            <div className="font-display text-2xl italic text-ivory/60">
+              Capital at every milestone.
+            </div>
+          </Reveal>
+
+          <ol className="mt-14 grid gap-px overflow-hidden rounded-sm bg-ivory/15 md:grid-cols-2 lg:grid-cols-3">
+            {zffSteps.map((s, i) => (
+              <Reveal
+                key={s.n}
+                as="li"
+                variant="scale"
+                delay={i * 110}
+                className="bg-forest-deep p-8"
+              >
+                <div className="font-display text-3xl text-ochre">{s.n}</div>
+                <h3 className="mt-3 font-display text-2xl text-ivory">{s.t}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-ivory/75">{s.d}</p>
+              </Reveal>
+            ))}
+          </ol>
+
+          <Reveal variant="up" delay={200}>
+            <div className="mt-12">
+              <Link
+                to="/contact"
+                className="group inline-flex items-center gap-2 rounded-sm bg-ochre px-7 py-3.5 text-sm font-semibold text-forest-deep transition-colors hover:bg-ivory"
+              >
+                Pitch the ZFF
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </Link>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ZFF Key Parameters */}
+      <section className="container-editorial py-16">
+        <div className="rounded-sm border border-border bg-card p-8">
+          <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-terracotta">
+            Fund snapshot
+          </div>
+          <dl className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {zffParams.map(([k, v]) => (
+              <div key={k}>
+                <dt className="text-xs uppercase tracking-[0.12em] text-muted-foreground">{k}</dt>
+                <dd className="mt-1 text-base leading-snug text-foreground">{v}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </section>
     </>
