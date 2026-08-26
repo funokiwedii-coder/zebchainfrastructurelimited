@@ -45,12 +45,20 @@ const featuredProjects: Project[] = [
       "50,000 housing units delivered over 10 years. Backed by a Federal Ministry of Finance sovereign guarantee. Targets federal civil servants and private sector workers.",
   },
   {
-    title: "Tetracore (Urea & GTL Complex)",
-    sector: "Agro · Oil & Gas",
-    location: "Delta & Ogun States",
-    value: "$616M + $437M",
+    title: "Tetracore Urea Complex",
+    sector: "Agro · Industrial",
+    location: "Koko, Delta State",
+    value: "$616M",
     description:
-      "1,200 TPD ammonia-urea fertilizer complex in Koko, Delta State, and a 5,000 BPD Gas-to-Liquids facility in Atakobo, Ogun State. Zebcha is providing transactional advisory and fundraising support.",
+      "1,200 TPD ammonia-urea fertilizer complex in Koko, Delta State. Zebcha is providing transactional advisory and fundraising support.",
+  },
+  {
+    title: "Tetracore Gas-to-Liquids Facility",
+    sector: "Oil & Gas · Industrial",
+    location: "Atakobo, Ogun State",
+    value: "$437M",
+    description:
+      "5,000 BPD Gas-to-Liquids facility in Atakobo, Ogun State. Zebcha is providing transactional advisory and fundraising support.",
   },
   {
     title: "2nd Niger Bridge",
@@ -122,9 +130,9 @@ function ProjectsPage() {
       </section>
 
       <section className="container-editorial mt-8 mb-24">
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {featuredProjects.map((p, i) => (
-            <Reveal key={p.title} variant="up" delay={(i % 4) * 90}>
+            <Reveal key={p.title} variant="up" delay={(i % 3) * 90}>
               <ProjectCard p={p} />
             </Reveal>
           ))}
