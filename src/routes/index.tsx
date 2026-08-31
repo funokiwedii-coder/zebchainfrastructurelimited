@@ -1,7 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import heroAfrica from "@/assets/hero-africa.jpg";
-import infraBridge from "@/assets/infra-bridge.jpg";
 import infraSolar from "@/assets/infra-solar.jpg";
 import infraPort from "@/assets/infra-port.jpg";
 import africaTopo from "@/assets/africa-topo.png";
