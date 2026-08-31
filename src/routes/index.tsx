@@ -1,10 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import heroAfrica from "@/assets/hero-africa.jpg";
-import infraBridge from "@/assets/infra-bridge.jpg";
 import infraSolar from "@/assets/infra-solar.jpg";
 import infraPort from "@/assets/infra-port.jpg";
 import africaTopo from "@/assets/africa-topo.png";
+import tetracoreAsset from "@/assets/tetracore.jpg.asset.json";
+import nigerBridgeAsset from "@/assets/niger-bridge.jpg.asset.json";
 import { Reveal } from "@/components/Reveal";
 import { useParallax } from "@/hooks/useParallax";
 
@@ -54,14 +55,14 @@ const featured = [
       "50,000 housing units over 10 years in Nasarawa State — ₦280B (~$175M), backed by a Federal Ministry of Finance sovereign guarantee.",
   },
   {
-    img: infraBridge,
+    img: nigerBridgeAsset.url,
     tag: "Transport · PPP",
     title: "2nd Niger Bridge",
     detail:
       "12.4km PPP toll concession connecting Delta and Anambra States, structured in partnership with the NSIA.",
   },
   {
-    img: infraPort,
+    img: tetracoreAsset.url,
     tag: "Oil & Gas · Industrial",
     title: "Tetracore Gas-to-Liquids Facility",
     detail:
