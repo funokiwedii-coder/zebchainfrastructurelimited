@@ -47,22 +47,25 @@ const services = [
 
 const featured = [
   {
-    img: infraBridge,
-    tag: "Transport",
-    title: "Truck & Trailer Park Programme",
-    detail: "Multi-site PPP advisory across 16 federal locations, Nigeria.",
+    img: infraSolar,
+    tag: "Housing · PPP",
+    title: "Green Energy City",
+    detail:
+      "50,000 housing units over 10 years in Nasarawa State — ₦280B (~$175M), backed by a Federal Ministry of Finance sovereign guarantee.",
   },
   {
-    img: infraSolar,
-    tag: "Power",
-    title: "30MW Solar Transactions",
-    detail: "Ongoing transaction advisory and financing structuring across Nigeria.",
+    img: infraBridge,
+    tag: "Transport · PPP",
+    title: "2nd Niger Bridge",
+    detail:
+      "12.4km PPP toll concession connecting Delta and Anambra States, structured in partnership with the NSIA.",
   },
   {
     img: infraPort,
-    tag: "Maritime",
-    title: "Integrated Shipbuilding Yard",
-    detail: "$613m PPP development structuring, Lagos.",
+    tag: "Oil & Gas · Industrial",
+    title: "Tetracore Gas-to-Liquids Facility",
+    detail:
+      "5,000 BPD Gas-to-Liquids facility in Atakobo, Ogun State — $437M transactional advisory and fundraising support.",
   },
 ];
 
