@@ -1,30 +1,26 @@
-# Extract Project Photos from Slide Screenshot
+# Update About Page Stats
 
 ## Goal
-Take the screenshot of the projects slide (to be uploaded), extract each project's photo, and use them on the Projects page and homepage featured cards.
+Replace the current 3-stat strip on the About page with the 6 stats from the provided slide.
 
-## Steps
+## Changes — `src/routes/about.tsx`
 
-1. **Extract photos from the screenshot**
-   - Read the uploaded screenshot to locate each photo and its label/title.
-   - Crop each project photo out with Python (PIL), one file per project.
-   - Enhance/upscale crops if the source resolution makes them soft.
-   - Quality note: results depend on the screenshot's resolution — a full-resolution capture works best.
+Replace the existing stats array with a 6-item grid (3 columns × 2 rows on desktop):
 
-2. **Match photos to projects by label**
-   - Match each cropped photo to the correct project using the label text on the slide and the order shown:
-     Green Energy City, Tetracore Urea Complex, Tetracore Gas-to-Liquids Facility, 2nd Niger Bridge, Mission 300, COPIP (Clean Oceans), Don Domingo Water, Lagos–Ibadan Expressway, Integrated Shipbuilding Yard.
-   - Any project with no photo on the slide keeps its current "Photo placeholder" card.
+1. **$1.2B+ — PPPs Approved by FEC (2020)**
+   In 2020 alone, Zebcha facilitated over $1.2 billion in Public-Private Partnerships approved by Nigeria's Federal Executive Council — the highest decision-making body.
+2. **85+ — Infrastructure Projects**
+   85+ projects spanning power, transport, water, housing and agro-processing — across 18 of Nigeria's 36 states, plus 6 African and international engagements.
+3. **$8B+ — Cumulative Project Value**
+   The total deal value across all projects Zebcha has developed, advised on or arranged financing for since 2011 — equivalent to a mid-sized national infrastructure budget.
+4. **7,000+ — Jobs Created (2011–2026)**
+   Direct and indirect jobs generated through Zebcha's infrastructure projects over 15 years.
+5. **$2B+ — Greenfield Deals in Development**
+   New, ground-up projects currently in various stages of development — no existing revenue stream yet, higher risk but higher growth potential.
+6. **18 of 36 — Nigerian States Reached**
+   Project reach across half of Nigeria's states, demonstrating geographic breadth beyond Lagos and Abuja.
 
-3. **Upload crops as CDN assets**
-   - Upload each extracted photo with `lovable-assets` and reference via `.asset.json` pointers.
-
-4. **Projects page** (`src/routes/projects.tsx`)
-   - Add an optional `img` field to the `Project` type.
-   - Render the photo in each card's image area when present; keep the placeholder for projects without one.
-
-5. **Homepage featured cards** (`src/routes/index.tsx`)
-   - Swap the generic stock images on Green Energy City, 2nd Niger Bridge, and Tetracore Gas-to-Liquids Facility for their extracted photos.
-
-6. **Verify**
-   - Check the build and confirm both pages render the new photos correctly in the preview.
+## Design
+- Match the slide's style: dark forest-green cards with gold (ochre) numbers, bold white stat titles, and italic supporting text.
+- Scroll-reveal animations preserved, staggered per card.
+- Responsive: 1 column mobile → 2 columns tablet → 3 columns desktop.
