@@ -78,15 +78,45 @@ function AboutPage() {
 
       {/* Stats */}
       <section className="container-editorial py-20">
-        <div className="grid gap-12 md:grid-cols-3">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {[
-            { v: "$1.2B+", l: "Public-Private Partnerships approved by FEC in 2020 alone" },
-            { v: "$1B+", l: "Greenfield deals at various levels of development" },
-            { v: "EU", l: "Project finance partners funding the AIP" },
+            {
+              v: "$1.2B+",
+              t: "PPPs Approved by FEC (2020)",
+              d: "In 2020 alone, Zebcha facilitated over $1.2 billion in Public-Private Partnerships approved by Nigeria's Federal Executive Council — the highest decision-making body.",
+            },
+            {
+              v: "85+",
+              t: "Infrastructure Projects",
+              d: "85+ projects spanning power, transport, water, housing and agro-processing — across 18 of Nigeria's 36 states, plus 6 African and international engagements.",
+            },
+            {
+              v: "$8B+",
+              t: "Cumulative Project Value",
+              d: "The total deal value across all projects Zebcha has developed, advised on or arranged financing for since 2011 — equivalent to a mid-sized national infrastructure budget.",
+            },
+            {
+              v: "7,000+",
+              t: "Jobs Created (2011–2026)",
+              d: "Direct and indirect jobs generated through Zebcha's infrastructure projects over 15 years.",
+            },
+            {
+              v: "$2B+",
+              t: "Greenfield Deals in Development",
+              d: "New, ground-up projects currently in various stages of development — no existing revenue stream yet, higher risk but higher growth potential.",
+            },
+            {
+              v: "18 of 36",
+              t: "Nigerian States Reached",
+              d: "Project reach across half of Nigeria's states, demonstrating geographic breadth beyond Lagos and Abuja.",
+            },
           ].map((s, i) => (
-            <Reveal key={s.l} variant="up" delay={i * 140}>
-              <div className="font-display text-5xl text-forest">{s.v}</div>
-              <div className="mt-3 text-sm leading-relaxed text-muted-foreground">{s.l}</div>
+            <Reveal key={s.t} variant="up" delay={(i % 3) * 120 + Math.floor(i / 3) * 80}>
+              <div className="flex h-full flex-col rounded-sm bg-forest px-7 py-8 text-center text-ivory">
+                <div className="font-display text-4xl text-ochre md:text-5xl">{s.v}</div>
+                <div className="mt-3 text-sm font-semibold">{s.t}</div>
+                <p className="mt-2 text-xs leading-relaxed text-ivory/75 italic">{s.d}</p>
+              </div>
             </Reveal>
           ))}
         </div>
