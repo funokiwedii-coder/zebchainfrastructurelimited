@@ -1,10 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import heroAfrica from "@/assets/hero-africa.jpg";
-import infraSolar from "@/assets/infra-solar.jpg";
 import infraPort from "@/assets/infra-port.jpg";
 import africaTopo from "@/assets/africa-topo.png";
-import tetracoreAsset from "@/assets/tetracore.jpg.asset.json";
+import greenEnergyCityAsset from "@/assets/green-energy-city.jpg.asset.json";
+import tetracoreGtlAsset from "@/assets/tetracore-gas-to-liquids.jpg.asset.json";
 import nigerBridgeAsset from "@/assets/2nd-niger-bridge.png.asset.json";
 import { Reveal } from "@/components/Reveal";
 import { useParallax } from "@/hooks/useParallax";
@@ -48,7 +48,7 @@ const services = [
 
 const featured = [
   {
-    img: infraSolar,
+    img: greenEnergyCityAsset.url,
     tag: "Housing · PPP",
     title: "Green Energy City",
     detail:
@@ -62,7 +62,7 @@ const featured = [
       "12.4km PPP toll concession connecting Delta and Anambra States, structured in partnership with the NSIA.",
   },
   {
-    img: tetracoreAsset.url,
+    img: tetracoreGtlAsset.url,
     tag: "Oil & Gas · Industrial",
     title: "Tetracore Gas-to-Liquids Facility",
     detail:
