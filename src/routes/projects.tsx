@@ -72,7 +72,6 @@ const featuredProjects: Project[] = [
     description:
       "5,000 BPD Gas-to-Liquids facility in Atakobo, Ogun State. Zebcha is providing transactional advisory and fundraising support.",
     img: tetracoreGtlAsset.url,
-    img: tetracoreAsset.url,
   },
   {
     title: "2nd Niger Bridge",
