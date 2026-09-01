@@ -62,7 +62,7 @@ const featuredProjects: Project[] = [
     value: "$616M",
     description:
       "1,200 TPD ammonia-urea fertilizer complex in Koko, Delta State. Zebcha is providing transactional advisory and fundraising support.",
-    img: tetracoreGtlAsset.url,
+    img: tetracoreAsset.url,
   },
   {
     title: "Tetracore Gas-to-Liquids Facility",
@@ -71,6 +71,7 @@ const featuredProjects: Project[] = [
     value: "$437M",
     description:
       "5,000 BPD Gas-to-Liquids facility in Atakobo, Ogun State. Zebcha is providing transactional advisory and fundraising support.",
+    img: tetracoreGtlAsset.url,
     img: tetracoreAsset.url,
   },
   {
