@@ -5,7 +5,7 @@ import infraSolar from "@/assets/infra-solar.jpg";
 import infraPort from "@/assets/infra-port.jpg";
 import africaTopo from "@/assets/africa-topo.png";
 import tetracoreAsset from "@/assets/tetracore.jpg.asset.json";
-import nigerBridgeAsset from "@/assets/niger-bridge.jpg.asset.json";
+import nigerBridgeAsset from "@/assets/2nd-niger-bridge.png.asset.json";
 import { Reveal } from "@/components/Reveal";
 import { useParallax } from "@/hooks/useParallax";
 
