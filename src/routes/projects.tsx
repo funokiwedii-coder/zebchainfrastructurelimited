@@ -2,12 +2,12 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Building2, ImageIcon } from "lucide-react";
 import infraPort from "@/assets/infra-port.jpg";
 import tetracoreAsset from "@/assets/tetracore.jpg.asset.json";
-import nigerBridgeAsset from "@/assets/niger-bridge.jpg.asset.json";
-import mission300Asset from "@/assets/mission-300.jpg.asset.json";
-import copipAsset from "@/assets/copip-clean-oceans.jpg.asset.json";
+import nigerBridgeAsset from "@/assets/2nd-niger-bridge.png.asset.json";
+import mission300Asset from "@/assets/mission-300.png.asset.json";
+import copipAsset from "@/assets/copip-ocean-cleanup.png.asset.json";
 import donDomingoAsset from "@/assets/don-domingo-water.jpg.asset.json";
-import lagosIbadanAsset from "@/assets/lagos-ibadan-expressway.jpg.asset.json";
-import shipbuildingAsset from "@/assets/shipbuilding-yard.jpg.asset.json";
+import lagosIbadanAsset from "@/assets/lagos-ibadan-expressway.png.asset.json";
+import shipbuildingAsset from "@/assets/integrated-shipbuilding-yard.png.asset.json";
 import { Reveal } from "@/components/Reveal";
 
 export const Route = createFileRoute("/projects")({
