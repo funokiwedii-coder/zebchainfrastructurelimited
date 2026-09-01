@@ -1,11 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Building2, ImageIcon } from "lucide-react";
 import infraPort from "@/assets/infra-port.jpg";
+import greenEnergyCityAsset from "@/assets/green-energy-city.jpg.asset.json";
 import tetracoreAsset from "@/assets/tetracore.jpg.asset.json";
+import tetracoreGtlAsset from "@/assets/tetracore-gas-to-liquids.jpg.asset.json";
 import nigerBridgeAsset from "@/assets/2nd-niger-bridge.png.asset.json";
 import mission300Asset from "@/assets/mission-300.png.asset.json";
 import copipAsset from "@/assets/copip-ocean-cleanup.png.asset.json";
-import donDomingoAsset from "@/assets/don-domingo-water.jpg.asset.json";
+import donDomingoAsset from "@/assets/don-domingo-water-company.jpg.asset.json";
 import lagosIbadanAsset from "@/assets/lagos-ibadan-expressway.png.asset.json";
 import shipbuildingAsset from "@/assets/integrated-shipbuilding-yard.png.asset.json";
 import { Reveal } from "@/components/Reveal";
@@ -51,6 +53,7 @@ const featuredProjects: Project[] = [
     value: "₦280B (~$175M)",
     description:
       "50,000 housing units delivered over 10 years. Backed by a Federal Ministry of Finance sovereign guarantee. Targets federal civil servants and private sector workers.",
+    img: greenEnergyCityAsset.url,
   },
   {
     title: "Tetracore Urea Complex",
@@ -68,7 +71,7 @@ const featuredProjects: Project[] = [
     value: "$437M",
     description:
       "5,000 BPD Gas-to-Liquids facility in Atakobo, Ogun State. Zebcha is providing transactional advisory and fundraising support.",
-    img: tetracoreAsset.url,
+    img: tetracoreGtlAsset.url,
   },
   {
     title: "2nd Niger Bridge",
