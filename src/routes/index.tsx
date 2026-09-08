@@ -259,7 +259,7 @@ function HomePage() {
           <Reveal as="div" variant="left" className="md:col-span-4">
             <div className="eyebrow">Why Zebcha</div>
             <h2 className="mt-4 font-display text-4xl leading-tight text-foreground md:text-5xl">
-              Built to move serious deals.
+              Built for complex, capital-intensive transactions.
             </h2>
             <p className="mt-6 text-base leading-relaxed text-muted-foreground">
               We bring the network, the discipline and the delivery capability that complex,
