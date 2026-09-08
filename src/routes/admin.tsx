@@ -2,7 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-import { Loader2, LogOut, Mail, Phone, Building2, Globe, Briefcase, DollarSign, Trash2, GraduationCap, Clock, FileText, MapPin, Calendar, User, School, Award, CakeSlice, Plane } from "lucide-react";
+import { Loader2, LogOut, Mail, Phone, Building2, Globe, Briefcase, DollarSign, Trash2, GraduationCap, Clock, FileText, MapPin, Calendar, User, School, Award, CakeSlice, Plane, Download } from "lucide-react";
+import * as XLSX from "xlsx";
 
 export const Route = createFileRoute("/admin")({
   head: () => ({
@@ -384,11 +385,65 @@ function ApplicationsList() {
     toast.success("Deleted");
   }
 
+  function downloadExcel() {
+    if (items.length === 0) {
+      toast.error("There are no applications to download yet.");
+      return;
+    }
+
+    const rows = items.map((application) => ({
+      "Application ID": application.id,
+      "Full Name": application.name,
+      Email: application.email,
+      Phone: application.phone ?? "",
+      Track: application.track ?? "",
+      "Years of Experience": application.years_experience ?? "",
+      "Course of Study": application.course_of_study ?? "",
+      "Date of Birth": application.date_of_birth ?? "",
+      "CGPA / Grade": application.cgpa ?? "",
+      Gender: application.gender ?? "",
+      "Current Location": application.current_location ?? "",
+      "Willing to Relocate to Abuja": application.willing_to_relocate == null
+        ? ""
+        : application.willing_to_relocate
+          ? "Yes"
+          : "No",
+      Age: application.age ?? "",
+      "Date of Graduation": application.date_of_graduation ?? "",
+      "Available Start Date": application.available_start_date ?? "",
+      University: application.university ?? "",
+      Status: application.status,
+      "Cover Note": application.cover_note ?? "",
+      "CV / Resume Link": application.cv_url ?? "",
+      "Submitted At": new Date(application.created_at).toLocaleString(),
+    }));
+
+    const worksheet = XLSX.utils.json_to_sheet(rows);
+    worksheet["!cols"] = Object.keys(rows[0]).map((header) => ({
+      wch: Math.min(Math.max(header.length + 2, 14), 32),
+    }));
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Job Applications");
+    XLSX.writeFile(workbook, `zebcha-job-applications-${new Date().toISOString().slice(0, 10)}.xlsx`);
+    toast.success(`${items.length} application${items.length === 1 ? "" : "s"} exported.`);
+  }
+
   return (
     <>
-      <p className="text-sm text-muted-foreground">
-        {loading ? "Loading…" : `${items.length} total`}
-      </p>
+      <div className="flex flex-wrap items-center justify-between gap-4">
+        <p className="text-sm text-muted-foreground">
+          {loading ? "Loading…" : `${items.length} total`}
+        </p>
+        <button
+          type="button"
+          onClick={downloadExcel}
+          disabled={loading || items.length === 0}
+          className="inline-flex items-center gap-2 rounded-sm border border-border px-4 py-2 text-sm font-medium text-foreground hover:bg-muted disabled:cursor-not-allowed disabled:opacity-50"
+        >
+          <Download className="h-4 w-4" />
+          Download Excel
+        </button>
+      </div>
       <div className="mt-6 space-y-5">
         {!loading && items.length === 0 && (
           <div className="rounded-sm border border-dashed border-border p-12 text-center text-muted-foreground">
