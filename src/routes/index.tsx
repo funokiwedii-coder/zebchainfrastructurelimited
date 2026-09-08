@@ -291,7 +291,7 @@ function HomePage() {
           <div>
             <div className="eyebrow">Capability in action</div>
             <h2 className="mt-4 font-display text-4xl text-foreground md:text-5xl">
-              Structuring complex deals.
+              Delivering bankable infrastructure outcomes.
             </h2>
           </div>
           <Link
