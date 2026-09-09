@@ -30,6 +30,7 @@ export type Database = {
           gender: string | null
           id: string
           name: string
+          nysc_status: string | null
           phone: string | null
           status: string
           track: string | null
@@ -52,6 +53,7 @@ export type Database = {
           gender?: string | null
           id?: string
           name: string
+          nysc_status?: string | null
           phone?: string | null
           status?: string
           track?: string | null
@@ -74,6 +76,7 @@ export type Database = {
           gender?: string | null
           id?: string
           name?: string
+          nysc_status?: string | null
           phone?: string | null
           status?: string
           track?: string | null

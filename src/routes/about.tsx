@@ -36,8 +36,7 @@ const team: Member[] = [
   { name: "Bola Jimoh", role: "Senior Associate" },
   { name: "Favour Unokiwedi", role: "Associate" },
   { name: "Smart Michael", role: "Associate" },
-  { name: "Praise Ossy Nwoye", role: "Associate" },
-  { name: "Christiana Olatunji", role: "Analyst" },
+  { name: "Christiana Olatunji", role: "Associate" },
   { name: "Success Ezea", role: "Analyst" },
 ];
 
@@ -62,7 +61,7 @@ function AboutPage() {
           </Reveal>
           <Reveal as="div" variant="up" delay={120} className="md:col-span-9">
             <h1 className="font-display text-5xl leading-[1.05] text-foreground md:text-7xl">
-              A Nigerian project finance house with a continent-wide mandate.
+              A Nigerian impact vehicle with a continent-wide mandate.
             </h1>
             <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted-foreground">
               Zebcha Infrastructure Limited (pronounced <em className="font-display">/zɛbka:/</em>)
@@ -143,7 +142,7 @@ function AboutPage() {
             <ul className="space-y-6 text-lg leading-relaxed text-ivory/85">
               {[
                 "Identify viable, government-backed infrastructure opportunities across Africa.",
-                "Structure bankable PPP transactions with EU project finance partners.",
+                "Structure bankable PPP transactions with global project finance partners.",
                 "Deploy single-digit financing against sovereign and sub-sovereign guarantees.",
                 "Execute projects with international consortia and capable local teams.",
               ].map((line, i) => (

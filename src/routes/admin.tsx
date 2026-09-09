@@ -223,6 +223,7 @@ type Application = {
   date_of_graduation: string | null;
   available_start_date: string | null;
   university: string | null;
+  nysc_status: string | null;
   cv_url: string | null;
 };
 
@@ -412,6 +413,7 @@ function ApplicationsList() {
       "Date of Graduation": application.date_of_graduation ?? "",
       "Available Start Date": application.available_start_date ?? "",
       University: application.university ?? "",
+      "NYSC Status": application.nysc_status ?? "",
       Status: application.status,
       "Cover Note": application.cover_note ?? "",
       "CV / Resume Link": application.cv_url ?? "",
@@ -472,6 +474,7 @@ function ApplicationsList() {
               {a.date_of_birth && <Item icon={Calendar} label={`DOB: ${a.date_of_birth}`} />}
               {a.date_of_graduation && <Item icon={Calendar} label={`Graduated: ${a.date_of_graduation}`} />}
               {a.available_start_date && <Item icon={Calendar} label={`Available: ${a.available_start_date}`} />}
+              {a.nysc_status && <Item icon={GraduationCap} label={`NYSC: ${a.nysc_status}`} />}
               {a.current_location && <Item icon={MapPin} label={a.current_location} />}
               {a.willing_to_relocate != null && (
                 <Item icon={Plane} label={`Relocate to Abuja: ${a.willing_to_relocate ? "Yes" : "No"}`} />

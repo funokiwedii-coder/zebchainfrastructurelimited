@@ -93,6 +93,7 @@ const TRACK_OPTIONS = [
 
 const GENDER_OPTIONS = ["Male", "Female"] as const;
 const RELOCATE_OPTIONS = ["Yes", "No"] as const;
+const NYSC_OPTIONS = ["Completed", "Ongoing", "Not started"] as const;
 
 const applicationSchema = z.object({
   name: z.string().trim().min(1, "Full name is required").max(120),
@@ -111,6 +112,7 @@ const applicationSchema = z.object({
   date_of_graduation: z.string().min(1, "Date of graduation is required"),
   available_start_date: z.string().min(1, "Availability date is required"),
   university: z.string().trim().min(1, "University is required").max(160),
+  nysc_status: z.enum(NYSC_OPTIONS, { errorMap: () => ({ message: "Select NYSC status" }) }),
   track: z
     .enum(TRACK_OPTIONS, { errorMap: () => ({ message: "Select a track" }) })
     .optional()
@@ -332,6 +334,7 @@ function ApplicationForm() {
       date_of_graduation: String(fd.get("date_of_graduation") ?? ""),
       available_start_date: String(fd.get("available_start_date") ?? ""),
       university: String(fd.get("university") ?? ""),
+      nysc_status: String(fd.get("nysc_status") ?? ""),
       track: String(fd.get("track") ?? ""),
     };
 
@@ -386,6 +389,7 @@ function ApplicationForm() {
       date_of_graduation: parsed.data.date_of_graduation,
       available_start_date: parsed.data.available_start_date,
       university: parsed.data.university,
+      nysc_status: parsed.data.nysc_status,
       track: parsed.data.track || null,
       cv_url: pub.publicUrl,
       cover_note: "",
@@ -425,6 +429,7 @@ function ApplicationForm() {
         <Field label="Course of study *" name="course_of_study" required error={errors.course_of_study} />
         <Field label="Grade / CGPA *" name="cgpa" required error={errors.cgpa} />
         <Field label="Date of graduation *" name="date_of_graduation" type="date" required error={errors.date_of_graduation} />
+        <Field label="NYSC status *" name="nysc_status" as="select" options={[...NYSC_OPTIONS]} required error={errors.nysc_status} />
         <Field label="Current location *" name="current_location" required error={errors.current_location} />
         <Field label="Available start date *" name="available_start_date" type="date" required error={errors.available_start_date} />
         <Field
