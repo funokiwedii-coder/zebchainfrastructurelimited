@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Building2, ImageIcon } from "lucide-react";
 import infraPort from "@/assets/infra-port.jpg";
 import greenEnergyCityAsset from "@/assets/green-energy-city.jpg.asset.json";
-import tetracoreAsset from "@/assets/tetracore.jpg.asset.json";
+import tetracoreAsset from "@/assets/tetracore-urea-complex.jpg.asset.json";
 import tetracoreGtlAsset from "@/assets/tetracore-gas-to-liquids.jpg.asset.json";
 import nigerBridgeAsset from "@/assets/2nd-niger-bridge.png.asset.json";
 import mission300Asset from "@/assets/mission-300.png.asset.json";
