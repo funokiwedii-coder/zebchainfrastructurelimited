@@ -45,8 +45,8 @@ export function SiteFooter() {
             <a href="tel:+2348172495115" className="block hover:text-ochre">
               +234 817 249 5115
             </a>
-            <a href="mailto:tope@potomakwealth.com" className="block hover:text-ochre">
-              tope@potomakwealth.com
+            <a href="mailto:info@zebchaafrica.com" className="block hover:text-ochre">
+              info@zebchaafrica.com
             </a>
           </div>
         </div>
