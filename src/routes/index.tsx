@@ -3,9 +3,9 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 import heroAfrica from "@/assets/hero-africa.jpg";
 import infraPort from "@/assets/infra-port.jpg";
 import africaTopo from "@/assets/africa-topo.png";
-import greenEnergyCityAsset from "@/assets/green-energy-city.jpg.asset.json";
-import tetracoreGtlAsset from "@/assets/tetracore-gas-to-liquids.jpg.asset.json";
-import nigerBridgeAsset from "@/assets/2nd-niger-bridge.png.asset.json";
+import greenEnergyCityAsset from "@/assets/green-energy-city.jpg";
+import tetracoreGtlAsset from "@/assets/tetracore-gas-to-liquids.jpg";
+import nigerBridgeAsset from "@/assets/2nd-niger-bridge.png";
 import { Reveal } from "@/components/Reveal";
 import { useParallax } from "@/hooks/useParallax";
 
@@ -48,21 +48,21 @@ const services = [
 
 const featured = [
   {
-    img: greenEnergyCityAsset.url,
+    img: greenEnergyCityAsset,
     tag: "Housing · PPP",
     title: "Green Energy City",
     detail:
       "50,000 housing units over 10 years in Nasarawa State — ₦280B (~$175M), backed by a Federal Ministry of Finance sovereign guarantee.",
   },
   {
-    img: nigerBridgeAsset.url,
+    img: nigerBridgeAsset,
     tag: "Transport · PPP",
     title: "2nd Niger Bridge",
     detail:
       "12.4km PPP toll concession connecting Delta and Anambra States, structured in partnership with the NSIA.",
   },
   {
-    img: tetracoreGtlAsset.url,
+    img: tetracoreGtlAsset,
     tag: "Oil & Gas · Industrial",
     title: "Tetracore Gas-to-Liquids Facility",
     detail:

@@ -1,15 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Building2, ImageIcon } from "lucide-react";
 import infraPort from "@/assets/infra-port.jpg";
-import greenEnergyCityAsset from "@/assets/green-energy-city.jpg.asset.json";
-import tetracoreAsset from "@/assets/tetracore-urea-complex.jpg.asset.json";
-import tetracoreGtlAsset from "@/assets/tetracore-gas-to-liquids.jpg.asset.json";
-import nigerBridgeAsset from "@/assets/2nd-niger-bridge.png.asset.json";
-import mission300Asset from "@/assets/mission-300.png.asset.json";
-import copipAsset from "@/assets/copip-ocean-cleanup.png.asset.json";
-import donDomingoAsset from "@/assets/don-domingo-water-company.jpg.asset.json";
-import lagosIbadanAsset from "@/assets/lagos-ibadan-expressway.png.asset.json";
-import shipbuildingAsset from "@/assets/integrated-shipbuilding-yard.png.asset.json";
+import greenEnergyCityAsset from "@/assets/green-energy-city.jpg";
+import tetracoreAsset from "@/assets/tetracore-urea-complex.jpg";
+import tetracoreGtlAsset from "@/assets/tetracore-gas-to-liquids.jpg";
+import nigerBridgeAsset from "@/assets/2nd-niger-bridge.png";
+import mission300Asset from "@/assets/mission-300.png";
+import copipAsset from "@/assets/copip-ocean-cleanup.png";
+import donDomingoAsset from "@/assets/don-domingo-water-company.jpg";
+import lagosIbadanAsset from "@/assets/lagos-ibadan-expressway.png";
+import shipbuildingAsset from "@/assets/integrated-shipbuilding-yard.png";
 import { Reveal } from "@/components/Reveal";
 
 export const Route = createFileRoute("/projects")({
@@ -53,7 +53,7 @@ const featuredProjects: Project[] = [
     value: "₦280B (~$175M)",
     description:
       "50,000 housing units delivered over 10 years. Backed by a Federal Ministry of Finance sovereign guarantee. Targets federal civil servants and private sector workers.",
-    img: greenEnergyCityAsset.url,
+    img: greenEnergyCityAsset,
   },
   {
     title: "Tetracore Urea Complex",
@@ -62,7 +62,7 @@ const featuredProjects: Project[] = [
     value: "$616M",
     description:
       "1,200 TPD ammonia-urea fertilizer complex in Koko, Delta State. Zebcha is providing transactional advisory and fundraising support.",
-    img: tetracoreAsset.url,
+    img: tetracoreAsset,
   },
   {
     title: "Tetracore Gas-to-Liquids Facility",
@@ -71,7 +71,7 @@ const featuredProjects: Project[] = [
     value: "$437M",
     description:
       "5,000 BPD Gas-to-Liquids facility in Atakobo, Ogun State. Zebcha is providing transactional advisory and fundraising support.",
-    img: tetracoreGtlAsset.url,
+    img: tetracoreGtlAsset,
   },
   {
     title: "2nd Niger Bridge",
@@ -80,7 +80,7 @@ const featuredProjects: Project[] = [
     value: "Toll Concession",
     description:
       "12.4km PPP toll concession connecting Delta and Anambra States. Structured in partnership with the Nigerian Sovereign Investment Authority (NSIA). A flagship Nigerian infrastructure PPP.",
-    img: nigerBridgeAsset.url,
+    img: nigerBridgeAsset,
   },
   {
     title: "Mission 300",
@@ -89,7 +89,7 @@ const featuredProjects: Project[] = [
     value: "$32.8B Programme",
     description:
       "Zebcha provided advisory support to the Federal Ministry of Finance for Nigeria's Mission 300 continental energy access programme. Presented at the private sector roundtable, April 2025.",
-    img: mission300Asset.url,
+    img: mission300Asset,
   },
   {
     title: "COPIP (Clean Oceans)",
@@ -98,7 +98,7 @@ const featuredProjects: Project[] = [
     value: "EIB Programme",
     description:
       "Zebcha serves as consultant for Sub-Saharan Africa under the EIB Clean Oceans Project Identification and Preparation (COPIP) programme. Active engagements in Kenya, Ghana, Benin, Senegal, Côte d'Ivoire and CAR.",
-    img: copipAsset.url,
+    img: copipAsset,
   },
   {
     title: "Don Domingo Water Company Limited",
@@ -107,7 +107,7 @@ const featuredProjects: Project[] = [
     value: "$1.4 Billion",
     description:
       "Don Domingo Water Company Limited is a Nigerian company engaged in the production and distribution of quality drinking water. Zebcha is providing project preparation and investment facilitation support.",
-    img: donDomingoAsset.url,
+    img: donDomingoAsset,
   },
   {
     title: "Lagos–Ibadan Expressway Rehabilitation",
@@ -116,7 +116,7 @@ const featuredProjects: Project[] = [
     value: "127.6km Federal Highway",
     description:
       "Rehabilitation and upgrading of Nigeria's busiest interstate highway to improve road safety, traffic flow, and connectivity between Lagos and Ibadan. Zebcha's role: Transaction & Financial Advisory.",
-    img: lagosIbadanAsset.url,
+    img: lagosIbadanAsset,
   },
   {
     title: "Integrated Shipbuilding Yard",
@@ -125,7 +125,7 @@ const featuredProjects: Project[] = [
     value: "$613M",
     description:
       "Nigeria's first integrated shipbuilding yard developed under a PPP concession. Develops indigenous maritime industrial capacity and reduces Nigeria's dependence on foreign ship maintenance.",
-    img: shipbuildingAsset.url,
+    img: shipbuildingAsset,
   },
 ];
 
