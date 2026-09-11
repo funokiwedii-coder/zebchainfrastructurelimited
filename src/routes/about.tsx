@@ -30,7 +30,6 @@ type Member = {
 };
 
 const team: Member[] = [
-  { name: "[MD/CEO name — to be confirmed]", role: "MD / CEO" },
   { name: "Gideon Dikedi", role: "Senior Associate" },
   { name: "Daniel Umoru", role: "Senior Associate" },
   { name: "Bola Jimoh", role: "Senior Associate" },
